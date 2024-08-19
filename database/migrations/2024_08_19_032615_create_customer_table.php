@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('no_telpon');
             $table->string('email')->unique();
-            $table->string('diskon');
-            $table->timestamps('created_at')->nullable();
+            $table->string('diskon', 5,2)->default(0);
+            $table->timestamps();
         });
     }
 
