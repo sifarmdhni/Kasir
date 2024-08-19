@@ -22,8 +22,9 @@ return new class extends Migration
           $table->timestamps();
 
           //foreign key constraints
-          $table->foreign('customer_id')->references('id')->on('customers');
-          $table->foreign('id_kasir')->references('id')->on('users');
+          $table->foreign('customer_id')->references('id')->on('customer');
+          $table->foreign('id_kasir')->references('id')->on('kasir');
+          $table->foreign('id_payment')->references('id')->on('payment');
 
         });
     }
