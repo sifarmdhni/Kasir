@@ -11,10 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kategori_product', function (Blueprint $table) {
+        Schema::create('kasir', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_kategori');
+            $table->string('name_kasir');
+            $table->string('no_telepon');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->text('foto_kasir')->nullable();
+            $table->enum('jenis_kelamin', ['Laki-laki','Perempuan']);
             $table->timestamps();
+
         });
     }
 
@@ -23,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kategori_product');
+        Schema::dropIfExists('kasir');
     }
 };
