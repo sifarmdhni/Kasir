@@ -13,11 +13,11 @@ class ItemsCartController extends Controller
     public function index()
     {
         $itemsCarts = ItemsCart::with(['transaksi', 'produk'])->get();
-        return view('items_cart.index', compact('itemsCart'));
+        return view('items_carts.index', compact('itemsCarts'));
     }
 
     public function show(ItemsCart $itemsCart)
     {
-        return view('items_cart.show', compact('itemsCart'));
+        return view('items_carts.show', compact('itemsCart'));
     }
 }

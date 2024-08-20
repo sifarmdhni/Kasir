@@ -11,12 +11,12 @@ class PaymentController extends Controller
     public function index()
     {
         $payments = Payment::all();
-        return view('payment.index', compact('payment'));
+        return view('payments.index', compact('payments'));
     }
 
     public function create()
     {
-        return view('payment.create');
+        return view('payments.create');
     }
 
     public function store(Request $request)
@@ -31,17 +31,17 @@ class PaymentController extends Controller
         }
 
         Payment::create($validated);
-        return redirect()->route('payment.index')->with('success', 'Metode Pembayaran berhasil ditambahkan');
+        return redirect()->route('payments.index')->with('success', 'Metode Pembayaran berhasil ditambahkan');
     }
 
     public function show(Payment $payment)
     {
-        return view('payment.show', compact('payment'));
+        return view('payments.show', compact('payment'));
     }
 
     public function edit(Payment $payment)
     {
-        return view('payment.edit', compact('payment'));
+        return view('payments.edit', compact('payment'));
     }
 
     public function update(Request $request, Payment $payment)
@@ -59,7 +59,7 @@ class PaymentController extends Controller
         }
 
         $payment->update($validated);
-        return redirect()->route('payment.index')->with('success', 'Metode Pembayaran berhasil diperbarui');
+        return redirect()->route('payments.index')->with('success', 'Metode Pembayaran berhasil diperbarui');
     }
 
     public function destroy(Payment $payment)
@@ -68,6 +68,6 @@ class PaymentController extends Controller
             Storage::disk('public')->delete($payment->gambar);
         }
         $payment->delete();
-        return redirect()->route('payment.index')->with('success', 'Metode Pembayaran berhasil dihapus');
+        return redirect()->route('payments.index')->with('success', 'Metode Pembayaran berhasil dihapus');
     }
 }

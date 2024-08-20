@@ -15,16 +15,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('transaksi.index') }}">Transaksi</a>
+                    <a class="nav-link" href="{{ route('transaksis.index') }}">Transaksi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('product.index') }}">Produk</a>
+                    <a class="nav-link" href="{{ route('produks.index') }}">Produk</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('customer.index') }}">Pelanggan</a>
+                    <a class="nav-link" href="{{ route('customers.index') }}">Pelanggan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('kasir.index') }}">Kasir</a>
+                    <a class="nav-link" href="{{ route('kasirs.index') }}">Kasir</a>
                 </li>
             </ul>
         </div>
