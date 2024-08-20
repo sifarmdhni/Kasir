@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class product extends Model
 {
@@ -20,13 +20,13 @@ class product extends Model
         'harga' => 'decimal:2',
     ];
 
-    public function kategoriProduk()
+    public function kategori_product()
     {
-        return $this->belongsTo(KategoriProduk::class);
+        return $this->belongsTo(kategori_product::class);
     }
 
-    public function itemsCarts()
+    public function items_transaksi()
     {
-        return $this->hasMany(ItemsCart::class);
+        return $this->hasMany(items_transaksi::class);
     }
 }
