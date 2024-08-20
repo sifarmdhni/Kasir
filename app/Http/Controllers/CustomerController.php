@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Customer;
+use App\Models\customer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
     public function index()
     {
-        $customers = Customer::all();
-        return view('customer.index', compact('customer'));
+        $customers = customer::all();
+        return view('customer.index', compact('customers'));
     }
 
     public function create()

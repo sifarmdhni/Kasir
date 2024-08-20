@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produk;
+use App\Models\Product;
 use App\Models\KategoriProduk;
 use Illuminate\Http\Request;
 
@@ -10,8 +10,8 @@ class ProdukController extends Controller
 {
     public function index()
     {
-        $produks = Produk::with('kategori')->get();
-        return view('product.index', compact('produk'));
+        $produks = Product::with('kategori')->get();
+        return view('product.index', compact('produks'));
     }
 
     public function create()

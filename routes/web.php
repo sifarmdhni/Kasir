@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KasirController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\KategoriProdukController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +22,18 @@ Route::get('/', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::resource('customer', CustomerController::class);
+Route::resource('customer', CustomerController::class); 
+
+
 Route::resource('kategori-product', KategoriProdukController::class);
+
+
 Route::resource('product', ProdukController::class);
+
+
 Route::resource('payment', PaymentController::class);
+
+
 Route::resource('kasir', KasirController::class);
+
 Route::resource('transaksi', TransaksiController::class);
