@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+    // test
     public function index()
     {
         $customers = customer::all();
