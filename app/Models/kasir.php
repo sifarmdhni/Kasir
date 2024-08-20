@@ -6,17 +6,25 @@ use App\Models\transaksi;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class payment extends Model
+class kasir extends Model
 {
     use HasFactory;
-
+    
     protected $fillable = [
-        'nama_pembayaran',
-        'gambar'
+        'nama_kasir',
+        'no_telp',
+        'email',
+        'password',
+        'foto',
+        'jenis_kelamin',
+    ];
+
+    protected $hidden = [
+        'password',
     ];
 
     public function transaksi()
     {
-        return $this->hasMany(transaksi::class);
+        return $this->hasMany(Transaksi::class);
     }
 }

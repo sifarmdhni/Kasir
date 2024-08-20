@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('items_transaksi', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_transaksi');
-            $table->unsignedBigInteger('id_produk');
+            $table->foreignId('id_transaksi')->constrained();
+            $table->foreignId('id_produk')->constrained();
             $table->decimal('harga', 10, 2);
             $table->integer('jumlah');
             $table->timestamps();
