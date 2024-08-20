@@ -13,30 +13,30 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        $transaksi = Transaksi::with(['customer', 'payment', 'kasir'])->get();
+        $transaksis = Transaksi::with(['customer', 'payment', 'kasir'])->get();
         return view('transaksi.index', compact('transaksi'));
     }
 
     public function create()
     {
-        $customer = Customer::all();
-        $payment = Payment::all();
-        $kasir = Kasir::all();
-        $product = Produk::all();
-        return view('transaksi.create', compact('customer', 'payment', 'kasir', 'product'));
+        $customers = Customer::all();
+        $payments = Payment::all();
+        $kasirs = Kasir::all();
+        $produks = Produk::all();
+        return view('transaksi.create', compact('customers', 'payments', 'kasirs', 'produks'));
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'payment_id' => 'required|exists:payment,id',
-            'customer_id' => 'required|exists:customer,id',
+            'payment_id' => 'required|exists:payments,id',
+            'customer_id' => 'required|exists:customers,id',
             'customer' => 'required|string|max:255',
             'diskon' => 'nullable|numeric|min:0|max:100',
             'total_harga' => 'required|numeric|min:0',
-            'kasir_id' => 'required|exists:kasir,id',
+            'kasir_id' => 'required|exists:kasirs,id',
             'items' => 'required|array',
-            'items.*.produk_id' => 'required|exists:product,id',
+            'items.*.produk_id' => 'required|exists:produks,id',
             'items.*.jumlah' => 'required|integer|min:1',
             'items.*.harga' => 'required|numeric|min:0'
         ]);
@@ -47,12 +47,12 @@ class TransaksiController extends Controller
             $transaksi->itemsCarts()->create($item);
         }
 
-        return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil ditambahkan');
+        return redirect()->route('transaksis.index')->with('success', 'Transaksi berhasil ditambahkan');
     }
 
     public function show(Transaksi $transaksi)
     {
-        $transaksi->load(['customer', 'payment', 'kasir', 'itemsCart.produk']);
+        $transaksi->load(['customer', 'payment', 'kasir', 'itemsCarts.produk']);
         return view('transaksi.show', compact('transaksi'));
     }
 
@@ -62,6 +62,6 @@ class TransaksiController extends Controller
     {
         $transaksi->itemsCarts()->delete();
         $transaksi->delete();
-        return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil dihapus');
+        return redirect()->route('transaksis.index')->with('success', 'Transaksi berhasil dihapus');
     }
 }

@@ -10,12 +10,12 @@ class KategoriProdukController extends Controller
     public function index()
     {
         $kategoriProduks = KategoriProduk::all();
-        return view('kategori_product.index', compact('kategoriProduk'));
+        return view('kategori_produks.index', compact('kategoriProduks'));
     }
 
     public function create()
     {
-        return view('kategori_product.create');
+        return view('kategori_produks.create');
     }
 
     public function store(Request $request)
@@ -25,17 +25,17 @@ class KategoriProdukController extends Controller
         ]);
 
         KategoriProduk::create($validated);
-        return redirect()->route('kategori_product.index')->with('success', 'Kategori Produk berhasil ditambahkan');
+        return redirect()->route('kategori_produks.index')->with('success', 'Kategori Produk berhasil ditambahkan');
     }
 
     public function show(KategoriProduk $kategoriProduk)
     {
-        return view('kategori_product.show', compact('kategoriProduk'));
+        return view('kategori_produks.show', compact('kategoriProduk'));
     }
 
     public function edit(KategoriProduk $kategoriProduk)
     {
-        return view('kategori_product.edit', compact('kategoriProduk'));
+        return view('kategori_produks.edit', compact('kategoriProduk'));
     }
 
     public function update(Request $request, KategoriProduk $kategoriProduk)
@@ -45,12 +45,12 @@ class KategoriProdukController extends Controller
         ]);
 
         $kategoriProduk->update($validated);
-        return redirect()->route('kategori_product.index')->with('success', 'Kategori Produk berhasil diperbarui');
+        return redirect()->route('kategori_produks.index')->with('success', 'Kategori Produk berhasil diperbarui');
     }
 
     public function destroy(KategoriProduk $kategoriProduk)
     {
         $kategoriProduk->delete();
-        return redirect()->route('kategori_product.index')->with('success', 'Kategori Produk berhasil dihapus');
+        return redirect()->route('kategori_produks.index')->with('success', 'Kategori Produk berhasil dihapus');
     }
 }
