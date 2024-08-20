@@ -14,7 +14,7 @@ class payment extends Model
         'gambar'
     ];
 
-    public function transaksis()
+    public function transaksi()
     {
         return $this->hasMany(Transaksi::class);
     }
