@@ -13,17 +13,17 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        $transaksis = Transaksi::with(['customer', 'payment', 'kasir'])->get();
+        $transaksi = Transaksi::with(['customer', 'payment', 'kasir'])->get();
         return view('transaksi.index', compact('transaksi'));
     }
 
     public function create()
     {
-        $customers = Customer::all();
-        $payments = Payment::all();
-        $kasirs = Kasir::all();
-        $produks = Produk::all();
-        return view('transaksi.create', compact('customers', 'payments', 'kasirs', 'produks'));
+        $customer = Customer::all();
+        $payment = Payment::all();
+        $kasir = Kasir::all();
+        $product = Produk::all();
+        return view('transaksi.create', compact('customer', 'payment', 'kasir', 'product'));
     }
 
     public function store(Request $request)
@@ -52,7 +52,7 @@ class TransaksiController extends Controller
 
     public function show(Transaksi $transaksi)
     {
-        $transaksi->load(['customer', 'payment', 'kasir', 'itemsCarts.produk']);
+        $transaksi->load(['customer', 'payment', 'kasir', 'itemsCart.produk']);
         return view('transaksi.show', compact('transaksi'));
     }
 

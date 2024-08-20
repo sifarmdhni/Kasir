@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    // test
+    
     public function index()
     {
         $customers = customer::all();
-        return view('customer.index', compact('customers'));
+        return view('customer.index', compact('customer'));
     }
 
     public function create()

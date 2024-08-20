@@ -11,7 +11,7 @@ class KasirController extends Controller
 {
     public function index()
     {
-        $kasirs = Kasir::all();
+        $kasir = Kasir::all();
         return view('kasir.index', compact('kasir'));
     }
 
@@ -24,7 +24,7 @@ class KasirController extends Controller
     {
         $validated = $request->validate([
             'nama_kasir' => 'required|string|max:255',
-            'no_telp' => 'nullable|string|max:20',
+            'no_telepon' => 'nullable|string|max:20',
             'email' => 'required|email|unique:kasir',
             'password' => 'required|min:6',
             'foto' => 'nullable|image|max:2048',
@@ -76,7 +76,7 @@ class KasirController extends Controller
         }
 
         $kasir->update($validated);
-        return redirect()->route('kasirs.index')->with('success', 'Kasir berhasil diperbarui');
+        return redirect()->route('kasir.index')->with('success', 'Kasir berhasil diperbarui');
     }
 
     public function destroy(Kasir $kasir)
