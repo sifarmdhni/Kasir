@@ -11,13 +11,13 @@ class KasirController extends Controller
 {
     public function index()
     {
-        $kasirs = Kasir::all();
-        return view('kasirs.index', compact('kasirs'));
+        $kasir = Kasir::all();
+        return view('kasir.index', compact('kasir'));
     }
 
     public function create()
     {
-        return view('kasirs.create');
+        return view('kasir.create');
     }
 
     public function store(Request $request)
@@ -25,7 +25,7 @@ class KasirController extends Controller
         $validated = $request->validate([
             'nama_kasir' => 'required|string|max:255',
             'no_telp' => 'nullable|string|max:20',
-            'email' => 'required|email|unique:kasirs',
+            'email' => 'required|email|unique:kasir',
             'password' => 'required|min:6',
             'foto' => 'nullable|image|max:2048',
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan'
@@ -38,17 +38,17 @@ class KasirController extends Controller
         }
 
         Kasir::create($validated);
-        return redirect()->route('kasirs.index')->with('success', 'Kasir berhasil ditambahkan');
+        return redirect()->route('kasir.index')->with('success', 'Kasir berhasil ditambahkan');
     }
 
     public function show(Kasir $kasir)
     {
-        return view('kasirs.show', compact('kasir'));
+        return view('kasir.show', compact('kasir'));
     }
 
     public function edit(Kasir $kasir)
     {
-        return view('kasirs.edit', compact('kasir'));
+        return view('kasir.edit', compact('kasir'));
     }
 
     public function update(Request $request, Kasir $kasir)
@@ -56,7 +56,7 @@ class KasirController extends Controller
         $validated = $request->validate([
             'nama_kasir' => 'required|string|max:255',
             'no_telp' => 'nullable|string|max:20',
-            'email' => 'required|email|unique:kasirs,email,'.$kasir->id,
+            'email' => 'required|email|unique:kasir,email,'.$kasir->id,
             'password' => 'nullable|min:6',
             'foto' => 'nullable|image|max:2048',
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan'
@@ -76,7 +76,7 @@ class KasirController extends Controller
         }
 
         $kasir->update($validated);
-        return redirect()->route('kasirs.index')->with('success', 'Kasir berhasil diperbarui');
+        return redirect()->route('kasir.index')->with('success', 'Kasir berhasil diperbarui');
     }
 
     public function destroy(Kasir $kasir)
@@ -85,6 +85,6 @@ class KasirController extends Controller
             Storage::disk('public')->delete($kasir->foto);
         }
         $kasir->delete();
-        return redirect()->route('kasirs.index')->with('success', 'Kasir berhasil dihapus');
+        return redirect()->route('kasir.index')->with('success', 'Kasir berhasil dihapus');
     }
 }

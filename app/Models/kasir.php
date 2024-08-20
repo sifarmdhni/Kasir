@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class kasir extends Model
 {
     use HasFactory;
+
+    protected $table = 'kasir';
     
     protected $fillable = [
         'nama_kasir',
