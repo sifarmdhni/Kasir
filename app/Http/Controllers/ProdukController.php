@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\KategoriProduk;
+use App\Models\kategori_product;
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
@@ -11,13 +11,13 @@ class ProdukController extends Controller
     public function index()
     {
         $produks = Product::with('kategori')->get();
-        return view('produks.index', compact('produks'));
+        return view('product', compact('produks'));
     }
 
     public function create()
     {
-        $kategoriProduks = KategoriProduk::all();
-        return view('produks.create', compact('kategoriProduks'));
+        $kategoriProduks = kategori_product::all();
+        return view('product-add', compact('kategoriProduks'));
     }
 
     public function store(Request $request)
