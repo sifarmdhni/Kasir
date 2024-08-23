@@ -11,13 +11,13 @@ class ProdukController extends Controller
     public function index()
     {
         $produk = Product::with('kategori')->get();
-        return view('produk.index', compact('produk'));
+        return view('product', compact('produk'));
     }
 
     public function create()
     {
         $kategoriProduk = KategoriProduk::all();
-        return view('produk.create', compact('kategoriProduk'));
+        return view('product', compact('kategoriProduk'));
     }
 
     public function store(Request $request)
@@ -30,18 +30,18 @@ class ProdukController extends Controller
         ]);
 
         Produk::create($validated);
-        return redirect()->route('produk.index')->with('success', 'Produk berhasil ditambahkan');
+        return redirect()->route('product')->with('success', 'Produk berhasil ditambahkan');
     }
 
     public function show(Produk $produk)
     {
-        return view('produk.show', compact('produk'));
+        return view('product', compact('produk'));
     }
 
     public function edit(Produk $produk)
     {
         $kategoriProduk = KategoriProduk::all();
-        return view('produk.edit', compact('produk', 'kategoriProduk'));
+        return view('product', compact('product', 'kategoriProduk'));
     }
 
     public function update(Request $request, Produk $produk)
@@ -54,12 +54,12 @@ class ProdukController extends Controller
         ]);
 
         $produk->update($validated);
-        return redirect()->route('produk.index')->with('success', 'Produk berhasil diperbarui');
+        return redirect()->route('product')->with('success', 'Produk berhasil diperbarui');
     }
 
     public function destroy(Produk $produk)
     {
         $produk->delete();
-        return redirect()->route('produk.index')->with('success', 'Produk berhasil dihapus');
+        return redirect()->route('product')->with('success', 'Produk berhasil dihapus');
     }
 }

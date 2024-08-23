@@ -96,7 +96,7 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="images/user/1.png" height="40" width="40" alt="">
+                                <img src="public/assets/images/user/1.png" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile   dropdown-menu">
                                 <div class="dropdown-content-body">
@@ -105,7 +105,7 @@
                                             <a href="#"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>
                                         <hr class="my-2">
-                                        <li><a href="#"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li><a href="/logout"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -143,7 +143,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="#">Data Usser</a></li>
-                            <li><a href="#">Data Jenis Barang</a></li>
+                            <li><a href="/product">Data Jenis Barang</a></li>
                             <li><a href="#">Data Barang</a></li>
                         </ul>
                     </li>

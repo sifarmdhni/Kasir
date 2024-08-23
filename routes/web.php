@@ -22,11 +22,8 @@ Route::post('/login', [AuthController::class, 'authenticating']);
 Route::get('/logout', [AuthController::class, 'logout']);
 
 
-
-
-
-
-
+Route::get('/product', [ProdukController::class, 'index']);
+Route::get('/product/{id}', [ProdukController::class, 'show']);
 
 
 Route::resource('customers', CustomerController::class);

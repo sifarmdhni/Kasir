@@ -25,13 +25,13 @@ class AuthController extends Controller
 
             $request->session()->regenerate();
  
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/');
         }
 
         Session::flash('status', 'failed');
         Session::flash('message', 'Login gagal!');
 
-        return redirect('/');
+        return redirect('/login');
     }
 
     public function logout(Request $request)
