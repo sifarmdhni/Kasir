@@ -8,6 +8,7 @@ class CreateTransaksiTable extends Migration
 {
     public function up()
     {
+        
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id(); // Alias dari unsignedBigInteger('id')
             $table->unsignedBigInteger('id_payment');

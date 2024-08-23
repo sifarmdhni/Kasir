@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreign('id_produk')->references('id')->on('product');
         });
     }
+    
 
     /**
      * Reverse the migrations.
