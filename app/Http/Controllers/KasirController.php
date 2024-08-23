@@ -11,13 +11,13 @@ class KasirController extends Controller
 {
     public function index()
     {
-        $kasirs = Kasir::all();
+        $kasir = Kasir::all();
         return view('kasir.index', compact('kasir'));
     }
 
     public function create()
     {
-        return view('kasirs.create');
+        return view('kasir.create');
     }
 
     public function store(Request $request)

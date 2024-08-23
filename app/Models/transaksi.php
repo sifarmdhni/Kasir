@@ -11,6 +11,8 @@ class transaksi extends Model
 {
     use HasFactory;
 
+    protected $table = 'transaksi';
+
     protected $fillable = [
         'id_payment',
         'customer_id',

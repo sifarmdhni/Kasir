@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark  bg-primary">
         <a class="navbar-brand" href="{{ route('dashboard') }}">Kasir App</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -18,10 +18,10 @@
                     <a class="nav-link" href="{{ route('transaksis.index') }}">Transaksi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('produks.index') }}">Produk</a>
+                    <a class="nav-link" href="{{ route('product.index') }}">Produk</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('customers.index') }}">Pelanggan</a>
+                    <a class="nav-link" href="{{ route('customers.index') }}">Customer</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('kasirs.index') }}">Kasir</a>
@@ -38,4 +38,4 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-</html>
+</html> -->

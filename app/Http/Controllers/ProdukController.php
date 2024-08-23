@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\KategoriProduk;
+use App\Models\kategori_product;
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
