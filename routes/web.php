@@ -1,16 +1,31 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\AuthController;
+
+
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\KategoriProdukController;
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+
+
+
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticating']);
+Route::get('/logout', [AuthController::class, 'logout']);
+
+
+
+
+
+
 
 
 

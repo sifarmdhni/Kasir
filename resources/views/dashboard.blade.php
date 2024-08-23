@@ -37,6 +37,7 @@
 </head>
 
 <body>
+    
 
     <!--*******************
         Preloader start
@@ -63,7 +64,7 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="#">
+                <a href="index.html">
                     <b class="logo-abbr"><img src="/assets/images/logo.png" alt=""> </b>
                     <span class="logo-compact"><img src="/assets/images/logo-compact.png" alt=""></span>
                     <span class="brand-title">
@@ -183,7 +184,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Data Table</h4>
+                                <h4 class="card-title">Data User</h4>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
