@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         
-        Schema::create('kategori_product', function (Blueprint $table) {
+        Schema::create('kategoriproduk', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kategori');
             $table->timestamps();

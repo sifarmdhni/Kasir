@@ -10,54 +10,50 @@ class CustomerController extends Controller
     
     public function index()
     {
-        $customer = customer::all();
-        return view('customer.index', compact('customer'));
-    }
-
-    public function create()
-    {
-        return view('customer.create');
+        $data = [
+            'title' => 'Data Customer
+            ',
+            'data_customer' => Customer::all(),
+            // 'data_produk' => Pr::join('kategoriproduk', 'kategoriproduk.id', '=', 'produk.id_kategori')
+            // ->select('produk.*', 'kategoriproduk.nama_kategori')
+            // ->get(),
+        ];
+        return view('admin.customer.list', $data);
     }
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'nama' => 'required|string|max:255',
-            'no_telp' => 'nullable|string|max:20',
-            'email' => 'nullable|email|unique:customer',
-            'diskon' => 'nullable|numeric|min:0|max:100'
+        Customer::create([
+        'name' => $request->name,
+        'no_telp' => $request->no_telp,
+        'email' => $request->email,
+        'diskon' => $request->diskon,
+       ]);
+       return redirect('/customer')->with('success', 'Data Berhasil Di Ubah');
+    }
+
+    public function update(Request $request,$id)
+{
+        Customer::where('id', $id)
+        ->where('id', $id)
+        ->update([
+            'name' => $request->name,
+            'no_telp' => $request->no_telp,
+            'email' => $request->email,
+            'diskon' => $request->diskon,
         ]);
+        return redirect('/customer')->with('success', 'Data Berhasil Di Ubah');
+        }
+    
 
-        Customer::create($validated);
-        return redirect()->route('customer.index')->with('success', 'Customer berhasil ditambahkan');
-    }
-
-    public function show(Customer $customer)
-    {
-        return view('customer.show', compact('customer'));
-    }
-
-    public function edit(Customer $customer)
-    {
-        return view('customer.edit', compact('customer'));
-    }
-
-    public function update(Request $request, Customer $customer)
-    {
-        $validated = $request->validate([
-            'nama' => 'required|string|max:255',
-            'no_telp' => 'nullable|string|max:20',
-            'email' => 'nullable|email|unique:customer,email,'.$customer->id,
-            'diskon' => 'nullable|numeric|min:0|max:100'
-        ]);
-
-        $customer->update($validated);
-        return redirect()->route('customer.index')->with('success', 'Customer berhasil diperbarui');
-    }
-
-    public function destroy(Customer $customer)
-    {
-        $customer->delete();
-        return redirect()->route('customer.index')->with('success', 'Customer berhasil dihapus');
-    }
+        public function destroy($id)
+        {
+            $customer = Customer::find($id);
+            if ($customer) {
+                $customer->delete();
+                return redirect('/costumer')->with('success', 'Data berhasil dihapus');
+            } else {
+                return redirect('/customer')->with('error', 'User tidak ditemukan');
+            }
+        }
 }

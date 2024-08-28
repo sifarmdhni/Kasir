@@ -9,48 +9,40 @@ class KategoriProdukController extends Controller
 {
     public function index()
     {
-        $kategoriProduks = KategoriProduk::all();
-        return view('kategori_produk.index', compact('kategoriProduk'));
-    }
-
-    public function create()
-    {
-        return view('kategori_produk.create');
+        $data = [
+            'title' => 'Data Kategori Produk',
+            'data_kategori' => KategoriProduk::all(),
+        ];
+        return view('admin.master.kategoriproduk.list', $data);
     }
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'nama_kategori' => 'required|string|max:255|unique:kategori_produk'
+       KategoriProduk::create([
+        'nama_kategori' => $request->nama_kategori,
+       ]);
+       return redirect('/kategoriproduk')->with('success', 'Data Berhasil Di Ubah');
+    }
+
+    public function update(Request $request,$id)
+{
+        KategoriProduk::where('id', $id)
+        ->where('id', $id)
+        ->update([
+         'nama_kategori' => $request->nama_kategori,
         ]);
+        return redirect('/kategoriproduk')->with('success', 'Data Berhasil Di Ubah');
+        }
+    
 
-        KategoriProduk::create($validated);
-        return redirect()->route('kategori_produk.index')->with('success', 'Kategori Produk berhasil ditambahkan');
-    }
-
-    public function show(KategoriProduk $kategoriProduk)
-    {
-        return view('kategori_produk.show', compact('kategoriProduk'));
-    }
-
-    public function edit(KategoriProduk $kategoriProduk)
-    {
-        return view('kategori_produk.edit', compact('kategoriProduk'));
-    }
-
-    public function update(Request $request, KategoriProduk $kategoriProduk)
-    {
-        $validated = $request->validate([
-            'nama_kategori' => 'required|string|max:255|unique:kategori_product,nama_kategori,'.$kategoriProduk->id
-        ]);
-
-        $kategoriProduk->update($validated);
-        return redirect()->route('kategori_produk.index')->with('success', 'Kategori Produk berhasil diperbarui');
-    }
-
-    public function destroy(KategoriProduk $kategoriProduk)
-    {
-        $kategoriProduk->delete();
-        return redirect()->route('kategori_produk.index')->with('success', 'Kategori Produk berhasil dihapus');
-    }
+        public function destroy($id)
+        {
+            $kategoriproduk = KategoriProduk::find($id);
+            if ($kategoriproduk) {
+                $kategoriproduk->delete();
+                return redirect('/kategoriproduk')->with('success', 'Data berhasil dihapus');
+            } else {
+                return redirect('/kategoriproduk')->with('error', 'User tidak ditemukan');
+            }
+        }
 }
