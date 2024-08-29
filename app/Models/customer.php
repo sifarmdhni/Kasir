@@ -14,14 +14,14 @@ class customer extends Model
     protected $table = "customer";
 
     protected $fillable = [
-        'nama',
+        'name',
         'no_telp',
         'email',
         'diskon',
     ];
 
     protected $casts = [
-        'diskon' => 'decimal:2',
+        'diskon' => 'decimal',
     ];
 
     public function transaksi()

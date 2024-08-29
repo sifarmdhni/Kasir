@@ -9,17 +9,20 @@ class CustomerController extends Controller
 {
     
     public function index()
-    {
-        $data = [
-            'title' => 'Data Customer
-            ',
-            'data_customer' => Customer::all(),
-            // 'data_produk' => Pr::join('kategoriproduk', 'kategoriproduk.id', '=', 'produk.id_kategori')
-            // ->select('produk.*', 'kategoriproduk.nama_kategori')
-            // ->get(),
-        ];
-        return view('admin.customer.list', $data);
-    }
+{
+    // Ambil data customer dari model Customer
+    $data_customer = Customer::all();
+
+    // Siapkan data untuk dikirim ke view
+    $data = [
+        'title' => 'Data Customer', // Pastikan string ini tidak terputus
+        'data_customer' => $data_customer,
+    ];
+
+    // Kembalikan view dengan data
+    return view('admin.customer.list', $data);
+}
+
 
     public function store(Request $request)
     {

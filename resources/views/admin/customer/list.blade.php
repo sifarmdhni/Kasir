@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title">{{$title}}</h4>
+                            <h4 class="card-title"></h4>
                             <button type="button" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalCreate">
                                 <i class="fa fa-plus"></i> Tambah Data
                             </button>
@@ -35,18 +35,17 @@
                                         <th>Nama</th>
                                         <th>No_telp</th>
                                         <th>Email</th>
-                                        <th>Diskon</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php $no = 1; @endphp
                                     @foreach ($data_customer as $row)
+                                    {{-- @dd($row->diskon) --}}
                                     <tr>
                                         <td>{{$no++}}</td>
-                                        <td>{{$row->nama_customer}}</td>
+                                        <td>{{$row->name}}</td>
                                         <td>{{$row->no_telp}}</td>
                                         <td>{{$row->email}}</td>
-                                        <td>{{$row->diskon}}</td>
                                         <td>
                                             <a href="#modalEdit{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-primary">
                                                 <i class="fa fa-edit"></i> Edit
@@ -81,20 +80,20 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Nama Customer</label>
-                        <input type="text" class="form-control" name="nama_customer" placeholder="Nama Customer...." required>
+                        <input type="text" class="form-control" name="name" placeholder="Nama Customer...." required>
                     </div>
                     <div class="form-group">
                         <label>No.telp</label>
-                        <input type="text" class="form-control" name="nama_produk" placeholder="No_telp...." required>
+                        <input type="number" class="form-control" name="no_telp" placeholder="No_telp...." required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                    <input type="text" class="form-control" name="email" placeholder="Email...." required>
+                    <input type="email" class="form-control" name="email" placeholder="Email...." required>
                     </div>
                     </div>
                     <div class="form-group">
                         <label>Diskon</label>
-                        <input type="text" class="form-control" name="diskon" placeholder="Diskon...." required>
+                        <input type="number" class="form-control" name="diskon" placeholder="Diskon...." required>
                     </div>
                 
 
@@ -122,21 +121,21 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Nama Customer</label>
-                        <input type="text" class="form-control" name="nama_produk" valus="{{$d->nama_produk}}" placeholder="Nama Produk...." required>
+                        <input type="text" class="form-control" name="name" value="{{$d->name}}" placeholder="Nama...." required>
                     </div>
                     
                     <div class="form-group">
                         <label>No.telp</label>
-                        <input type="text" class="form-control" name="nama_produk" placeholder="No_telp...." required>
+                        <input type="text" class="form-control" name="no_telp" value="{{$d->no_telp}}" placeholder="No_telp...." required>
                     </div>
                     <div class="input-group mb-3">
                         <label>Email</label>
-                    <input type="text" class="form-control" name="email" placeholder="Email...." required>
+                    <input type="text" class="form-control" name="email" value="{{$d->email}}" placeholder="Email...." required>
                     </div>
                     </div>
                     <div class="form-group">
                         <label>Diskon</label>
-                        <input type="text" class="form-control" name="diskon" placeholder="diskon...." required>
+                        <input type="text" class="form-control" name="diskon" value="diskon" placeholder="diskon...." required>
                     </div>
                 </div>
                 </div>
@@ -159,7 +158,7 @@
                 <h5 class="modal-title">Hapus {{$title}}</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <form method="POST" action="/produk/destroy/{{$d->id}}">
+            <form method="POST" action="/customer/destroy/{{$d->id}}">
                 @csrf
                 @method('DELETE')
                 <div class="modal-body">

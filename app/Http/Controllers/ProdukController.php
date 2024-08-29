@@ -13,8 +13,8 @@ class ProdukController extends Controller
         $data = [
             'title' => 'Data Produk',
             'data_kategori' => KategoriProduk::all(),
-            'data_produk' => Produk::join('kategoriproduk', 'kategoriproduk.id', '=', 'produk.id_kategori')
-            ->select('produk.*', 'kategoriproduk.nama_kategori')
+            'data_produk' => Produk::join('kategoriproduct', 'kategoriproduct.id', '=', 'product.id_kategori')
+            ->select('product.*', 'kategoriproduct.nama_kategori')
             ->get(),
         ];
         return view('admin.master.produk.list', $data);
