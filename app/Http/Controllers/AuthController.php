@@ -20,7 +20,7 @@ class AuthController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-        // dd($request->all());
+        //dd($request->all());
         if (Auth::attempt($credentials)) {
 
             $request->session()->regenerate();
@@ -31,7 +31,7 @@ class AuthController extends Controller
         Session::flash('status', 'failed');
         Session::flash('message', 'Login gagal!');
 
-        return redirect('/login');
+        return redirect('/');
     }
 
     public function logout(Request $request)
@@ -39,6 +39,6 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        return redirect('/');
     }
 }

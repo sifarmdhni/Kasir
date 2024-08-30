@@ -17,30 +17,30 @@
             <div class="col-12">
                 <div class="card">
                     @foreach ($data_profile as $d)
-                    <form method="POST" action="/profile/update/{{$d->id}}">
+                    <form method="POST" action="/profile/updateprofile/{{$d->id}}">
                     @csrf
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">{{$title}}</h4>
                         </div>
                         <hr/>
-                    <div class="from-group">
+                    <input type="hidden" name="role_id" value="{{ $d->role_id }}" placeholder="Nama Lengkap ..." required>   
+                    <div class="form-group">
                     <label>Nama Lengkap</label>
-                    <input type=" class="from-control" name="name" value="{{ $d->name }}" placeholder="Nama Lengkap ..." required>
+                    <input type="text" class="form-control" name="name" value="{{ $d->name }}" placeholder="Nama Lengkap ..." required>
                     </div>
-                    <div class="row">
+                         <div class="row">
                      <div class="col-md-6">
-                    <label>Email</label>
-                    <input type="email" name="name" value="{{ $d->email }}" placeholder="Email..." required>
+                     <div class="form-group">
+                        <label>Email</label>
+                    <input type="email" class="form-control" name="email" value="{{ $d->email }}" placeholder="Email..." required>
                         </div>
                         </div>
                         <div class="col-md-6">
-                            <label>Diskon</label>
-                            <div class="input-group mb-3">
-                                <input type="number" name="diskon"  value="{{$d->diskon}}" placeholder="Diskon ..."   class="form-control" required>
-                                <div class="input-group-append"><span class="input-group-text">%</span>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="password" value="{{ $d->password }}" placeholder="Password ..." required>
                                 </div>
-                            </div>
                         </div>
                     </div>
                     </div>
@@ -50,7 +50,7 @@
                     </div>
                 </form>
             @endforeach
-            </div>
+            
         </div>
     </div>
 </div>

@@ -21,9 +21,9 @@ use App\Http\Controllers\CustomerController;
 
 
   //crud login
-Route::get( '/', [AuthController::class, 'login']);
-Route::post('/login', [AuthController::class, 'authenticating'])->name('kasir.login');
-Route::get('/logout', [AuthController::class, 'logout']);
+Route::get( '/', [AuthController::class, 'login'])->name('kasir.get');
+Route::post('/login', [AuthController::class, 'authenticating'])->name('kasir.store');
+Route::get('/logout', [AuthController::class, 'logout'])->name('kasir.logout');
 
 //crud data user
 Route::get('/user', [UserController::class, 'index']);
@@ -59,6 +59,10 @@ Route::get('/transaksi', [TransaksiController::class, 'index']);
 Route::post('/transaksi/create', [TransaksiController::class, 'create']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
+
+//crud data setting profile
+Route::get('/profile', [userController::class, 'profile']);
+Route::post('/profile/updateprofile/{id}', [UserController::class, 'updateprofile']);
 // Route::resource('customers', CustomerController::class);
 // Route::resource('kategori-produks', KategoriProdukController::class);
 // Route::resource('product', ProdukController::class);

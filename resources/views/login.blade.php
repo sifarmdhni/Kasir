@@ -48,7 +48,7 @@
                             <div class="card-body pt-5">
                                 <a class="text-center" href="#"> <h4>Silahkan Login</h4></a>
         
-                                <form class="mt-5 mb-5 login-input" method="POST" action="{{ route('kasir.login') }}">
+                                <form class="mt-5 mb-5 login-input" method="POST" action="{{ route('kasir.store') }}">
                                     @csrf
                                     <div class="form-group">
                                         <input type="email" class="form-control" placeholder="Email" name="email" required>
