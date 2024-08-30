@@ -44,10 +44,10 @@
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="index.html">
-                    <b class="logo-abbr"><img src="/assets/images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="/assets/images/logo-compact.png" alt=""></span>
+                    <!-- <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
+                    <span class="logo-compact"><img src="images/logo-compact.png" alt=""></span> -->
                     <span class="brand-title">
-                        <img src="/images/logo-text.png" alt="">
+                        <img src="foto/ok.png" height="50px" width="150px" alt="foto">
                     </span>
                 </a>
             </div>
@@ -75,7 +75,7 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="public/assets/images/user/1.png" height="40" width="40" alt="">
+                                <img src="/foto/logo.jpeg" height="50" width="50" alt="foto">
                             </div>
                             <div class="drop-down dropdown-profile   dropdown-menu">
                                 <div class="dropdown-content-body">
@@ -145,6 +145,11 @@
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Customer</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="/payment" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Payment</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -158,14 +163,13 @@
             Footer start
         ***********************************-->
         <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="#">Kasir</a> 2018</p>
+            <div class="copyright d-flex justify-center">
+                <p class="text-center">Copyright &copy; Designed & Developed by <a href="#">Kasir</a> 2018</p>
             </div>
         </div>
         <!--**********************************
             Footer end
         ***********************************-->
-    </div>
     <!--**********************************
         Main wrapper end
     ***********************************-->

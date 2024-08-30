@@ -44,6 +44,12 @@ Route::post('/customer/store', [CustomerController::class, 'store']);
 Route::post('/customer/update/{id}', [CustomerController::class, 'update']);
 Route::delete('/customer/destroy/{id}', [CustomerController::class, 'destroy']);
 
+Route::get('/payment', [PaymentController::class, 'index']);
+Route::post('/payment/store', [PaymentController::class, 'store'])->name('payment.store');
+Route::post('/payment/update/{id}', [PaymentController::class, 'update']);
+Route::post('/payment/destroy/{id}', [PaymentController::class, 'destroy']);
+Route::get('/bca', [PaymentController::class, 'bca']);
+
 
 // Route::resource('customers', CustomerController::class);
 // Route::resource('kategori-produks', KategoriProdukController::class);

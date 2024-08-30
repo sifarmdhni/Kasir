@@ -10,64 +10,46 @@ class PaymentController extends Controller
 {
     public function index()
     {
-        $payment = Payment::all();
-        return view('payment.index', compact('payment'));
+        $data = [
+            'title' => 'Silahkan Pilih Pembayaran',
+            'data_payment' => Payment::all(),
+        ];
+        return view('admin.payment.list', $data);
     }
-
-    public function create()
-    {
-        return view('payment.create');
-    }
-
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'nama_pembayaran' => 'required|string|max:255',
-            'gambar' => 'nullable|image|max:2048'
+        Payment::create([
+            'nama_payment' => $request->nama_payment,
         ]);
-
-        if ($request->hasFile('gambar')) {
-            $validated['gambar'] = $request->file('gambar')->store('payment-images', 'public');
-        }
-
-        Payment::create($validated);
-        return redirect()->route('payment.index')->with('success', 'Metode Pembayaran berhasil ditambahkan');
+        return redirect('/payment')->with('success', 'Data Berhasil Di Ubah');
     }
-
-    public function show(Payment $payment)
+    
+    public function update(Request $request,$id)
     {
-        return view('payment.show', compact('payment'));
-    }
-
-    public function edit(Payment $payment)
-    {
-        return view('payment.edit', compact('payment'));
-    }
-
-    public function update(Request $request, Payment $payment)
-    {
-        $validated = $request->validate([
-            'nama_pembayaran' => 'required|string|max:255',
-            'gambar' => 'nullable|image|max:2048'
+        Payment::where('id', $id)
+        ->where('id', $id)
+        ->update([
+            'nama_payment' => $request->nama_kategori,
         ]);
-
-        if ($request->hasFile('gambar')) {
-            if ($payment->gambar) {
-                Storage::disk('public')->delete($payment->gambar);
+        return redirect('/payment')->with('success', 'Data Berhasil Di Ubah');
+    }
+    
+    
+    public function destroy($id)
+        {
+            $payment = Payment::find($id);
+            if ($payment) {
+                $payment->delete();
+                return redirect('/payment')->with('success', 'Data berhasil dihapus');
+            } else {
+                return redirect('/payment')->with('error', 'User tidak ditemukan');
             }
-            $validated['gambar'] = $request->file('gambar')->store('payment-images', 'public');
         }
-
-        $payment->update($validated);
-        return redirect()->route('payment.index')->with('success', 'Metode Pembayaran berhasil diperbarui');
-    }
-
-    public function destroy(Payment $payment)
-    {
-        if ($payment->gambar) {
-            Storage::disk('public')->delete($payment->gambar);
+        public function bca()
+        {
+            $data = [
+                'title' => ' Pembayaran Succes',
+            ];
+            return view('admin.payment.paymentberhasil', $data);
         }
-        $payment->delete();
-        return redirect()->route('payment.index')->with('success', 'Metode Pembayaran berhasil dihapus');
     }
-}
