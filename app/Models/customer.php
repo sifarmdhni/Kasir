@@ -21,11 +21,12 @@ class customer extends Model
     ];
 
     protected $casts = [
-        'diskon' => 'decimal',
+        'diskon' => 'string',
     ];
 
     public function transaksi()
     {
         return $this->hasMany(Transaksi::class);
     }
+
 }

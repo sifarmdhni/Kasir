@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title"></h4>
+                            <h4 class="card-title">{{$title}}</h4>
                             <button type="button" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalCreate">
                                 <i class="fa fa-plus"></i> Tambah Data
                             </button>
@@ -35,6 +35,7 @@
                                         <th>Nama</th>
                                         <th>No_telp</th>
                                         <th>Email</th>
+                                        <th>Diskon</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,6 +47,7 @@
                                         <td>{{$row->name}}</td>
                                         <td>{{$row->no_telp}}</td>
                                         <td>{{$row->email}}</td>
+                                        <td>{{$row->diskon}}%</td>
                                         <td>
                                             <a href="#modalEdit{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-primary">
                                                 <i class="fa fa-edit"></i> Edit
@@ -56,7 +58,7 @@
                                         </td>
                                     </tr>
                                     @endforeach
-                                </tbody>+
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -88,21 +90,18 @@
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                    <input type="email" class="form-control" name="email" placeholder="Email...." required>
-                    </div>
+                        <input type="email" class="form-control" name="email" placeholder="Email...." required>
                     </div>
                     <div class="form-group">
                         <label>Diskon</label>
                         <input type="number" class="form-control" name="diskon" placeholder="Diskon...." required>
                     </div>
-                
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
+                    </div>
                 </div>
             </form>
-            </div>
         </div>
     </div>
 </div>
@@ -128,21 +127,24 @@
                         <label>No.telp</label>
                         <input type="text" class="form-control" name="no_telp" value="{{$d->no_telp}}" placeholder="No_telp...." required>
                     </div>
-                    <div class="input-group mb-3">
+                    <div class="form-group">
                         <label>Email</label>
-                    <input type="text" class="form-control" name="email" value="{{$d->email}}" placeholder="Email...." required>
+                        <input type="text" class="form-control" name="email" value="{{$d->email}}" placeholder="Email...." required>
                     </div>
-                    </div>
+                    
                     <div class="form-group">
                         <label>Diskon</label>
-                        <input type="text" class="form-control" name="diskon" value="diskon" placeholder="diskon...." required>
+                        <input type="text" class="form-control" name="diskon" value="{{$d->diskon}}" placeholder="diskon...." required>
                     </div>
-                </div>
-                </div>
+                
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>
                         <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
                     </div>
+                </div>
+                </div>
+                </div>
+                </div>
             </form>
         </div>
     </div>

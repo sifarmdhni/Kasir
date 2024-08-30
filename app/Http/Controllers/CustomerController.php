@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    
+     
     public function index()
 {
     // Ambil data customer dari model Customer
@@ -30,7 +30,7 @@ class CustomerController extends Controller
         'name' => $request->name,
         'no_telp' => $request->no_telp,
         'email' => $request->email,
-        'diskon' => $request->diskon,
+        'diskon' => $request->get('diskon'),
        ]);
        return redirect('/customer')->with('success', 'Data Berhasil Di Ubah');
     }
@@ -45,6 +45,8 @@ class CustomerController extends Controller
             'email' => $request->email,
             'diskon' => $request->diskon,
         ]);
+
+
         return redirect('/customer')->with('success', 'Data Berhasil Di Ubah');
         }
     
@@ -59,4 +61,4 @@ class CustomerController extends Controller
                 return redirect('/customer')->with('error', 'User tidak ditemukan');
             }
         }
-}
+    }
