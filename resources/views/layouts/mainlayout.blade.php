@@ -145,6 +145,11 @@
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Customer</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="/kasir" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Kasir</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

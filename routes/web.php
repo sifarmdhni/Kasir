@@ -22,7 +22,7 @@ use App\Http\Controllers\CustomerController;
 
   //crud login
 Route::get( '/', [AuthController::class, 'login']);
-Route::post('/login', [AuthController::class, 'authenticating'])->name("kasir.login");
+Route::post('/login', [AuthController::class, 'authenticating'])->name('kasir.login');
 Route::get('/logout', [AuthController::class, 'logout']);
 
 //crud data user
@@ -66,3 +66,9 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 // Route::resource('kasirs', KasirController::class);
 // Route::resource('transaksis', TransaksiController::class);
 // Route::get('/product-add', [ProdukController::class, 'create']);
+
+//crud data kasir
+Route::get('/kasir', [KasirController::class, 'index']);
+Route::post('/kasir/store', [KasirController::class, 'store']);
+Route::post('/kasir/update/{id}', [KasirController::class, 'update']);
+Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
