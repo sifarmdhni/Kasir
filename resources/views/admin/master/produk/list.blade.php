@@ -58,7 +58,7 @@
                                         </td>
                                     </tr>
                                     @endforeach
-                                </tbody>+
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -140,7 +140,6 @@
                         </select>
                     </div>
                     <div class="input-group mb-3">
-
                         <input type="number" name="stok" value="{{$d->stok}}" placeholder="Stok ..." class="form-control" required>
                         <div class="input-group-append"><span class="input-group-text">Pcs</span>
                     </div>

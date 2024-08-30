@@ -33,8 +33,9 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
-                                        <th>No_telp</th>
+                                        <th>No_telpon</th>
                                         <th>Email</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,9 +44,11 @@
                                     {{-- @dd($row->diskon) --}}
                                     <tr>
                                         <td>{{$no++}}</td>
-                                        <td>{{$row->name}}</td>
-                                        <td>{{$row->no_telp}}</td>
+                                        <td>{{$row->nama}}</td>
+                                        <td>{{$row->no_telpon}}</td>
                                         <td>{{$row->email}}</td>
+                                      
+
                                         <td>
                                             <a href="#modalEdit{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-primary">
                                                 <i class="fa fa-edit"></i> Edit
@@ -80,11 +83,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Nama Customer</label>
-                        <input type="text" class="form-control" name="name" placeholder="Nama Customer...." required>
+                        <input type="text" class="form-control" name="nama" placeholder="Nama Customer...." required>
                     </div>
                     <div class="form-group">
                         <label>No.telp</label>
-                        <input type="number" class="form-control" name="no_telp" placeholder="No_telp...." required>
+                        <input type="number" class="form-control" name="no_telpon" placeholder="No_telpon...." required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
