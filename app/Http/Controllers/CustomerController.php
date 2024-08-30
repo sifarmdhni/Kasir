@@ -27,8 +27,8 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         Customer::create([
-        'name' => $request->name,
-        'no_telp' => $request->no_telp,
+        'nama' => $request->nama,
+        'no_telpon' => $request->no_telpon,
         'email' => $request->email,
         'diskon' => $request->get('diskon'),
        ]);
@@ -40,8 +40,8 @@ class CustomerController extends Controller
         Customer::where('id', $id)
         ->where('id', $id)
         ->update([
-            'name' => $request->name,
-            'no_telp' => $request->no_telp,
+            'nama' => $request->nama,
+            'no_telpon' => $request->no_telpon,
             'email' => $request->email,
             'diskon' => $request->diskon,
         ]);
@@ -56,7 +56,7 @@ class CustomerController extends Controller
             $customer = Customer::find($id);
             if ($customer) {
                 $customer->delete();
-                return redirect('/costumer')->with('success', 'Data berhasil dihapus');
+                return redirect('/customer')->with('success', 'Data berhasil dihapus');
             } else {
                 return redirect('/customer')->with('error', 'User tidak ditemukan');
             }

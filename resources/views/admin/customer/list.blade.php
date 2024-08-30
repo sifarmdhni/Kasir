@@ -33,7 +33,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
-                                        <th>No_telp</th>
+                                        <th>No_telpon</th>
                                         <th>Email</th>
                                         <th>Diskon</th>
                                     </tr>
@@ -44,8 +44,8 @@
                                     {{-- @dd($row->diskon) --}}
                                     <tr>
                                         <td>{{$no++}}</td>
-                                        <td>{{$row->name}}</td>
-                                        <td>{{$row->no_telp}}</td>
+                                        <td>{{$row->nama}}</td>
+                                        <td>{{$row->no_telpon}}</td>
                                         <td>{{$row->email}}</td>
                                         <td>{{$row->diskon}}%</td>
                                         <td>
@@ -82,11 +82,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Nama Customer</label>
-                        <input type="text" class="form-control" name="name" placeholder="Nama Customer...." required>
+                        <input type="text" class="form-control" name="nama" placeholder="Nama Customer...." required>
                     </div>
                     <div class="form-group">
                         <label>No.telp</label>
-                        <input type="number" class="form-control" name="no_telp" placeholder="No_telp...." required>
+                        <input type="number" class="form-control" name="no_telpon" placeholder="No_telpon...." required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
@@ -120,12 +120,12 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Nama Customer</label>
-                        <input type="text" class="form-control" name="name" value="{{$d->name}}" placeholder="Nama...." required>
+                        <input type="text" class="form-control" name="nama" value="{{$d->nama}}" placeholder="Nama...." required>
                     </div>
                     
                     <div class="form-group">
                         <label>No.telp</label>
-                        <input type="text" class="form-control" name="no_telp" value="{{$d->no_telp}}" placeholder="No_telp...." required>
+                        <input type="text" class="form-control" name="no_telpon" value="{{$d->no_telpon}}" placeholder="No_telp...." required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
