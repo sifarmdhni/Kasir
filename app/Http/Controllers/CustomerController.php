@@ -56,7 +56,7 @@ class CustomerController extends Controller
             $customer = Customer::find($id);
             if ($customer) {
                 $customer->delete();
-                return redirect('/costumer')->with('success', 'Data berhasil dihapus');
+                return redirect('/customer')->with('success', 'Data berhasil dihapus');
             } else {
                 return redirect('/customer')->with('error', 'User tidak ditemukan');
             }

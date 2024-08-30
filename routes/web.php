@@ -8,13 +8,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\KategoriProdukController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\DiskonController;
+use App\Http\Controllers\TransaksiController;
 
 
 use App\Http\Controllers\KasirController;
 
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\TransaksiController;
+
 
 
 
@@ -52,6 +53,10 @@ Route::delete('/customer/destroy/{id}', [CustomerController::class, 'destroy']);
 //crud data setting diskon
 Route::get('/setdiskon', [DiskonController::class, 'index']);
 Route::post('/setdiskon/update/{id}', [DiskonController::class, 'update']);
+
+//crud data transaksi
+Route::get('/transaksi', [TransaksiController::class, 'index']);
+Route::post('/transaksi/create', [TransaksiController::class, 'create']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 // Route::resource('customers', CustomerController::class);
