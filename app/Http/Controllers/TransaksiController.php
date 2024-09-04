@@ -21,6 +21,14 @@ class TransaksiController extends Controller
         return view('kasir.transaksi.list', $data);
     }
 
+    // public function index()
+    // {
+
+    //     $data_produk = Transaksi::all();
+    //     $title = 'Daftar Transaksi';
+    //     return view('kasir.transaksi.list', compact('data_produk', 'title'));
+    // }
+
     public function create()
     {
         $data = [
@@ -30,7 +38,7 @@ class TransaksiController extends Controller
     }
 
 
-    
+
 
 
 

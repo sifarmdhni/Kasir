@@ -56,13 +56,23 @@ Route::post('/setdiskon/update/{id}', [DiskonController::class, 'update']);
 
 //crud data transaksi
 Route::get('/transaksi', [TransaksiController::class, 'index']);
-Route::post('/transaksi/create', [TransaksiController::class, 'create']);
+Route::get('/transaksi/create', [TransaksiController::class, 'create']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 //crud data setting profile
 Route::get('/profile', [userController::class, 'profile']);
 Route::post('/profile/updateprofile/{id}', [UserController::class, 'updateprofile']);
+
+//crud data kasir
+Route::get('/kasir', [KasirController::class, 'index']);
+Route::post('/kasir/store', [KasirController::class, 'store']);
+Route::post('/kasir/update/{id}', [KasirController::class, 'update']);
+Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
+
+
+
+
 // Route::resource('customers', CustomerController::class);
 // Route::resource('kategori-produks', KategoriProdukController::class);
 // Route::resource('product', ProdukController::class);
@@ -70,9 +80,3 @@ Route::post('/profile/updateprofile/{id}', [UserController::class, 'updateprofil
 // Route::resource('kasirs', KasirController::class);
 // Route::resource('transaksis', TransaksiController::class);
 // Route::get('/product-add', [ProdukController::class, 'create']);
-
-//crud data kasir
-Route::get('/kasir', [KasirController::class, 'index']);
-Route::post('/kasir/store', [KasirController::class, 'store']);
-Route::post('/kasir/update/{id}', [KasirController::class, 'update']);
-Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
