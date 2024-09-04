@@ -8,19 +8,22 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\KategoriProdukController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\DiskonController;
+use App\Http\Controllers\TransaksiController;
+
+
 use App\Http\Controllers\KasirController;
 
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\TransaksiController;
+
 
 
 
 
   //crud login
-Route::get( '/', [AuthController::class, 'login']);
-Route::post('/login', [AuthController::class, 'authenticating'])->name('kasir.login');
-Route::get('/logout', [AuthController::class, 'logout']);
+Route::get( '/', [AuthController::class, 'login'])->name('kasir.get');
+Route::post('/login', [AuthController::class, 'authenticating'])->name('kasir.store');
+Route::get('/logout', [AuthController::class, 'logout'])->name('kasir.logout');
 
 //crud data user
 Route::get('/user', [UserController::class, 'index']);
@@ -51,7 +54,15 @@ Route::delete('/customer/destroy/{id}', [CustomerController::class, 'destroy']);
 Route::get('/setdiskon', [DiskonController::class, 'index']);
 Route::post('/setdiskon/update/{id}', [DiskonController::class, 'update']);
 
+//crud data transaksi
+Route::get('/transaksi', [TransaksiController::class, 'index']);
+Route::post('/transaksi/create', [TransaksiController::class, 'create']);
+
 Route::get('/dashboard', [DashboardController::class, 'index']);
+
+//crud data setting profile
+Route::get('/profile', [userController::class, 'profile']);
+Route::post('/profile/updateprofile/{id}', [UserController::class, 'updateprofile']);
 // Route::resource('customers', CustomerController::class);
 // Route::resource('kategori-produks', KategoriProdukController::class);
 // Route::resource('product', ProdukController::class);

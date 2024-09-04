@@ -21,6 +21,8 @@ class transaksi extends Model
         'total_harga',
         'id_kasir',
     ];
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
 
     protected $casts = [
         'diskon' => 'decimal:2',

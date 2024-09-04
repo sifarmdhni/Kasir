@@ -5,16 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function index()
     {
-        $data = [
+        $data = array(
             'title' => 'Data User',
             'data_user' => User::all(),
-        ];
+        );
         return view('admin.master.user.list', $data);
+    }
+    
+    public function profile()
+    {
+        $user = Auth::user()->id;
+
+        $data = array(
+            'title'        => 'setting profile',
+            'data_profile' => User::where('id', $user)->get(),
+        );
+        return view('profile', $data);
     }
 
     public function store(Request $request)
@@ -60,7 +71,19 @@ class UserController extends Controller
         ]);
         return redirect('/user')->with('success', 'Data Berhasil Di Ubah');
         }
-    
+
+     public function updateprofile(Request $request,$id)
+{
+        User::where('id', $id)
+        ->where('id', $id)
+        ->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id' => $request->role_id,
+        ]);
+        return redirect('/profile')->with('success', 'Data Berhasil Di Ubah');
+        }
 
     public function destroy($id)
     {
