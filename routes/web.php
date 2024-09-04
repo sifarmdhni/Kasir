@@ -80,3 +80,12 @@ Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
 // Route::resource('kasirs', KasirController::class);
 // Route::resource('transaksis', TransaksiController::class);
 // Route::get('/product-add', [ProdukController::class, 'create']);
+// Route::get('/product-add', [ProdukController::class, 'create']);
+
+//crud data kasir
+Route::get('/kasir', [KasirController::class, 'index']);
+Route::post('/kasir/store', [KasirController::class, 'store'])->name("kasir.store");
+Route::post('/kasir/update/{id}', [KasirController::class, 'update']);
+Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
+Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasir.poto');
+Route::resource('kasir', KasirController::class);
