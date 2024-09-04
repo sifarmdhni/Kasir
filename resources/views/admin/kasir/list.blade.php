@@ -35,22 +35,22 @@
                                         <th>Nama Kasir</th>
                                         <th>No_telpon</th>
                                         <th>Email</th>
-                                        <th>Password</th>
-                                        <th>Poto Kasir</th>
+                                        <th>password</th>
+                                        <th>Foto Kasir</th>
                                         <th>Jenis Kelamin</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php $no = 1; @endphp
                                     @foreach ($data_kasir as $row)
-                                    {{-- @dd($row->diskon) --}}
+                                    
                                     <tr>
                                         <td>{{$no++}}</td>
                                         <td>{{$row->name_kasir}}</td>
                                         <td>{{$row->no_telepon}}</td>
                                         <td>{{$row->email}}</td>
                                         <td>{{$row->password}}</td>
-                                        <td>{{$row->foto_kasir}}</td>
+                                        <td><img src="/poto{{ $row->foto_kasir }}" class="w-25 h-25" alt="">
                                         <td>{{$row->jenis_kelamin}}</td>
                                         <td>
                                             <a href="#modalEdit{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-primary">
@@ -81,16 +81,16 @@
                 <h5 class="modal-title">Create {{$title}}</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <form method="POST" action="/kasir/store">
-                @csrf
+            <form method="POST" action="/kasir/store" enctype="multipart/form-data">
+                @csrf   
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Nama Kasir</label>
                         <input type="text" class="form-control" name="name_kasir" placeholder="Nama Kasir...." required>
                     </div>
                     <div class="form-group">
-                        <label>No.telp</label>
-                        <input type="number" class="form-control" name="no_telepon" placeholder="No_telepon...." required>
+                        <label>No. Telepon</label>
+                        <input type="text" class="form-control" name="no_telepon" placeholder="No. Telepon...." required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
@@ -98,26 +98,35 @@
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="number" class="form-control" name="password" placeholder="Password...." required>
+                        <input type="password" class="form-control" name="password" placeholder="Password...." required>
                     </div>
                     <div class="form-group">
-                        <label>Foto Kasir</label>
-                        <input type="number" class="form-control" name="foto_kasir" placeholder="Foto_kasir...." required>
+                        <label for="foto_kasir">Foto:</label>
+                        <input type="file" name="foto_kasir" id="foto_kasir" required>
                     </div>
                     <div class="form-group">
                         <label>Jenis Kelamin</label>
-                        <p><input type="radio" class="form-control" name="jenis_kelamin" value="pria" required>Pria</p>
-                        <p><input type="radio" class="form-control" name="jenis_kelamin" value="perempuan" required>Perempuan</p>
+                        <select name="jenis_kelamin" id="jenis_kelamin" class="form-control" required>
+                            <option value="">Select One</option>
+                            <option value="Laki laki">Laki laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            <i class="fa fa-undo"></i> Close
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-save"></i> Save
+                        </button>
                     </div>
                 </div>
             </form>
+            
         </div>
     </div>
 </div>
+
 
 <!-- Modal Edit User -->
 @foreach ($data_kasir as $d)
@@ -132,22 +141,37 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Nama Customer</label>
-                        <input type="text" class="form-control" name="name" value="{{$d->name}}" placeholder="Nama...." required>
+                        <label>Nama Kasir</label>
+                        <input type="text" class="form-control" name="name" value="{{$d->name_kasir}}" placeholder="Nama...." required>
                     </div>
                     
                     <div class="form-group">
                         <label>No.telp</label>
-                        <input type="text" class="form-control" name="no_telp" value="{{$d->no_telp}}" placeholder="No_telp...." required>
+                        <input type="text" class="form-control" name="no_telp" value="{{$d->no_telepon}}" placeholder="No_telp...." required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
                         <input type="text" class="form-control" name="email" value="{{$d->email}}" placeholder="Email...." required>
                     </div>
-                    
                     <div class="form-group">
-                        <label>Diskon</label>
-                        <input type="text" class="form-control" name="diskon" value="{{$d->diskon}}" placeholder="diskon...." required>
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" value="{{$d->password}}" placeholder="password...." required>
+                    </div>
+                        <div class="mb-3">
+                            <label for="photo">Photo</label>
+                            <div class="input-group">
+                                <input type="file" class="form-control" id="foto_kasir" name="foto_kasir" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="jenis_kelamin">Jenis Kelamin</label>
+                        <select name="jenis_kelamin" id="jenis_kelamin" class="form-control" >
+                            <option value="">Select One</option>
+                            <option value="Laki Laki">Laki Laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
                     </div>
                 
                     <div class="modal-footer">

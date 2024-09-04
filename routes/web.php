@@ -62,6 +62,8 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 
 //crud data kasir
 Route::get('/kasir', [KasirController::class, 'index']);
-Route::post('/kasir/store', [KasirController::class, 'store']);
+Route::post('/kasir/store', [KasirController::class, 'store'])->name("kasir.store");
 Route::post('/kasir/update/{id}', [KasirController::class, 'update']);
 Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
+Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasir.poto');
+Route::resource('kasir', KasirController::class);
