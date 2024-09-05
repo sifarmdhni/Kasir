@@ -11,8 +11,9 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomerController;
 
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AuthKasirController;
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\AuthCustomerController;
 use App\Http\Controllers\KategoriProdukController;
@@ -91,7 +92,7 @@ Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
 
 //crud data kasir
 Route::get('/kasir', [KasirController::class, 'index']);
-Route::post('/kasir/store', [KasirController::class, 'store'])->name("kasir.store");
+Route::post('/kasir/store', [KasirController::class, 'store'])->name("user.store");
 Route::post('/kasir/update/{id}', [KasirController::class, 'update']);
 Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
 
@@ -112,8 +113,8 @@ Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasi
 Route::resource('kasir', KasirController::class);
 
 //kasir
-Route::get('/dashboard', function () {
-  return  view('kasir.dashboard_kasir.dashboard');
+Route::get('/indexkasir', function () {
+  return  view('kasir.dashboard_kasir..dashboard');
 });
 Route::get('/customer', function () {
   return  view('kasir.dashboard_kasir.customer');
@@ -127,6 +128,10 @@ Route::get('/kategori', function () {
 Route::get('/transaksi', function () {
   return  view('kasir.dashboard_kasir.transaksi');
 });
+Route::get('/authkasir', [AuthKasirController::class, 'index'])->name('kasir.auth.index');
+Route::post('/loginkasir', [AuthKasirController::class, 'login'])->name('kasir.login');
+
+
 
 
 //customer
@@ -144,7 +149,7 @@ Route::get('/authcustomer', [AuthCustomerController::class, 'index'])->name("cus
 Route::post('/login', [AuthCustomerController::class, 'login'])->name("customer.login");
 
 
-//admin
+// //admin
 
 
-//kasir
+// //kasir
