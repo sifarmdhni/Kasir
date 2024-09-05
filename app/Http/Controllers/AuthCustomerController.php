@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Hash;
 class AuthCustomerController extends Controller
 {
 
+    public function index(){
+        return view("customer.auth_customer.authcustomer");
+    }
+
     public function login(Request $request)
     {
         $validatedData = $request->validate([
