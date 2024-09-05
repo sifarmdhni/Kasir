@@ -11,8 +11,9 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomerController;
 
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AuthAdminController;
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\AuthCustomerController;
 use App\Http\Controllers\KategoriProdukController;
@@ -113,6 +114,8 @@ Route::get('/user', function () {
 });
 Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasir.poto');
 Route::resource('kasir', KasirController::class);
+Route::get('/authadmin', [AuthAdminController::class, 'index'])->name("admin.auth.index");
+Route::post('/loginadmin', [AuthAdminController::class, 'login'])->name("admin.login");
 
 //kasir
 Route::get('/dashboard', function () {
@@ -145,6 +148,9 @@ Route::get('/indexcustomer', function () {
 
 Route::get('/authcustomer', [AuthCustomerController::class, 'index'])->name("customer.auth.index");
 Route::post('/login', [AuthCustomerController::class, 'login'])->name("customer.login");
+
+
+
 
 
 //admin

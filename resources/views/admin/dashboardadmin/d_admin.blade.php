@@ -21,8 +21,8 @@
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <center>
-                                   <h4>Selamat Datang Di Dashboard Admin</h4>
-                                   <img src="foto/fotoPayment/sela.jpg" alt="Foto"  width="300" height="300" style="margin: 25px;">
+                                  <h1>(Selamat Datang Di Dashboard Admin)</h1>
+                                   <img src="foto/fotoPayment/sela.jpg" alt="Foto"  width="400" height="400" style="margin: 25px;">
 
                                    </center>
                                 </div>
