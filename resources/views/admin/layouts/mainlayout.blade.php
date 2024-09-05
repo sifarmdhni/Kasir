@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>{{$title}}</title>
+    <title>Dashboar Admin</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
     <!-- Custom Stylesheet -->
@@ -103,47 +103,22 @@
         <div class="nk-sidebar">           
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li class="nav-label">Dashboard</li>
+                    <li class="nav-label">Dashboard Admin</li>
                     <li>
-                        <a href="/dashboard" aria-expanded="false">
+                        <a href="/index" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                         </a>
                     </li>
                     
                     <li class="nav-label">UI Components</li>
-                    <li>
-                        <a href="/setdiskon" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Setting Diskon</span>
-                        </a>
-                    </li>
                     <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Data Master</span>
+                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Laporan</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="/kategoriproduk">Data Kategori Produk</a></li>
-                            <li><a href="/produk">Data Produk</a></li>
+                            <li><a href="/laporantransaksi">Laporan Transaksi</a></li>
+                            <li><a href="/laporanproduk">Laporan Produk</a></li>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="/laporan" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Transaksi</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/transaksi" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Laporan</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/user" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data User</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/customer" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Customer</span>
-                        </a>
                     </li>
                     <li>
                         <a href="/payment" aria-expanded="false">

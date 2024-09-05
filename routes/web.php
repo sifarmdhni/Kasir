@@ -67,7 +67,7 @@ Route::post('/transaksi/create', [TransaksiController::class, 'create']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 //crud data setting profile
-Route::get('/profile', [userController::class, 'profile']);
+Route::get('/profile', [UserController::class, 'profile']);
 Route::post('/profile/updateprofile/{id}', [UserController::class, 'updateprofile']);
 // Route::resource('customers', CustomerController::class);
 // Route::resource('kategori-produks', KategoriProdukController::class);
@@ -82,3 +82,20 @@ Route::get('/kasir', [KasirController::class, 'index']);
 Route::post('/kasir/store', [KasirController::class, 'store']);
 Route::post('/kasir/update/{id}', [KasirController::class, 'update']);
 Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
+
+
+Route::get('/index', function () {
+   return view('admin.dashboardadmin.index');
+});
+
+
+
+Route::get('/laporanproduk', function () {
+  return view('admin.dashboardadmin.laporanproduk');
+});
+
+
+
+Route::get('/laporantransaksi', function () {
+  return view('admin.dashboardadmin.laporantransaksi');
+});
