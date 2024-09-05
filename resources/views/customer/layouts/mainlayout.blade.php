@@ -106,19 +106,19 @@
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Dashboard</li>
                     <li>
-                        <a href="/index" aria-expanded="false">
+                        <a href="/indexcustomer" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard Customer</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="/cobacustomer" aria-expanded="false">
+                        <a href="/historicustomer" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Histori Transaksi</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="/profile" aria-expanded="false">
+                        <a href="/profilecustomer" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Profile</span>
                         </a>
                     </li>

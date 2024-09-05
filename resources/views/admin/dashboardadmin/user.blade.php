@@ -43,7 +43,7 @@
                                             <a href="#modalEdit" data-toggle="modal" class="btn btn-xs btn-primary">
                                                 <i class="fa fa-edit"></i> Edit
                                             </a>
-                                            <a href="#modalHapus{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-danger">
+                                            <a href="#modalHapus" data-toggle="modal" class="btn btn-xs btn-danger">
                                                 <i class="fa fa-trash"></i> Hapus
                                             </a>
                                         </td> -->
@@ -67,7 +67,7 @@
                 <h5 class="modal-title">Create</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <form method="POST" action="{{ route('user.store')}}">
+            <form method="POST" action="">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -102,23 +102,23 @@
 </div>
 
 <!-- Modal Edit User -->
-<div class="modal fade" id="modalEdit{{ $d->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Edit</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <form method="POST" action="/user/update/{{$d->id}}">
+            <form method="POST" action="/user/update/">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Nama Lengkap</label>
-                        <input type="text" value="{{ $d->name }}" class="form-control" name="name" placeholder="Nama Lengkap..." required>
+                        <input type="text" value="" class="form-control" name="name" placeholder="Nama Lengkap..." required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" value="{{ $d->email }}" class="form-control" name="email" placeholder="Email..." required>
+                        <input type="email" value="" class="form-control" name="email" placeholder="Email..." required>
                     </div>
                     <div class="form-group">
                         <label>Password</label>
@@ -129,9 +129,9 @@
                         <label>Role</label>
                         <select class="form-control" name="role_id" required>
                             <option value="" hidden>-- Pilih Role --</option>
-                            <option value="1" {{ $d->role_id == 1 ? 'selected' : '' }}>Admin</option>
-                            <option value="2" {{ $d->role_id == 2 ? 'selected' : '' }}>Kasir</option>
-                            <option value="3" {{ $d->role_id == 3 ? 'selected' : '' }}>Customer</option>
+                            <option value="1">Admin</option>
+                            <option value="2">Kasir</option>
+                            <option value="3">Customer</option>
                         </select>
                     </div>
                 </div>
@@ -146,14 +146,14 @@
 
 
 <!-- Modal Hapus User -->
-<div class="modal fade" id="modalHapus{{ $d->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Hapus</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <form method="POST" action="/user/destroy/{{$d->id}}">
+            <form method="POST" action="/user/destroy/">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">

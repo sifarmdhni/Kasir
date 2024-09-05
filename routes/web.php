@@ -2,26 +2,27 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\KategoriProdukController;
-use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\DiskonController;
-use App\Http\Controllers\TransaksiController;
-
-
 use App\Http\Controllers\KasirController;
-
+use App\Http\Controllers\DiskonController;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomerController;
+
+
+use App\Http\Controllers\DashboardController;
+
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\AuthCustomerController;
+use App\Http\Controllers\KategoriProdukController;
 
 
 
 
 
   //crud login
-Route::get( '/', [AuthController::class, 'login'])->name('kasir.get');
+//Route::get( '/', [AuthController::class, 'login'])->name('kasir.get');
 Route::post('/login', [AuthController::class, 'authenticating'])->name('kasir.store');
 Route::get('/logout', [AuthController::class, 'logout'])->name('kasir.logout');
 
@@ -98,24 +99,15 @@ Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
 Route::get('/index', function () {
    return view('admin.dashboardadmin.index');
 });
-
-
-
 Route::get('/laporanproduk', function () {
   return view('admin.dashboardadmin.laporanproduk');
 });
-
-
-
 Route::get('/laporantransaksi', function () {
   return view('admin.dashboardadmin.laporantransaksi');
 });
-
-
 Route::get('/user', function () {
   return view('admin.dashboardadmin.user');
 });
-
 Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasir.poto');
 Route::resource('kasir', KasirController::class);
 
@@ -138,15 +130,18 @@ Route::get('/transaksi', function () {
 
 
 //customer
-Route::get('/cobacustomer', function () {
+Route::get('/historicustomer', function () {
   return view('customer.dashboard_customer.histori_transaksi');
 });
-Route::get('/profile', function () {
+Route::get('/profilecustomer', function () {
   return view('customer.dashboard_customer.profile');
 });
-Route::get('/index', function () {
+Route::get('/indexcustomer', function () {
   return view('customer.dashboard_customer.index');
 });
+
+Route::get('/authcustomer', [AuthCustomerController::class, 'index'])->name("customer.auth.index");
+Route::post('/login', [AuthCustomerController::class, 'login'])->name("customer.login");
 
 
 //admin
