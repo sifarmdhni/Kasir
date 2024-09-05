@@ -11,8 +11,6 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomerController;
 
 
-use App\Http\Controllers\AuthKasirController;
-
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\AuthCustomerController;
@@ -22,7 +20,7 @@ use App\Http\Controllers\KategoriProdukController;
 
 
 
-  //crud login
+//crud login
 //Route::get( '/', [AuthController::class, 'login'])->name('kasir.get');
 Route::post('/login', [AuthController::class, 'authenticating'])->name('kasir.store');
 Route::get('/logout', [AuthController::class, 'logout'])->name('kasir.logout');
@@ -111,6 +109,8 @@ Route::get('/user', function () {
 });
 Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasir.poto');
 Route::resource('kasir', KasirController::class);
+Route::get('/authadmin', [AuthAdminController::class, 'index'])->name("admin.auth.index");
+Route::post('/loginadmin', [AuthAdminController::class, 'login'])->name("admin.login");
 
 //kasir
 Route::get('/indexkasir', function () {
@@ -141,12 +141,16 @@ Route::get('/historicustomer', function () {
 Route::get('/profilecustomer', function () {
   return view('customer.dashboard_customer.profile');
 });
-Route::get('/indexcustomer', function () {
-  return view('customer.dashboard_customer.index');
-});
+// Route::get('/indexcustomer', function () {
+//   return view('customer.dashboard_customer.index');
+// });
 
+Route::get('/indexcustomer', [CustomerController::class, 'index'])->name("customer.index");
 Route::get('/authcustomer', [AuthCustomerController::class, 'index'])->name("customer.auth.index");
 Route::post('/login', [AuthCustomerController::class, 'login'])->name("customer.login");
+
+
+
 
 
 // //admin
