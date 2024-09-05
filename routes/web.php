@@ -118,3 +118,38 @@ Route::get('/user', function () {
 
 Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasir.poto');
 Route::resource('kasir', KasirController::class);
+
+//kasir
+Route::get('/dashboard', function () {
+  return  view('kasir.dashboard_kasir.dashboard');
+});
+Route::get('/customer', function () {
+  return  view('kasir.dashboard_kasir.customer');
+});
+Route::get('/produk', function () {
+  return  view('kasir.dashboard_kasir.produk');
+});
+Route::get('/kategori', function () {
+  return  view('kasir.dashboard_kasir.kategoriproduk');
+});
+Route::get('/transaksi', function () {
+  return  view('kasir.dashboard_kasir.transaksi');
+});
+
+
+//customer
+Route::get('/cobacustomer', function () {
+  return view('customer.dashboard_customer.histori_transaksi');
+});
+Route::get('/profile', function () {
+  return view('customer.dashboard_customer.profile');
+});
+Route::get('/index', function () {
+  return view('customer.dashboard_customer.index');
+});
+
+
+//admin
+
+
+//kasir
