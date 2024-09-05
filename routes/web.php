@@ -94,7 +94,7 @@ Route::post('/kasir/store', [KasirController::class, 'store'])->name("kasir.stor
 Route::post('/kasir/update/{id}', [KasirController::class, 'update']);
 Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
 
-
+//admin
 Route::get('/index', function () {
    return view('admin.dashboardadmin.index');
 });

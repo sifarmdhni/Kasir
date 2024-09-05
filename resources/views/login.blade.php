@@ -37,8 +37,6 @@
 
 
 
-
-
     <div class="login-form-bg h-100">
         <div class="container h-100">
             <div class="row justify-content-center h-100">
@@ -52,7 +50,7 @@
 
                                 <form class="mt-5 mb-5 login-input" method="POST" action="{{ route('kasir.store') }}">
                                     @csrf
-                                    <div class="form-group">
+                                   <div class="form-group">
                                         <input type="email" class="form-control" placeholder="Email" name="email"
                                             required>
                                     </div>
