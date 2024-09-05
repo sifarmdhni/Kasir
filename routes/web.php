@@ -78,3 +78,22 @@ Route::post('/kasir/update/{id}', [KasirController::class, 'update']);
 Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
 Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasir.poto');
 Route::resource('kasir', KasirController::class);
+
+
+
+//customer
+Route::get('/cobacustomer', function () {
+  return view('customer.dashboard_customer.histori_transaksi');
+});
+Route::get('/profile', function () {
+  return view('customer.dashboard_customer.profile');
+});
+Route::get('/index', function () {
+  return view('customer.dashboard_customer.index');
+});
+
+
+//admin
+
+
+//kasir
