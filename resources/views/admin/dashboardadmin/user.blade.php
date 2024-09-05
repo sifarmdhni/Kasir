@@ -1,4 +1,4 @@
-@extends('layouts.mainlayout')
+@extends('admin.layouts.mainlayout')
 
 @section('content')
 
@@ -6,8 +6,8 @@
     <div class="row page-titles mx-0">
         <div class="col p-md-0">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">{{$title}}</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{$title}}</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">User</a></li>
             </ol>
         </div>
     </div>
@@ -19,7 +19,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title">{{$title}}</h4>
+                            <h4 class="card-title">User</h4>
                             <button type="button" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalCreate">
                                 <i class="fa fa-plus"></i> Tambah Data
                             </button>
@@ -38,33 +38,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php $no = 1; @endphp
-                                    @foreach ($data_user as $row)
-                                    <tr>
-                                        <td>{{$no++}}</td>
-                                        <td>{{$row->name}}</td>
-                                        <td>{{$row->email}}</td>
-                                        <td>
-                                            @if($row->role_id == 1)
-                                                Admin
-                                            @elseif($row->role_id == 2)
-                                                Kasir
-                                            @elseif($row->role_id == 3)
-                                                Customer
-                                            @else
-                                                Unknown
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="#modalEdit{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-primary">
+                                    
+                                         <!-- <td>
+                                            <a href="#modalEdit" data-toggle="modal" class="btn btn-xs btn-primary">
                                                 <i class="fa fa-edit"></i> Edit
                                             </a>
                                             <a href="#modalHapus{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-danger">
                                                 <i class="fa fa-trash"></i> Hapus
                                             </a>
-                                        </td>
-                                    </tr>
-                                    @endforeach
+                                        </td> -->
+                                
                                 </tbody>
                             </table>
                         </div>
@@ -81,7 +64,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Create {{$title}}</h5>
+                <h5 class="modal-title">Create</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <form method="POST" action="{{ route('user.store')}}">
@@ -119,12 +102,11 @@
 </div>
 
 <!-- Modal Edit User -->
-@foreach ($data_user as $d)
 <div class="modal fade" id="modalEdit{{ $d->id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit{{$title}}</h5>
+                <h5 class="modal-title">Edit</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <form method="POST" action="/user/update/{{$d->id}}">
@@ -161,15 +143,14 @@
         </div>
     </div>
 </div>
-@endforeach
+
 
 <!-- Modal Hapus User -->
-@foreach ($data_user as $d)
 <div class="modal fade" id="modalHapus{{ $d->id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Hapus {{$title}}</h5>
+                <h5 class="modal-title">Hapus</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <form method="POST" action="/user/destroy/{{$d->id}}">
@@ -187,6 +168,5 @@
         </div>
     </div>
 </div>
-@endforeach
 
 @endsection

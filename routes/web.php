@@ -110,5 +110,11 @@ Route::get('/laporanproduk', function () {
 Route::get('/laporantransaksi', function () {
   return view('admin.dashboardadmin.laporantransaksi');
 });
+
+
+Route::get('/user', function () {
+  return view('admin.dashboardadmin.user');
+});
+
 Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasir.poto');
 Route::resource('kasir', KasirController::class);
