@@ -20,7 +20,7 @@ use App\Http\Controllers\CustomerController;
 
 
 
-  //crud login
+  //crud login admin
 Route::get( '/', [AuthController::class, 'login'])->name('kasir.get');
 Route::post('/login', [AuthController::class, 'authenticating'])->name('kasir.store');
 Route::get('/logout', [AuthController::class, 'logout'])->name('kasir.logout');
@@ -95,27 +95,21 @@ Route::post('/kasir/update/{id}', [KasirController::class, 'update']);
 Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
 
 
+
+//admin
+
 Route::get('/d_admin', function () {
    return view('admin.dashboardadmin.d_admin');
 });
-
-
-
 Route::get('/laporanproduk', function () {
   return view('admin.dashboardadmin.laporanproduk');
 });
-
-
-
 Route::get('/laporantransaksi', function () {
   return view('admin.dashboardadmin.laporantransaksi');
 });
-
-
 Route::get('/user', function () {
   return view('admin.dashboardadmin.user');
 });
-
 Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasir.poto');
 Route::resource('kasir', KasirController::class);
 
