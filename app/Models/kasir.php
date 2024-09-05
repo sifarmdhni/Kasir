@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\transaksi;
+use App\Models\kasir;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -13,20 +13,25 @@ class kasir extends Model
     protected $table = "kasir";
     
     protected $fillable = [
-        'nama_kasir',
-        'no_telp',
+        'name_kasir',
+        'no_telepon',
         'email',
         'password',
-        'foto',
+        'foto_kasir',
         'jenis_kelamin',
     ];
 
     protected $hidden = [
         'password',
+        'remember_token',
     ];
 
-    public function transaksi()
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
+
+
+    public function kasir()
     {
-        return $this->hasMany(Transaksi::class);
+        return $this->hasMany(Kasir::class);
     }
 }

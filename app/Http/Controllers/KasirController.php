@@ -6,85 +6,175 @@ use App\Models\Kasir;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\KasirController;
 
 class KasirController extends Controller
 {
     public function index()
     {
-        $kasir = Kasir::all();
-        return view('kasir.index', compact('kasir'));
-    }
-
-    public function create()
-    {
-        return view('kasir.create');
+        $data = [
+            'title' => 'Data Kasir',
+            'data_kasir' => Kasir::all(),
+        ];
+        return view('admin.kasir.list', $data);
     }
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'nama_kasir' => 'required|string|max:255',
-            'no_telp' => 'nullable|string|max:20',
-            'email' => 'required|email|unique:kasir',
-            'password' => 'required|min:6',
-            'foto' => 'nullable|image|max:2048',
-            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan'
-        ]);
+        
+        // Validasi input
+  $request->validate([
+     'name_kasir' => 'required|string|max:100',
+    'no_telepon' => 'required|string|max:15',
+    'email' => 'required|string|email|max:100|unique:kasir,email',
+    'password' => 'required|string|min:6',
+    'foto_kasir' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+   'jenis_kelamin' => 'required|in:Laki laki,Perempuan',
 
-        $validated['password'] = Hash::make($validated['password']);
+    
+ ]);
+        Kasir::create([
+        'name_kasir'=> $request->name_kasir,
+        'no_telepon'=> $request->no_telepon,
+        'email'=> $request->email,
+        'password' => Hash::make($request->password), // Menggunakan Hash untuk mengamankan password
+        'foto_kasir' => $request->file('foto_kasir')->store('foto', 'public'),
+        'jenis_kelamin'=> $request->jenis_kelamin,
+       ]);
 
-        if ($request->hasFile('foto')) {
-            $validated['foto'] = $request->file('foto')->store('kasir-photos', 'public');
-        }
-
-        Kasir::create($validated);
-        return redirect()->route('kasir.index')->with('success', 'Kasir berhasil ditambahkan');
+       return redirect('/kasir')->with('success', 'Data Berhasil Di Ubah');
     }
 
-    public function show(Kasir $kasir)
+    public function update(Request $request,$id)
     {
-        return view('kasir.show', compact('kasir'));
-    }
 
-    public function edit(Kasir $kasir)
-    {
-        return view('kasir.edit', compact('kasir'));
-    }
+         // Validasi input
+  $request->validate([
+    'name_kasir' => 'required|string|max:100',
+   'no_telepon' => 'required|string|max:15',
+   'email' => 'required|string|email|max:100|unique:kasir,email',
+   'password' => 'required|string|min:6',
+   'foto_kasir' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+  'jenis_kelamin' => 'required|in:Laki laki,Perempuan',
 
-    public function update(Request $request, Kasir $kasir)
-    {
-        $validated = $request->validate([
-            'nama_kasir' => 'required|string|max:255',
-            'no_telp' => 'nullable|string|max:20',
-            'email' => 'required|email|unique:kasir,email,'.$kasir->id,
-            'password' => 'nullable|min:6',
-            'foto' => 'nullable|image|max:2048',
-            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan'
-        ]);
+   
+]);
 
-        if ($request->filled('password')) {
-            $validated['password'] = Hash::make($validated['password']);
-        } else {
-            unset($validated['password']);
-        }
 
-        if ($request->hasFile('foto')) {
-            if ($kasir->foto) {
-                Storage::disk('public')->delete($kasir->foto);
+         Kasir::where('id', $id)
+        ->where('id', $id)
+        ->update([
+        'name_kasir'=> $request->name_kasir,
+        'no_telepon'=> $request->no_telepon,
+        'email' => $request->email,
+        'password' => Hash::make($request->password), // Menggunakan Hash untuk mengamankan password
+        'foto_kasir' =>  $request->file('foto_kasir')->store('foto', 'public'),
+        'jenis_kelamin'=> $request->jenis_kelamin,
+            ]);
+            return redirect('/kasir')->with('success', 'Data Berhasil Di Ubah');
             }
-            $validated['foto'] = $request->file('foto')->store('kasir-photos', 'public');
-        }
+        
+            public function destroy($id)
+            {
+                $kasir = Kasir::find($id);
+                if ($kasir) {
+                    $kasir->delete();
+                    return redirect('/kasir')->with('success', 'Data berhasil dihapus');
+                } else {
+                    return redirect('/kasir')->with('error', 'User tidak ditemukan');
+                }
+            }
 
-        $kasir->update($validated);
-        return redirect()->route('kasir.index')->with('success', 'Kasir berhasil diperbarui');
-    }
 
-    public function destroy(Kasir $kasir)
-    {
-        if ($kasir->foto) {
-            Storage::disk('public')->delete($kasir->foto);
-        }
-        $kasir->delete();
-        return redirect()->route('kasir.index')->with('success', 'Kasir berhasil dihapus');
-    }
+//     public function store(Request $request)
+//     {
+
+//  // Validasi input
+//  $request->validate([
+//     'name_kasir' => 'required|string|max:100',
+//     'no_telepon' => 'required|string|max:15',
+//     'email' => 'required|string|email|max:100|unique:kasir,email',
+//     'password' => 'required|string|min:6',
+//     'foto_kasir' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+//     'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
+
+    
+// ]);
+// // dd($request->all);
+
+//    // Meng-handle file foto
+//    if ($request->hasFile('foto_kasir')) {
+//     // Simpan foto ke folder public/foto_kasir
+//     $filePath = $request->file('foto_kasir')->store('assets/poto', 'public');
+// } else {
+//     $filePath = null;
+// }
+
+// // Simpan data ke database menggunakan metode create
+// Kasir::create([
+//     'name_kasir' => $request->name_kasir,
+//     'no_telepon' => $request->no_telepon,
+//     'email' => $request->email,
+//     'password' => Hash::make($request->password), // Menggunakan Hash untuk mengamankan password
+//     'foto_kasir' => $filePath, 
+//     'jenis_kelamin' => $request->jenis_kelamin,
+// ]);
+
+
+// // Redirect kembali dengan pesan sukses
+// return redirect()->back()->with('success', 'Kasir berhasil ditambahkan!');
+// }
+       
+
+//     public function show(Kasir $kasir)
+//     {
+//         return view('kasir.show', compact('kasir'));
+//     }
+
+
+//     public function edit(Kasir $kasir)
+//     {
+//         return view('kasir.edit', compact('kasir'));
+//     }
+
+//     public function update(Request $request, Kasir $kasir)
+//     {
+//         $validated = $request->validate([
+//             'nama_kasir' => 'required|string|max:255',
+//             'no_telp' => 'nullable|string|max:20',
+//             'email' => 'required|email|unique:kasir,email,'.$kasir->id,
+//             'password' => 'nullable|min:6',
+//             'foto_kasir' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+//             'jenis_kelamin' => 'required',
+//         ]);
+        
+
+//         if ($request->filled('password')) {
+//             $validated['password'] = Hash::make($validated['password']);
+//         } else {
+//             unset($validated['password']);
+//         }
+
+//         if ($request->hasFile('foto_kasir')) {
+//             $fileName = time() . '_' . $request->file('foto_kasir')->getClientOriginalName();
+//             $filePath = $request->file('foto_kasir')->storeAs('uploads/kasir', $fileName, 'public');
+//         }
+
+//         if ($e->errorInfo[1] == 1062) {
+//             return back()->withErrors(['email' => 'Email sudah digunakan, silakan gunakan email lain.']);
+//         }
+
+//         $kasir->update($validated);
+//         return redirect()->route('kasir.index')->with('success', 'Kasir berhasil diperbarui');
+//     }
+
+//     public function destroy(Kasir $kasir)
+//     {
+//         if ($kasir->foto) {
+//             Storage::disk('public')->delete($kasir->foto);
+//         }
+//         $kasir->delete();
+//         return redirect()->route('kasir.index')->with('success', 'Kasir berhasil dihapus');
+//     }
 }
