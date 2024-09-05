@@ -106,3 +106,21 @@ Route::get('/kategori', function () {
 Route::get('/transaksi', function () {
   return  view('kasir.dashboard_kasir.transaksi');
 });
+
+
+//customer
+Route::get('/cobacustomer', function () {
+  return view('customer.dashboard_customer.histori_transaksi');
+});
+Route::get('/profile', function () {
+  return view('customer.dashboard_customer.profile');
+});
+Route::get('/index', function () {
+  return view('customer.dashboard_customer.index');
+});
+
+
+//admin
+
+
+//kasir
