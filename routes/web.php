@@ -95,28 +95,19 @@ Route::post('/kasir/store', [KasirController::class, 'store'])->name("kasir.stor
 Route::post('/kasir/update/{id}', [KasirController::class, 'update']);
 Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
 
-
-Route::get('/d_admin', function () {
-  return view('admin.dashboardadmin.d_admin');
+//admin
+Route::get('/index', function () {
+   return view('admin.dashboardadmin.index');
 });
-
-
-
 Route::get('/laporanproduk', function () {
   return view('admin.dashboardadmin.laporanproduk');
 });
-
-
-
 Route::get('/laporantransaksi', function () {
   return view('admin.dashboardadmin.laporantransaksi');
 });
-
-
 Route::get('/user', function () {
   return view('admin.dashboardadmin.user');
 });
-
 Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasir.poto');
 Route::resource('kasir', KasirController::class);
 
