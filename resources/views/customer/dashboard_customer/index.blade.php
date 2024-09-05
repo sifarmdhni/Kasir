@@ -18,8 +18,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <center><h4 class="card-title">HALO SEMUANYAAA</h4>
-                            <h4>SELAMAT DATANG DI DASHBOARD CUSTOMER</h4></center>
+                                <center>
+                                    <h4 class="card-title">HALO </h4>
+                                    <h4>SELAMAT DATANG DI DASHBOARD CUSTOMER</h4>
+                                </center>
                         </div>
                     </div>
                 </div>

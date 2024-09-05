@@ -22,7 +22,7 @@ use App\Http\Controllers\KategoriProdukController;
 
 
 
-  //crud login
+//crud login
 //Route::get( '/', [AuthController::class, 'login'])->name('kasir.get');
 Route::post('/login', [AuthController::class, 'authenticating'])->name('kasir.store');
 Route::get('/logout', [AuthController::class, 'logout'])->name('kasir.logout');
@@ -96,12 +96,9 @@ Route::post('/kasir/store', [KasirController::class, 'store'])->name("kasir.stor
 Route::post('/kasir/update/{id}', [KasirController::class, 'update']);
 Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
 
-
-
 //admin
-
-Route::get('/d_admin', function () {
-   return view('admin.dashboardadmin.d_admin');
+Route::get('/index', function () {
+   return view('admin.dashboardadmin.index');
 });
 Route::get('/laporanproduk', function () {
   return view('admin.dashboardadmin.laporanproduk');
@@ -142,10 +139,11 @@ Route::get('/historicustomer', function () {
 Route::get('/profilecustomer', function () {
   return view('customer.dashboard_customer.profile');
 });
-Route::get('/indexcustomer', function () {
-  return view('customer.dashboard_customer.index');
-});
+// Route::get('/indexcustomer', function () {
+//   return view('customer.dashboard_customer.index');
+// });
 
+Route::get('/indexcustomer', [CustomerController::class, 'index'])->name("customer.index");
 Route::get('/authcustomer', [AuthCustomerController::class, 'index'])->name("customer.auth.index");
 Route::post('/login', [AuthCustomerController::class, 'login'])->name("customer.login");
 
