@@ -89,3 +89,20 @@ Route::post('/kasir/update/{id}', [KasirController::class, 'update']);
 Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
 Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasir.poto');
 Route::resource('kasir', KasirController::class);
+
+//kasir
+Route::get('/dashboard', function () {
+  return  view('kasir.dashboard_kasir.dashboard');
+});
+Route::get('/customer', function () {
+  return  view('kasir.dashboard_kasir.customer');
+});
+Route::get('/produk', function () {
+  return  view('kasir.dashboard_kasir.produk');
+});
+Route::get('/kategori', function () {
+  return  view('kasir.dashboard_kasir.kategoriproduk');
+});
+Route::get('/transaksi', function () {
+  return  view('kasir.dashboard_kasir.transaksi');
+});

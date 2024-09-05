@@ -1,4 +1,4 @@
-@extends('layouts.mainlayout')
+@extends('kasir.layouts.mainlayout')
 
 @section('content')
 
@@ -6,8 +6,8 @@
     <div class="row page-titles mx-0">
         <div class="col p-md-0">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">{{$title}}</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{$title}}</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Kategori produk</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">kategori produk</a></li>
             </ol>
         </div>
     </div>
@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title">{{$title}}</h4>
+                            <h4 class="card-title">Data kategori produk</h4>
                             <button type="button" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalCreate">
                                 <i class="fa fa-plus"></i> Tambah Data
                             </button>
@@ -37,21 +37,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php $no = 1; @endphp
-                                    @foreach ($data_kategori as $row)
-                                    <tr>
-                                        <td>{{$no++}}</td>
-                                        <td>{{$row->nama_kategori}}</td>
+                                    
+<!--                                    
                                         <td>
-                                            <a href="#modalEdit{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-primary">
+                                            <a href="#modalEdit" data-toggle="modal" class="btn btn-xs btn-primary">
                                                 <i class="fa fa-edit"></i> Edit
                                             </a>
-                                            <a href="#modalHapus{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-danger">
+                                            <a href="#modalHapus" data-toggle="modal" class="btn btn-xs btn-danger">
                                                 <i class="fa fa-trash"></i> Hapus
                                             </a>
                                         </td>
-                                    </tr>
-                                    @endforeach
+                                    </tr> -->
+                           
                                 </tbody>
                             </table>
                         </div>
@@ -68,7 +65,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Create {{$title}}</h5>
+                <h5 class="modal-title">Create</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <form method="POST" action="/kategoriproduk/store">
@@ -90,20 +87,19 @@
 </div>
 
 <!-- Modal Edit User -->
-@foreach ($data_kategori as $d)
-<div class="modal fade" id="modalEdit{{ $d->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit {{$title}}</h5>
+                <h5 class="modal-title">Edit</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <form method="POST" action="/kategoriproduk/update/{{$d->id}}">
+            <form method="POST" action="/kategoriproduk/update">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Kategori Produk</label>
-                        <input type="text" value="{{ $d->nama_kategori }}" class="form-control" name="nama_kategori" placeholder="Kategori Produk...." required>
+                        <input type="text" value="" class="form-control" name="nama_kategori" placeholder="Kategori Produk...." required>
                     </div>
                 </div>
                     <div class="modal-footer">
@@ -114,18 +110,17 @@
         </div>
     </div>
 </div>
-@endforeach
+
 
 <!-- Modal Hapus User -->
-@foreach ($data_kategori as $d)
-<div class="modal fade" id="modalHapus{{ $d->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Hapus {{$title}}</h5>
+                <h5 class="modal-title">Hapus</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <form method="POST" action="/kategoriproduk/destroy/{{$d->id}}">
+            <form method="POST" action="/kategoriproduk/destroy">
                 @csrf
                 @method('DELETE')
                 <div class="modal-body">
@@ -141,6 +136,5 @@
         </div>
     </div>
 </div>
-@endforeach
 
 @endsection
