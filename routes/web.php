@@ -11,6 +11,8 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomerController;
 
 
+use App\Http\Controllers\AuthAdminController;
+use App\Http\Controllers\AuthKasirController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\AuthCustomerController;
