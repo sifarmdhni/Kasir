@@ -2,63 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Customer;
+use App\Models\customer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-     
+
     public function index()
-{
-    // Ambil data customer dari model Customer
-    $data_customer = Customer::all();
-
-    // Siapkan data untuk dikirim ke view
-    $data = [
-        'title' => 'Data Customer', // Pastikan string ini tidak terputus
-        'data_customer' => $data_customer,
-    ];
-
-    // Kembalikan view dengan data
-    return view('admin.customer.list', $data);
-}
-
-
-    public function store(Request $request)
     {
-        Customer::create([
-        'nama' => $request->nama,
-        'no_telpon' => $request->no_telpon,
-        'email' => $request->email,
-        'diskon' => $request->get('diskon'),
-       ]);
-       return redirect('/customer')->with('success', 'Data Berhasil Di Ubah');
+        // Ambil data customer dari model Customer
+        $data_customer = customer::all();
+
+        // Siapkan data untuk dikirim ke view
+        $data = [
+            'title' => 'Data Customer', // Pastikan string ini tidak terputus
+            'data_customer' => $data_customer,
+        ];
+
+        // Kembalikan view dengan data
+        return view('customer.dashboard_customer.index', $data);
     }
-
-    public function update(Request $request,$id)
-{
-        Customer::where('id', $id)
-        ->where('id', $id)
-        ->update([
-            'nama' => $request->nama,
-            'no_telpon' => $request->no_telpon,
-            'email' => $request->email,
-            'diskon' => $request->diskon,
-        ]);
-
-
-        return redirect('/customer')->with('success', 'Data Berhasil Di Ubah');
-        }
-    
-
-        public function destroy($id)
-        {
-            $customer = Customer::find($id);
-            if ($customer) {
-                $customer->delete();
-                return redirect('/customer')->with('success', 'Data berhasil dihapus');
-            } else {
-                return redirect('/customer')->with('error', 'User tidak ditemukan');
-            }
-        }
-    }
+}

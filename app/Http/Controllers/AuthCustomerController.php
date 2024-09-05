@@ -9,32 +9,25 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthCustomerController extends Controller
 {
-    public function index(){
-        return view('customer.auth_customer.authcustomer');
-    }
-    
+
     public function login(Request $request)
     {
         $validatedData = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-    
+
         $customer = customer::where('email', $validatedData['email'])->first();
-    
+
         // if (!$customer || !Hash::check($validatedData['password'], $customer->password)) {
         //     return back()->withErrors(['email' => 'Email atau password salah.']);
         // }       
-            // Mencoba untuk login dengan kredensial yang diberikan
-     if (Auth::attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']])) {
-        // Jika login berhasil, arahkan ke dashboard
-        return redirect()->intended(route('customer.auth.index'));
-    }
-    
-    
+        // Mencoba untuk login dengan kredensial yang diberikan
+        if (Auth::attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']])) {
+            // Jika login berhasil, arahkan ke dashboard
+            return redirect()->intended(route('customer.auth.index'));
+        }
+
         return redirect()->to('/indexcustomer');
     }
-
-}    
-
-
+}
