@@ -23,14 +23,14 @@ class AuthCustomerController extends Controller
 
         $customer = customer::where('email', $validatedData['email'])->first();
 
-        // if (!$customer || !Hash::check($validatedData['password'], $customer->password)) {
-        //     return back()->withErrors(['email' => 'Email atau password salah.']);
-        // }       
+        if (!$customer || !Hash::check($validatedData['password'], $customer->password)) {
+            return back()->withErrors(['email' => 'Email atau password salah.']);
+        }       
         // Mencoba untuk login dengan kredensial yang diberikan
-        if (Auth::attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']])) {
-            // Jika login berhasil, arahkan ke dashboard
-            return redirect()->intended(route('customer.auth.index'));
-        }
+        // if (Auth::attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']])) {
+        //     // Jika login berhasil, arahkan ke dashboard
+        //     return redirect()->intended(route('customer.auth.index'));
+        // }
 
         return redirect()->to('/indexcustomer');
     }

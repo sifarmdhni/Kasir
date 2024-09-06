@@ -34,4 +34,9 @@ class kasir extends Model
     {
         return $this->hasMany(Kasir::class);
     }
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'id_kasir');
+    }
 }

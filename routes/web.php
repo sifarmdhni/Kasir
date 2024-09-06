@@ -137,9 +137,9 @@ Route::post('/loginkasir', [AuthKasirController::class, 'login'])->name('kasir.l
 
 
 //customer
-Route::get('/historicustomer', function () {
-  return view('customer.dashboard_customer.histori_transaksi');
-});
+// Route::get('/historicustomer', function () {
+//   return view('customer.dashboard_customer.histori_transaksi');
+// });
 Route::get('/profilecustomer', function () {
   return view('customer.dashboard_customer.profile');
 });
@@ -147,10 +147,15 @@ Route::get('/profilecustomer', function () {
 //   return view('customer.dashboard_customer.index');
 // });
 
+Route::get('/historicustomer', [CustomerController::class, 'hitoriTransaksiCustomer']);
+Route::post('/customer', [CustomerController::class, 'store']);
 Route::get('/indexcustomer', [CustomerController::class, 'index'])->name("customer.index");
+Route::post('/customer/store', [CustomerController::class, 'store']);
+Route::post('/customer/update/{id}', [CustomerController::class, 'update']);
+
+//login custumer
 Route::get('/authcustomer', [AuthCustomerController::class, 'index'])->name("customer.auth.index");
 Route::post('/login', [AuthCustomerController::class, 'login'])->name("customer.login");
-
 
 
 
