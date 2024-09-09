@@ -1,16 +1,17 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\customer;
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\DiskonController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PaymentController;
+
+
 use App\Http\Controllers\CustomerController;
-
-
 use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\AuthKasirController;
 use App\Http\Controllers\DashboardController;
@@ -139,20 +140,31 @@ Route::delete('/produk/destroy/{id}', [ProdukController::class, 'destroy']);
 
 
 //customer
-Route::get('/historicustomer', function () {
-  return view('customer.dashboard_customer.histori_transaksi');
-});
-Route::get('/profilecustomer', function () {
-  return view('customer.dashboard_customer.profile');
-});
+// Route::get('/historicustomer', function () {
+//   return view('customer.dashboard_customer.histori_transaksi');
+// });
+// Route::get('/profilecustomer', function () {
+//   return view('customer.dashboard_customer.profile');
+// });
 // Route::get('/indexcustomer', function () {
 //   return view('customer.dashboard_customer.index');
 // });
 
+// Route::middleware('auth.customer')->group(function () {
+  Route::get('/profilecustomer', [CustomerController::class, 'indexProfileCustomer'])->name('customer.profile.edit');
+  Route::post('/updateprofile', [CustomerController::class, 'updateProfile'])->name('customer.profile.update');
+// });
+
+
+Route::get('/historicustomer', [CustomerController::class, 'hitoriTransaksiCustomer']);
+Route::post('/customer', [CustomerController::class, 'store']);
 Route::get('/indexcustomer', [CustomerController::class, 'index'])->name("customer.index");
+Route::post('/customer/store', [CustomerController::class, 'store']);
+Route::post('/customer/update/{id}', [CustomerController::class, 'update']);
+
+//login custumer
 Route::get('/authcustomer', [AuthCustomerController::class, 'index'])->name("customer.auth.index");
 Route::post('/login', [AuthCustomerController::class, 'login'])->name("customer.login");
-
 
 
 
