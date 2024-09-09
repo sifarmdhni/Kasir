@@ -13,7 +13,7 @@ class KategoriProdukController extends Controller
             'title' => 'Data Kategori Produk',
             'data_kategori' => KategoriProduk::all(),
         ];
-        return view('admin.master.kategoriproduk.list', $data);
+        return view('kasir.dashboard_kasir.kategoriproduk', $data);
     }
 
     public function store(Request $request)

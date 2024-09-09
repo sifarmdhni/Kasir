@@ -25,7 +25,7 @@ use App\Http\Controllers\KategoriProdukController;
 //crud login
 //Route::get( '/', [AuthController::class, 'login'])->name('kasir.get');
 Route::post('/login', [AuthController::class, 'authenticating'])->name('kasir.store');
-Route::get('/logout', [AuthController::class, 'logout'])->name('kasir.logout');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //crud data user
 Route::get('/user', [UserController::class, 'index']);
@@ -33,11 +33,7 @@ Route::post('/user/store', [UserController::class, 'store'])->name('user.store')
 Route::post('/user/update/{id}', [UserController::class, 'update']);
 Route::post('/user/destroy/{id}', [UserController::class, 'destroy']);
 
-//crud data kategoriproduk
-Route::get('/kategoriproduk', [KategoriProdukController::class, 'index']);
-Route::post('/kategoriproduk/store', [KategoriProdukController::class, 'store']);
-Route::post('/kategoriproduk/update/{id}', [KategoriProdukController::class, 'update']);
-Route::delete('/kategoriproduk/destroy/{id}', [KategoriProdukController::class, 'destroy']);
+
 
 //crud data produk
 Route::get('/produk', [ProdukController::class, 'index']);
@@ -121,17 +117,23 @@ Route::get('/indexkasir', function () {
 Route::get('/customer', function () {
   return  view('kasir.dashboard_kasir.customer');
 });
-Route::get('/produk', function () {
-  return  view('kasir.dashboard_kasir.produk');
-});
-Route::get('/kategori', function () {
-  return  view('kasir.dashboard_kasir.kategoriproduk');
-});
 Route::get('/transaksi', function () {
   return  view('kasir.dashboard_kasir.transaksi');
 });
 Route::get('/authkasir', [AuthKasirController::class, 'index'])->name('kasir.auth.index');
 Route::post('/loginkasir', [AuthKasirController::class, 'login'])->name('kasir.login');
+Route::get('/logout', [AuthKasirController::class, 'logout'])->name('kasir.logout');
+
+//crud data kategoriproduk
+Route::get('/kategoriproduk', [KategoriProdukController::class, 'index']);
+Route::post('/kategoriproduk/store', [KategoriProdukController::class, 'store']);
+Route::post('/kategoriproduk/update/{id}', [KategoriProdukController::class, 'update']);
+Route::delete('/kategoriproduk/destroy/{id}', [KategoriProdukController::class, 'destroy']);
+//crud data produk
+Route::get('/produk', [ProdukController::class, 'index']);
+Route::post('/produk/store', [ProdukController::class, 'store']);
+Route::post('/produk/update/{id}', [ProdukController::class, 'update']);
+Route::delete('/produk/destroy/{id}', [ProdukController::class, 'destroy']);
 
 
 

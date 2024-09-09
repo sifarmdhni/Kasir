@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>tes</title>
+    <title>Kasir</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
     <!-- Custom Stylesheet -->
@@ -42,14 +42,8 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <div class="brand-logo">
-                <a href="index.html">
-                    <b class="logo-abbr"><img src="/assets/images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="/assets/images/logo-compact.png" alt=""></span>
-                    <span class="brand-title">
-                        <img src="/images/logo-text.png" alt="">
-                    </span>
-                </a>
+            <div class="mb-3">
+            <img src="/foto/kasir.png" style="margin-left: 65px;  margin-top: -10px;" height="100" width="100" alt="foto">
             </div>
         </div>
         <!--**********************************
@@ -75,7 +69,7 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="public/assets/images/user/1.png" height="40" width="40" alt="">
+                                <img src="/foto/poto-kasir.png" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile   dropdown-menu">
                                 <div class="dropdown-content-body">
@@ -116,7 +110,7 @@
                             <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Data Master</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="/kategori">Data Kategori Produk</a></li>
+                            <li><a href="/kategoriproduk">Data Kategori Produk</a></li>
                             <li><a href="/produk">Data Produk</a></li>
                         </ul>
                     </li>

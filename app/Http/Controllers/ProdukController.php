@@ -17,7 +17,7 @@ class ProdukController extends Controller
             ->select('produk.*', 'kategoriproduk.nama_kategori')
             ->get(),
         ];
-        return view('admin.master.produk.list', $data);
+        return view('kasir.dashboard_kasir.produk', $data);
     }
 
     public function store(Request $request)
