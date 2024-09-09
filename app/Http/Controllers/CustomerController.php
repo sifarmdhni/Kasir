@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\customer;
 use App\Models\detailtransaksi;
 use Illuminate\Http\Request;    
+use Illuminate\Support\Facades\Auth;
 
 
 class CustomerController extends Controller
@@ -87,4 +88,39 @@ class CustomerController extends Controller
         // Redirect back with success message
         return redirect()->back()->with('success', 'Customer data has been updated successfully!');
     }
+
+    // profile customer
+    public function indexProfileCustomer(){
+        $profile_customer = customer::first();
+        return view('customer.dashboard_customer.profile',  compact('profile_customer'));
+    }
+
+      // Update profile
+      public function updateProfile(Request $request)
+      {
+          // Validate the incoming request data
+        //   $request->validate([
+        //       'nama' => 'required|string|max:255',
+        //       'email' => 'required|string|email|max:255|unique:customers,email,' ,
+        //       'password' => 'nullable|string|min:8|confirmed',  // Optional password change
+        //   ]);
+  
+          // Get the currently authenticated customer
+          $customer = customer::find();
+  
+          // Update customer data
+          $customer->nama = $request->input('nama');
+          $customer->email = $request->input('email');
+  
+          // Check if the password is being changed
+          if ($request->input('password')) {
+              $customer->password = Hash::make($request->input('password'));
+          }
+  
+          // Save the changes
+          $customer->save();
+  
+          // Redirect with a success message
+          return redirect()->back()->with('success', 'Profile updated successfully.');
+      }
 }

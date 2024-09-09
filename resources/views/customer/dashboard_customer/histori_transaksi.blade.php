@@ -19,10 +19,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
-                            <h4 class="card-title">Data Table</h4>
-                            <button type="button" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalCreate">
-                                <i class="fa fa-plus"></i> Tambah Data
-                            </button>
+                            <h4 class="card-title">Histori Transaksi Customer</h4>
+                            
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
