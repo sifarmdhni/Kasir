@@ -6,6 +6,7 @@ use App\Models\customer;
 use App\Models\detailtransaksi;
 use Illuminate\Http\Request;    
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 
 class CustomerController extends Controller
@@ -106,7 +107,9 @@ class CustomerController extends Controller
         //   ]);
   
           // Get the currently authenticated customer
-          $customer = customer::find();
+          $id = $request->id;  // Or whatever the ID field is in your form/request
+          $customer = Customer::find($id);
+          $customer = Customer::where('email', $request->email)->first();
   
           // Update customer data
           $customer->nama = $request->input('nama');
