@@ -9,9 +9,6 @@
 The smaller device rules always should write below the bigger device rules
 Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Component
 */
-
-
-
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
 @import url(../icons/font-awesome/css/font-awesome.min.css);
 @import url(../icons/simple-line-icons/css/simple-line-icons.css);
@@ -120,9 +117,9 @@ body {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #95c415;
+  color: #76838f;
   text-align: left;
-  background-color: #3992db; }
+  background-color: #F3F3F9; }
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
