@@ -23,17 +23,12 @@ use App\Http\Controllers\KategoriProdukController;
 
 
 
-
 //crud login
 //Route::get( '/', [AuthController::class, 'login'])->name('kasir.get');
 Route::post('/login', [AuthController::class, 'authenticating'])->name('kasir.store');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-//crud data user
-Route::get('/user', [UserController::class, 'index']);
-Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
-Route::post('/user/update/{id}', [UserController::class, 'update']);
-Route::post('/user/destroy/{id}', [UserController::class, 'destroy']);
+
 
 
 
@@ -100,13 +95,15 @@ Route::get('/laporanproduk', function () {
 Route::get('/laporantransaksi', function () {
   return view('admin.dashboardadmin.laporantransaksi');
 });
-Route::get('/user', function () {
-  return view('admin.dashboardadmin.user');
-});
 Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasir.poto');
 Route::resource('kasir', KasirController::class);
 Route::get('/authadmin', [AuthAdminController::class, 'index'])->name("admin.auth.index");
 Route::post('/loginadmin', [AuthAdminController::class, 'login'])->name("admin.login");
+//crud data user
+Route::get('/user', [UserController::class, 'index']);
+Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
+Route::post('/user/update/{id}', [UserController::class, 'update']);
+Route::post('/user/destroy/{id}', [UserController::class, 'destroy']);
 
 //kasir
 Route::get('/indexkasir', function () {
