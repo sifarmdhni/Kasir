@@ -17,6 +17,7 @@ use App\Http\Controllers\AuthKasirController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\AuthCustomerController;
+use App\Http\Controllers\CustomerKasirController;
 use App\Http\Controllers\KategoriProdukController;
 
 
@@ -42,11 +43,7 @@ Route::post('/produk/store', [ProdukController::class, 'store']);
 Route::post('/produk/update/{id}', [ProdukController::class, 'update']);
 Route::delete('/produk/destroy/{id}', [ProdukController::class, 'destroy']);
 
-//crud data customer
-Route::get('/customer', [CustomerController::class, 'index']);
-Route::post('/customer/store', [CustomerController::class, 'store']);
-Route::post('/customer/update/{id}', [CustomerController::class, 'update']);
-Route::delete('/customer/destroy/{id}', [CustomerController::class, 'destroy']);
+
 
 Route::get('/payment', [PaymentController::class, 'index']);
 Route::post('/payment/store', [PaymentController::class, 'store'])->name('payment.store');
@@ -115,9 +112,6 @@ Route::post('/loginadmin', [AuthAdminController::class, 'login'])->name("admin.l
 Route::get('/indexkasir', function () {
   return  view('kasir.dashboard_kasir..dashboard');
 });
-Route::get('/customer', function () {
-  return  view('kasir.dashboard_kasir.customer');
-});
 Route::get('/transaksi', function () {
   return  view('kasir.dashboard_kasir.transaksi');
 });
@@ -135,6 +129,11 @@ Route::get('/produk', [ProdukController::class, 'index']);
 Route::post('/produk/store', [ProdukController::class, 'store']);
 Route::post('/produk/update/{id}', [ProdukController::class, 'update']);
 Route::delete('/produk/destroy/{id}', [ProdukController::class, 'destroy']);
+//crud data customer
+Route::get('/customerkasir', [CustomerKasirController::class, 'index']);
+Route::post('/customerkasir/store', [CustomerKasirController::class, 'store']);
+Route::post('/customerkasir/update/{id}', [CustomerKasirController::class, 'update']);
+Route::delete('/customerkasir/destroy/{id}', [CustomerKasirController::class, 'destroy']);
 
 
 

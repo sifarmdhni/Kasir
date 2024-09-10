@@ -121,7 +121,7 @@
                     </li>
                    
                     <li>
-                        <a href="/customer" aria-expanded="false">
+                        <a href="/customerkasir" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Customer</span>
                         </a>
                     </li>
