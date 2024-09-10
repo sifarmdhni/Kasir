@@ -7,7 +7,9 @@
             <div class="row page-titles mx-0">
                 <div class="col p-md-0">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Laporan Produk</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Produk</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+
                     </ol>
                 </div>
             </div>
@@ -32,6 +34,7 @@
                                             <tr>
                                                 <td>1</td>
                                                 <td>Bara</td>
+                                                <td>Makanan</td>
                                                 <td>50.000</td>
                                                 <td>
                                                     <a href ="#" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i>Edit</a>

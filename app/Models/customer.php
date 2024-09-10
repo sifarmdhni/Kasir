@@ -18,13 +18,14 @@ class customer extends Model
         'nama',
         'no_telpon',
         'email',
-        'password',
         'diskon',
     ];
 
     protected $casts = [
         'diskon' => 'string',
     ];
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
 
     public function transaksi()
     {
