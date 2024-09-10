@@ -24,6 +24,9 @@ class AuthCustomerController extends Controller
         $customer = customer::where('email', $validatedData['email'])->first();
 
         if (!$customer || !Hash::check($validatedData['password'], $customer->password)) {
+             // Simpan customer_id di cookie selama 60 menit
+        cookie()->queue(cookie('customer_id', $customer->id, 60)); 
+            // dd(session('customer'));
             return back()->withErrors(['email' => 'Email atau password salah.']);
         }       
         // Mencoba untuk login dengan kredensial yang diberikan

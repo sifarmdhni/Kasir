@@ -96,15 +96,29 @@ class CustomerController extends Controller
         return view('customer.dashboard_customer.profile',  compact('profile_customer'));
     }
 
+    // public function indexProfileCustomer()
+    // {
+    //     // Ambil customer_id dari cookie
+    //     $customerId = request()->cookie('customer_id');
+    
+    //     if ($customerId) {
+    //         $profile_customer = customer::find($customerId);
+    
+    //         if ($profile_customer) {
+    //             return view('customer.dashboard_customer.profile', compact('profile_customer'));
+    //         } else {
+    //             return redirect()->route('customer.auth.index')->withErrors(['message' => 'Customer not found.']);
+    //         }
+    //     } else {
+    //         return redirect()->route('customer.auth.index')->withErrors(['message' => 'Please login first.']);
+    //     }
+    // }
+    
+
+
       // Update profile
       public function updateProfile(Request $request)
       {
-          // Validate the incoming request data
-        //   $request->validate([
-        //       'nama' => 'required|string|max:255',
-        //       'email' => 'required|string|email|max:255|unique:customers,email,' ,
-        //       'password' => 'nullable|string|min:8|confirmed',  // Optional password change
-        //   ]);
   
           // Get the currently authenticated customer
           $id = $request->id;  // Or whatever the ID field is in your form/request

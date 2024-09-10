@@ -148,7 +148,7 @@ Route::post('/loginkasir', [AuthKasirController::class, 'login'])->name('kasir.l
 //   return view('customer.dashboard_customer.index');
 // });
 
-// Route::middleware('auth.customer')->group(function () {
+// Route::group(['middleware' => ['web']], function () {
   Route::get('/profilecustomer', [CustomerController::class, 'indexProfileCustomer'])->name('customer.profile.edit');
   Route::post('/updateprofile', [CustomerController::class, 'updateProfile'])->name('customer.profile.update');
 // });
