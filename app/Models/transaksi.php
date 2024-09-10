@@ -48,4 +48,9 @@ class transaksi extends Model
     {
         return $this->hasMany(ItemsCart::class);
     } 
+
+    public function detailTransaksi()
+    {
+        return $this->hasMany(DetailTransaksi::class, 'id_transaksi');
+    }
 }

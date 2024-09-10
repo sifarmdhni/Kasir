@@ -18,7 +18,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Data Table</h4>
+                            <div class="d-flex align-items-center">
+                            <h4 class="card-title">Histori Transaksi Customer</h4>
+                            
+                            </div>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
@@ -34,7 +37,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
+                                        @foreach($detailTransaksi as $detail)
+
+                                        {{-- @dd($detail->transaksi->customer) --}}
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $detail->transaksi->kasir->name_kasir }}</td>
+                                        <td>{{ $detail->transaksi->customer->nama }}</td>
+                                        <td>{{ $detail->produk->nama_produk }}</td>
+                                        <td>{{ $detail->harga }}</td>
+                                        <td>{{ $detail->jumlah }}</td>
+                                        <td>{{ $detail->transaksi->total_harga }}</td>
+                                        <td>{{ $detail->transaksi->diskon }}</td>
+                                    </tr>
+                                @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -45,4 +61,136 @@
         </div>
         <!-- #/ container -->
     </div>
+
+
+<!-- Modal Create User -->
+<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create </h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <form method="POST" action="/customer/store">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Nama Kasir</label>
+                        <input type="text" class="form-control" name="nama" placeholder="Nama Kasir...." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Customer</label>
+                        <input type="text" class="form-control" name="nama" placeholder="Nama Custommer...." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Produk</label>
+                        <input type="text" class="form-control" name="nama" placeholder="Nama Produk...." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Total Harga</label>
+                        <input type="text" class="form-control" name="total_harga" placeholder="Total Harga...." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Jumlah</label>
+                        <input type="number" class="form-control" name="jumlah" placeholder="Jumlah...." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Harga</label>
+                        <input type="text" class="form-control" name="harga" placeholder="Harga...." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Diskon</label>
+                        <input type="number" class="form-control" name="diskon" placeholder="Diskon...." required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Edit User -->
+ 
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <form method="POST" action="/customer/update/">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Nama Kasir</label>
+                        <input type="text" class="form-control" name="nama" placeholder="Nama Kasir...." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Customer</label>
+                        <input type="text" class="form-control" name="nama" placeholder="Nama Custommer...." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Produk</label>
+                        <input type="text" class="form-control" name="nama" placeholder="Nama Produk...." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Total Harga</label>
+                        <input type="text" class="form-control" name="total_harga" placeholder="Total Harga...." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Jumlah</label>
+                        <input type="number" class="form-control" name="jumlah" placeholder="Jumlah...." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Harga</label>
+                        <input type="text" class="form-control" name="harga" placeholder="Harga...." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Diskon</label>
+                        <input type="number" class="form-control" name="diskon" placeholder="Diskon...." required>
+                    </div>
+                
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Hapus User -->
+
+<div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Hapus </h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <form method="POST" action="/customer/destroy/">
+                @csrf
+                @method('DELETE')
+                <div class="modal-body">
+                    <div class="form-group">
+                        <h5>Apakah Anda Ingin Menghapus Data Ini?</h5>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>
+                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 @endsection
