@@ -12,9 +12,9 @@ class UserController extends Controller
     {
         $data = array(
             'title' => 'Data User',
-            'data_user' => User::all(),
+            'data_user' => User::with('role')->get(),
         );
-        return view('admin.master.user.list', $data);
+        return view('admin.dashboardadmin.user', $data);
     }
     
     public function profile()

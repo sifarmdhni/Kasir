@@ -93,7 +93,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="left">
-                            <button type="button" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalbank">
+                            <button type="button" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalvisa">
                                 <i class="fa fa-plus"></i> Bayar Via Debit
                             </button>
                             <img src="foto/fotoPayment/visA.jpeg" alt="Foto"  width="15" height="10" style="margin: 10px;">
@@ -112,34 +112,40 @@
                 <h5 class="modal-title"> E-Wallet Tersedia</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <form method="POST" action="{{ route('user.store')}}">
                 @csrf
                 <div class="modal-body">
-                    <div class="form-group">
-                    <a href="/bca">
-                               <img src="foto/fotoPayment/anad.png" alt="Foto"  width="50" height="50" style="margin: 10px;">
-                    </a>
-                        <label>DANA</label>
+                    <center>
+                    <img src="foto/fotoPayment/anad.png" alt="Foto"  width="25" height="25" style="margin: 10px;">
+                    <img src="foto/fotoPayment/link.png" alt="Foto"  width="25" height="25" style="margin: 10px;">
+                    <img src="foto/fotoPayment/liv.jpg" alt="Foto"  width="25" height="10" style="margin: 10px;">
+                    <img src="foto/fotoPayment/spayy.webp" alt="Foto"  width="25" height="10" style="margin: 10px;">
+                    </center>
+                </div>
+                <form method="POST" action="">
+                @csrf
+                <div class="modal-body">
+                <div class="form-group">
+                        <label>E-Wallet Tersedia</label>
+                        <select class="form-control" name="role_id" required>
+                            <option value="" hidden>Pilih Jenis E-Wallet</option>
+                            <option value="1">DANA</option>
+                            <option value="2">Link Aja</option>
+                            <option value="3">Livin BY Mandiri</option>
+                            <option value="3">ShoopePay</option>
+
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <a href="/bca">
-                    <img src="foto/fotoPayment/link.png" alt="Foto"  width="50" height="50" style="margin: 10px;">
-                        </a>
-                        <label>Link Aja</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend"><span class="input-group-text">Rp</span>
                     </div>
-                    <div class="form-group">
-                    <a href="/bca">
-                    <img src="foto/fotoPayment/liv.jpg" alt="Foto"  width="75" height="50" style="margin: 10px;">
-                    </a>
-                        <label>LIVIN By Mandiri</label>
+                    <input type="number" name="harga" class="form-control" placeholder="Masukan Jumlah Nominal..." required>
                     </div>
-                    <div class="form-group">
-                    <a>
-                    <img src="foto/fotoPayment/spayy.webp" alt="Foto"  width="75" height="50" style="margin: 10px;">
-                    </a href="/bca">
-                        <label>Shopeepay</label>
-                    </div>
-</form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
+                </div>
+            </form>
 
 </div>
 </div>
@@ -151,7 +157,8 @@
 </div>
 <!-- bagian tranfer bank -->
 
- <div class="modal fade" id="modalbank" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="modal fade" id="modalbank" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -161,48 +168,93 @@
             <form method="POST" action="{{ route('user.store')}}">
                 @csrf
                 <div class="modal-body">
-                    <div class="form-group">
-                    <a href="/bca">
-                               <img src="foto/fotoPayment/bca.jpeg" alt="Foto"  width="50" height="50" style="margin: 10px;">
-                    </a>
-                        <label>BCA Mobile</label>
+                    <center>
+                    <img src="foto/fotoPayment/bca.jpeg" alt="Foto"  width="25" height="25" style="margin: 10px;">
+                    <img src="foto/fotoPayment/bni.png" alt="Foto"  width="25" height="25" style="margin: 10px;">
+                    <img src="foto/fotoPayment/bri.png" alt="Foto"  width="25" height="25" style="margin: 10px;" border="2px">
+                    <img src="foto/fotoPayment/bjbb.png" alt="Foto"  width="25" height="25" style="margin: 10px;" border="2px">
+                    <img src="foto/fotoPayment/danamon.jpeg" alt="Foto"  width="25" height="25" style="margin: 10px;" border="2px">
+                    <img src="foto/fotoPayment/bsi.jpeg" alt="Foto"  width="25" height="20" style="margin: 10px;" border="2px">
+                    <img src="foto/fotoPayment/citi.jpeg" alt="Foto"  width="25" height="12" style="margin: 10px;" border="2px">
+                    </center>
+                </div>
+                <form method="POST" action="">
+                @csrf
+                <div class="modal-body">
+                <div class="form-group">
+                        <label>Bank Tersedia</label>
+                        <select class="form-control" name="role_id" required>
+                            <option value="" hidden>Pilih Jenis Bank</option>
+                            <option value="1">BCA </option>
+                            <option value="2">BNI </option>
+                            <option value="3">BRI </option>
+                            <option value="3">Bank BJB</option>
+                            <option value="3">Danamon</option>
+                            <option value="3">BSI Bank Syariah Indonesia</option>
+                            <option value="3">CitiBank</option>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <a href="/bca">
-                    <img src="foto/fotoPayment/bni.png" alt="Foto"  width="50" height="50" style="margin: 10px;">
-                        </a>
-                        <label>BNI Mobile</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend"><span class="input-group-text">Rp</span>
                     </div>
-                    <div class="form-group">
-                    <a href="/bca">
-                    <img src="foto/fotoPayment/bri.png" alt="Foto"  width="50" height="50" style="margin: 10px;" border="2px">
-                    </a>
-                        <label>BRI Mobile</label>
+                    <input type="number" name="harga" class="form-control" placeholder="Masukan Jumlah Nominal..." required>
                     </div>
-                    <div class="form-group">
-                    <a href="/bca">
-                    <img src="foto/fotoPayment/bjbb.png" alt="Foto"  width="50" height="50" style="margin: 10px;" border="2px">
-                    </a>
-                        <label>Bank BJB</label>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
+                </div>
+            </form>
+</form> 
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="modal fade" id="modalvisa" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> Bank Tersedia</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <form method="POST" action="{{ route('user.store')}}">
+                @csrf
+                <div class="modal-body">
+                    <center>
+                    <img src="foto/fotoPayment/visA.jpeg" alt="Foto"  width="25" height="18" style="margin: 10px;">
+                    <img src="foto/fotoPayment/gpn.jpeg" alt="Foto"  width="25" height="20" style="margin: 10px;">
+                    <img src="foto/fotoPayment/ae.png" alt="Foto"  width="35" height="25" style="margin: 10px;">
+                    </center>
+                </div>
+                <form method="POST" action="">
+                @csrf
+                <div class="modal-body">
+                <div class="form-group">
+                        <label>Debit Tersedia</label>
+                        <select class="form-control" name="role_id" required>
+                            <option value="" hidden>Pilih Jenis Debit</option>
+                            <option value="1">Visa</option>
+                            <option value="2">GPN</option>
+                            <option value="3">America Expres</option>
+                        </select>
                     </div>
-                    <div class="form-group">
-                    <a href="/bca">
-                    <img src="foto/fotoPayment/danamon.jpeg" alt="Foto"  width="50" height="50" style="margin: 10px;" border="2px">
-                    </a>
-                        <label>Danamon</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend"><span class="input-group-text">Rp</span>
                     </div>
-                    <div class="form-group">
-                    <a href="/bca">
-                    <img src="foto/fotoPayment/bsi.jpeg" alt="Foto"  width="50" height="40" style="margin: 10px;" border="2px">
-                    </a>
-                        <label>BSI Bank Syariah Indonesia</label>
+                    <input type="number" name="harga" class="form-control" placeholder="Masukan Jumlah Nominal..." required>
                     </div>
-                    <div class="form-group">
-                    <a href="/bca">
-                    <img src="foto/fotoPayment/citi.jpeg" alt="Foto"  width="50" height="25" style="margin: 10px;" border="2px">
-                    </a>
-                        <label>CitiBank</label>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
+                </div>
+            </form>
 </form> 
 </div>
 </div>
@@ -242,23 +294,34 @@
             </div>
             <form method="POST" action="{{ route('user.store')}}">
                 @csrf
-                    <div class="form-group px-3">
-                        <h4>Jumlah Saldo.............</h4>
-                        <label>Jumlah</label>
-                        <input type="number" class="form-control" name="number" placeholder="Masukan Jumlah Saldo......" required>
+                <div>
+                <div class="input-group mb-5">
+                <label>Pilihan Tersedia</label>
+                <span>
+                        <select class="form-control" name="role_id" required>
+                            <option value="" hidden>Pilihan Lainya</option>
+                            <option value="1">Visa</option>
+                            <option value="2">GPN</option>
+                            <option value="3">America Expres</option>
+                        </select>
+</span>
+                     </div>
+                        <div class="input-group-prepend"><span class="input-group-text">Rp</span>
+                    <input type="number" name="harga" class="form-control" placeholder="Masukan Jumlah Nominal..." required>
                     </div>
                     <div>
-                    <div class="form-group px-4">
-                        <label>PILIHAN LAINYA</label>
+                    <div class="form-group px-4"><center>
                         <img src="foto/fotoPayment/cmb.jpeg" alt="Foto"  width="50" height="25" style="margin: 25px;">
                         <img src="foto/fotoPayment/bv.jpeg" alt="Foto"  width="50" height="25" style="margin: 25px;">
                         <img src="foto/fotoPayment/mandi.jpeg" alt="Foto"  width="50" height="25" style="margin: 25px;">
+                        </center>
                     </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>
                         <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Lanjutkan</button>
                     </div>
+</div>
                 </div>
             </form>
         </div>

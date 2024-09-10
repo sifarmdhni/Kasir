@@ -23,7 +23,6 @@
                                     <center>
                                   <h1>(Selamat Datang Di Dashboard Admin)</h1>
                                    <img src="foto/fotoPayment/sela.jpg" alt="Foto"  width="400" height="400" style="margin: 25px;">
-
                                    </center>
                                 </div>
                             </div>
@@ -35,3 +34,4 @@
         </div>
         
         @endsection
+
