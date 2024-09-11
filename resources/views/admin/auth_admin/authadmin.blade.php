@@ -46,7 +46,7 @@
                             <div class="card-body pt-5">
                                 <a class="text-center" href="#">
                                     <center>
-                                <img src="foto/loko.jpeg" alt="Foto"  width="200" height="100" style="margin: 10px;" >
+                                <img src="foto/eweh.jpeg" alt="Foto"  width="200" height="100" style="margin: 10px;" >
                                     </center>
                                     <h4>Silahkan Login</h4>
                                 </a>
