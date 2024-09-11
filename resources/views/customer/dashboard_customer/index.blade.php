@@ -19,8 +19,8 @@
                     <div class="card">
                         <div class="card-body">
                                 <center>
-                                    <h4 class="card-title">HALO </h4>
-                                    <h4>SELAMAT DATANG DI DASHBOARD CUSTOMER</h4>
+                                    <h4 class="card-title">Halo {{ $customer->nama }}</h4>
+                                    <h4>Selamat Datang Customer Ku</h4>
                                 </center>
                         </div>
                     </div>

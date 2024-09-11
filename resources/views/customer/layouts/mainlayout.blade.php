@@ -123,6 +123,15 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="{{ route('customer.logout') }}" aria-expanded="false" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Logout</span>
+                        </a>
+                    </li>
+                    
+                    <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
 
                 </ul>
             </div>
