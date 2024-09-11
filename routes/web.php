@@ -146,17 +146,19 @@ Route::delete('/customerkasir/destroy/{id}', [CustomerKasirController::class, 'd
 //   return view('customer.dashboard_customer.index');
 // });
 
-// Route::group(['middleware' => ['web']], function () {
+Route::middleware('auth.customer')->group(function () {
   Route::get('/profilecustomer', [CustomerController::class, 'indexProfileCustomer'])->name('customer.profile.edit');
   Route::post('/updateprofile', [CustomerController::class, 'updateProfile'])->name('customer.profile.update');
-// });
+  
+  
+  Route::get('/historicustomer', [CustomerController::class, 'hitoriTransaksiCustomer']);
+  Route::post('/customer', [CustomerController::class, 'store']);
+  Route::get('/indexcustomer', [CustomerController::class, 'index'])->name("customer.index");
+  Route::post('/customer/store', [CustomerController::class, 'store']);
+  Route::post('/customer/update/{id}', [CustomerController::class, 'update']);
+  Route::post('/customer/logout', [AuthCustomerController::class, 'logout'])->name('customer.logout');
 
-
-Route::get('/historicustomer', [CustomerController::class, 'hitoriTransaksiCustomer']);
-Route::post('/customer', [CustomerController::class, 'store']);
-Route::get('/indexcustomer', [CustomerController::class, 'index'])->name("customer.index");
-Route::post('/customer/store', [CustomerController::class, 'store']);
-Route::post('/customer/update/{id}', [CustomerController::class, 'update']);
+});
 
 //login custumer
 Route::get('/authcustomer', [AuthCustomerController::class, 'index'])->name("customer.auth.index");

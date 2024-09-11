@@ -21,20 +21,18 @@ class AuthCustomerController extends Controller
             'password' => 'required',
         ]);
 
-        $customer = customer::where('email', $validatedData['email'])->first();
-
-        if (!$customer || !Hash::check($validatedData['password'], $customer->password)) {
-             // Simpan customer_id di cookie selama 60 menit
-        cookie()->queue(cookie('customer_id', $customer->id, 60)); 
-            // dd(session('customer'));
-            return back()->withErrors(['email' => 'Email atau password salah.']);
-        }       
-        // Mencoba untuk login dengan kredensial yang diberikan
-        // if (Auth::attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']])) {
-        //     // Jika login berhasil, arahkan ke dashboard
-        //     return redirect()->intended(route('customer.auth.index'));
-        // }
+           // Menggunakan Auth guard 'customer'
+           if (Auth::guard('customer')->attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']])) {
+            // Jika login berhasil, arahkan ke halaman dashboard customer
+            return redirect()->intended('/indexcustomer');
+        }
 
         return redirect()->to('/indexcustomer');
+    }
+
+    public function logout()
+    {
+        Auth::guard('customer')->logout();  // Logout dari guard 'customer'
+        return redirect('/authcustomer');
     }
 }

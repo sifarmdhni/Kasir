@@ -13,7 +13,8 @@ class CustomerController extends Controller
 {
 
     public function index(){
-        return view('customer.dashboard_customer.index');
+        $customer = Auth::guard('customer')->user();
+        return view('customer.dashboard_customer.index', compact('customer'));
     }
 
     public function hitoriTransaksiCustomer()
@@ -92,29 +93,10 @@ class CustomerController extends Controller
 
     // profile customer
     public function indexProfileCustomer(){
-        $profile_customer = customer::first();
+        $profile_customer = Auth::guard('customer')->user();
+        // dd($profile_customer);
         return view('customer.dashboard_customer.profile',  compact('profile_customer'));
     }
-
-    // public function indexProfileCustomer()
-    // {
-    //     // Ambil customer_id dari cookie
-    //     $customerId = request()->cookie('customer_id');
-    
-    //     if ($customerId) {
-    //         $profile_customer = customer::find($customerId);
-    
-    //         if ($profile_customer) {
-    //             return view('customer.dashboard_customer.profile', compact('profile_customer'));
-    //         } else {
-    //             return redirect()->route('customer.auth.index')->withErrors(['message' => 'Customer not found.']);
-    //         }
-    //     } else {
-    //         return redirect()->route('customer.auth.index')->withErrors(['message' => 'Please login first.']);
-    //     }
-    // }
-    
-
 
       // Update profile
       public function updateProfile(Request $request)
