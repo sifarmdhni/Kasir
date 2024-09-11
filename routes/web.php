@@ -39,14 +39,6 @@ Route::post('/produk/update/{id}', [ProdukController::class, 'update']);
 Route::delete('/produk/destroy/{id}', [ProdukController::class, 'destroy']);
 
 
-
-Route::get('/payment', [PaymentController::class, 'index']);
-Route::post('/payment/store', [PaymentController::class, 'store'])->name('payment.store');
-Route::post('/payment/update/{id}', [PaymentController::class, 'update']);
-Route::post('/payment/destroy/{id}', [PaymentController::class, 'destroy']);
-Route::get('/bca', [PaymentController::class, 'bca']);
-
-
 //crud data setting diskon
 Route::get('/setdiskon', [DiskonController::class, 'index']);
 Route::post('/setdiskon/update/{id}', [DiskonController::class, 'update']);
@@ -104,6 +96,14 @@ Route::get('/user', [UserController::class, 'index']);
 Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
 Route::post('/user/update/{id}', [UserController::class, 'update']);
 Route::post('/user/destroy/{id}', [UserController::class, 'destroy']);
+
+
+Route::get('/payment', [PaymentController::class, 'index']);
+Route::post('/payment/store', [PaymentController::class, 'store'])->name('payment.store');
+Route::post('/payment/update/{id}', [PaymentController::class, 'update']);
+Route::post('/payment/destroy/{id}', [PaymentController::class, 'destroy']);
+Route::get('/bca', [PaymentController::class, 'bca']);
+
 
 //kasir
 Route::get('/indexkasir', function () {

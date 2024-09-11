@@ -10,10 +10,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
     <link href="/assets/css/style.css" rel="stylesheet">
-
 </head>
 
-<body class="h-100">
+<body class="h-100" style="background-image: url('aasd.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     @if (Session::has('status'))
         <div class="alert alert-danger" role="alert">
             {{ Session::get('message') }}
@@ -38,7 +37,6 @@
 
 
 
-
     <div class="login-form-bg h-100">
         <div class="container h-100">
             <div class="row justify-content-center h-100">
@@ -47,6 +45,9 @@
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
                                 <a class="text-center" href="#">
+                                    <center>
+                                <img src="foto/eweh.jpeg" alt="Foto"  width="200" height="100" style="margin: 10px;" >
+                                    </center>
                                     <h4>Silahkan Login</h4>
                                 </a>
 
