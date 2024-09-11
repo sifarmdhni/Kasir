@@ -43,7 +43,7 @@
         ***********************************-->
         <div class="nav-header">
             <div class="mb-3">
-            <img src="/foto/kasir.png" style="margin-left: 65px;  margin-top: -10px;" height="100" width="100" alt="foto">
+            <img src="/foto/kasirrpl12.png" style="margin-left: -23px;  margin-top: -60px;" height="200" width="260" alt="foto">
             </div>
         </div>
         <!--**********************************
