@@ -50,7 +50,7 @@
                                 <center>
                                 <img src="foto//eweh.jpeg" alt="Foto"  width="200" height="100" style="margin: 10px;" >
                                     </center>
-                                    <h4>Silahkan Login</h4>
+                                 
                                 </a>
 
                                 <form class="mt-5 mb-5 login-input" method="POST"

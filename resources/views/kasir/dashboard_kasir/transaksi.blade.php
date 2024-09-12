@@ -37,20 +37,28 @@
                                         <th>Diskon</th>
                                         <th>Total Harga</th>
                                         <th>ID_Kasir</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                
-                                        <!-- <td>
-                                            <a href="#modalEdit" data-toggle="modal" class="btn btn-xs btn-primary">
+                                    @foreach ($data_transaksi as $row)
+                                    <tr>
+                                        <td>{{ $row->id_payment }}</td>
+                                        <td>{{ $row->customer_id }}</td>
+                                        <td>{{ $row->customer }}</td>
+                                        <td>{{ $row->diskon }}%</td>
+                                        <td>{{ $row->total_harga }}</td>
+                                        <td>{{ $row->id_kasir }}</td>
+                                        <td>
+                                            <a href="#modalEdit{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-primary">
                                                 <i class="fa fa-edit"></i> Edit
                                             </a>
-                                            <a href="#modalHapus" data-toggle="modal" class="btn btn-xs btn-danger">
+                                            <a href="#modalHapus{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-danger">
                                                 <i class="fa fa-trash"></i> Hapus
                                             </a>
-                                        </td> -->
+                                        </td>
                                     </tr>
-                                  
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -63,36 +71,47 @@
 </div>
 
 <!-- Modal Create User -->
- <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Create </h5>
+                <h5 class="modal-title">Tambah Transaksi</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <form method="POST" action="/customer/store">
+            <form method="POST" action="/transaksi/store">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
+                        <label>ID Payment</label>
+                        <input type="text" class="form-control" name="id_payment" placeholder="ID Payment" required>
+                    </div>
+                    <div class="form-group">
+                        <label>ID Customer</label>
+                        <input type="text" class="form-control" name="customer_id" placeholder="ID Customer" required>
+                    </div>
+                    <div class="form-group">
                         <label>Nama Customer</label>
-                        <input type="text" class="form-control" name="nama" placeholder="Nama Customer...." required>
-                    </div>
-                    <div class="form-group">
-                        <label>No.telp</label>
-                        <input type="number" class="form-control" name="no_telpon" placeholder="No_telpon...." required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" name="email" placeholder="Email...." required>
+                        <input type="text" class="form-control" name="customer_name" placeholder="Nama Customer" required>
                     </div>
                     <div class="form-group">
                         <label>Diskon</label>
-                        <input type="number" class="form-control" name="diskon" placeholder="Diskon...." required>
+                        <div class="input-group mb-3">
+                            <input type="number" name="diskon" placeholder="Diskon" class="form-control" required>
+                            <div class="input-group-append"><span class="input-group-text">%</span></div>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
+                    <div class="form-group">
+                        <label>Total Harga</label>
+                        <input type="number" class="form-control" name="total_harga" placeholder="Total Harga" required>
                     </div>
+                    <div class="form-group">
+                        <label>ID Kasir</label>
+                        <input type="text" class="form-control" name="id_kasir" placeholder="ID Kasir" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>
@@ -100,49 +119,49 @@
 </div>
 
 <!-- Modal Edit User -->
- 
 <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit</h5>
+                <h5 class="modal-title">Edit Transaksi</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <form method="POST" action="/customer/update/">
+            <form method="POST" action="/transaksi/update">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
+                        <label>ID Payment</label>
+                        <input type="text" class="form-control" name="id_payment"  value="{{ $d->nama_kategori }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>ID Customer</label>
+                        <input type="text" class="form-control"  name="id_customer"  value="{{ $d->nama_kategori }}" required>
+                    </div>
+                    <div class="form-group">
                         <label>Nama Customer</label>
-                        <input type="text" class="form-control" name="nama" value="" placeholder="Nama...." required>
+                        <input type="text" class="form-control" name="customer"  value="{{ $d->nama_kategori }}" required>
                     </div>
-                    
-                    <div class="form-group">
-                        <label>No.telp</label>
-                        <input type="text" class="form-control" name="no_telpon" value="" placeholder="No_telp...." required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" class="form-control" name="email" value="" placeholder="Email...." required>
-                    </div>
-                    
                     <div class="form-group">
                         <label>Diskon</label>
-                        <input type="text" class="form-control" name="diskon" value="" placeholder="diskon...." required>
+                        <input type="number" class="form-control"  name="diskon"  value="{{ $d->nama_kategori }}" required>
                     </div>
-                
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
+                    <div class="form-group">
+                        <label>Total Harga</label>
+                        <input type="number" class="form-control"mname="total_harga"  value="{{ $d->nama_kategori }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>ID Kasir</label>
+                        <input type="text" class="form-control"  name="id_kasir"  value="{{ $d->nama_kategori }}" required>
                     </div>
                 </div>
-                </div>
-                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
 <!-- Modal Hapus User -->
 
 <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-hidden="true">
