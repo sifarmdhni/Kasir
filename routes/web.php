@@ -112,6 +112,10 @@ Route::get('/indexkasir', function () {
 Route::get('/transaksi', function () {
   return  view('kasir.dashboard_kasir.transaksi');
 });
+Route::get('/cobatransaksi', [TransaksiController::class, 'CreateTransaksi'])->name('kasir.create');
+
+
+
 Route::get('/authkasir', [AuthKasirController::class, 'index'])->name('kasir.auth.index');
 Route::post('/loginkasir', [AuthKasirController::class, 'login'])->name('kasir.login');
 Route::get('/logout', [AuthKasirController::class, 'logout'])->name('kasir.logout');
@@ -142,8 +146,8 @@ Route::delete('/customerkasir/destroy/{id}', [CustomerKasirController::class, 'd
 // Route::get('/profilecustomer', function () {
 //   return view('customer.dashboard_customer.profile');
 // });
-// Route::get('/indexcustomer', function () {
-//   return view('customer.dashboard_customer.index');
+// Route::get('/cobatransaksi', function () {
+//   return view('kasir.dashboard_kasir.cobatransaksi');
 // });
 
 Route::middleware('auth.customer')->group(function () {

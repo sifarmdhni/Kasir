@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\transaksi;
-use App\Models\customer;
-use App\Models\payment;
 use App\Models\kasir;
 use App\Models\produk;
+use App\Models\payment;
+use App\Models\customer;
+use App\Models\transaksi;
 use Illuminate\Http\Request;
+use App\Models\detailtransaksi;
 
 class TransaksiController extends Controller
 {
@@ -19,6 +20,13 @@ class TransaksiController extends Controller
             'data_transaksi' => Transaksi::all(),
         ];
         return view('kasir.dashboard_kasir.transaksi', $data);
+    }
+
+    public function CreateTransaksi(){
+        $data = [
+            'data_transaksi' => transaksi::with('customer')->get(),
+        ];
+        return view('kasir.dashboard_kasir.cobatransaksi', $data);
     }
     public function store(Request $request)
 {
@@ -34,7 +42,7 @@ class TransaksiController extends Controller
     ]);
 
     // Buat transaksi baru
-    $transaksi = new Transaksi();
+    $transaksi = new transaksi();
     $transaksi->customer_id = $request->customer_id;
     $transaksi->diskon = $request->diskon;
     $transaksi->total_harga = $request->total_harga;
@@ -43,7 +51,7 @@ class TransaksiController extends Controller
 
     // Simpan detail transaksi
     foreach ($request->details as $detail) {
-        $detailTransaksi = new DetailTransaksi();
+        $detailTransaksi = new detailtransaksi();
         $detailTransaksi->id_transaksi = $transaksi->id;
         $detailTransaksi->id_produk = $detail['id_produk'];
         $detailTransaksi->harga = $detail['harga'];
