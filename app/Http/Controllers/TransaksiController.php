@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\transaksi;
-use App\Models\customer;
-use App\Models\payment;
 use App\Models\kasir;
 use App\Models\produk;
+use App\Models\payment;
+use App\Models\customer;
+use App\Models\transaksi;
 use Illuminate\Http\Request;
+use App\Models\detailtransaksi;
 
 class TransaksiController extends Controller
 {
@@ -18,8 +19,49 @@ class TransaksiController extends Controller
             'title' => 'Data transaksi',
             'data_transaksi' => Transaksi::all(),
         ];
-        return view('kasir.transaksi.list', $data);
+        return view('kasir.dashboard_kasir.transaksi', $data);
     }
+
+    public function CreateTransaksi(){
+        $data = [
+            'data_transaksi' => transaksi::with('customer')->get(),
+        ];
+        return view('kasir.dashboard_kasir.cobatransaksi', $data);
+    }
+    public function store(Request $request)
+{
+    // Validasi data
+    $request->validate([
+        'customer_id' => 'required|integer',
+        'diskon' => 'required|numeric',
+        'total_harga' => 'required|numeric',
+        'id_kasir' => 'required|integer',
+        'details.*.id_produk' => 'required|integer',
+        'details.*.harga' => 'required|numeric',
+        'details.*.jumlah' => 'required|integer',
+    ]);
+
+    // Buat transaksi baru
+    $transaksi = new transaksi();
+    $transaksi->customer_id = $request->customer_id;
+    $transaksi->diskon = $request->diskon;
+    $transaksi->total_harga = $request->total_harga;
+    $transaksi->id_kasir = $request->id_kasir;
+    $transaksi->save();
+
+    // Simpan detail transaksi
+    foreach ($request->details as $detail) {
+        $detailTransaksi = new detailtransaksi();
+        $detailTransaksi->id_transaksi = $transaksi->id;
+        $detailTransaksi->id_produk = $detail['id_produk'];
+        $detailTransaksi->harga = $detail['harga'];
+        $detailTransaksi->jumlah = $detail['jumlah'];
+        $detailTransaksi->save();
+    }
+
+    return redirect()->route('transaksi.create')->with('success', 'Transaksi berhasil disimpan!');
+}
+
 
     // public function index()
     // {
@@ -36,6 +78,7 @@ class TransaksiController extends Controller
         ];
         return view('kasir.transaksi.list', $data);
     }
+
 
 
 

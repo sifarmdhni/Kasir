@@ -125,6 +125,12 @@
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Customer</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="/cobatransaksi" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Transaksi</span>
+                        </a>
+                    </li>
                     
                 </ul>
             </div>

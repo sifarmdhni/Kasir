@@ -18,7 +18,7 @@ class AuthenticateCustomer
     {
 
         if (!Auth::guard('customer')->check()) {
-            return redirect('/customer/login');  // Redirect jika belum login
+            return redirect('/authcustomer');  // Redirect jika belum login
         }
         return $next($request);
     }
