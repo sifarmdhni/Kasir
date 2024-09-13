@@ -115,7 +115,7 @@ Route::get('/transaksi', function () {
 Route::get('/cobatransaksi', [TransaksiController::class, 'CreateTransaksi'])->name('kasir.create');
 
 
-
+                                  
 Route::get('/authkasir', [AuthKasirController::class, 'index'])->name('kasir.auth.index');
 Route::post('/loginkasir', [AuthKasirController::class, 'login'])->name('kasir.login');
 Route::get('/logout', [AuthKasirController::class, 'logout'])->name('kasir.logout');

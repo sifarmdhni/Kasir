@@ -82,10 +82,8 @@
                     <div class="form-group">
                      <label>Pilihan Pembayaran</label>
                             <div>
-                          <form action="{{ route('payment.store') }}" method="POST" enctype="multipart/form-data">
-                          @csrf
+                              @csrf
                           <input type="file" name="image" accept="image/*" required>
-                         </form>
                          </div>
                          <div>
                         <center><i>BANK</i></center>
@@ -132,36 +130,57 @@
 
 <!-- Modal Edit User -->
 @foreach ($data_payment as $d)
+
 <div class="modal fade" id="modalEdit{{ $d->id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit</h5>
+                <h5 class="modal-title">Edit {{ $title }}</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <form method="POST" action="/user/update/{{ $d->id }}">
+            <form method="POST" action="/payment/update">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Nama Lengkap</label>
-                        <input type="text" value="{{ $d->nama_lengkap }}" class="form-control" name="name" placeholder="Nama Lengkap..." required>
+                        <label>Nama Pembayaran</label>
+                        <input type="text" class="form-control" name="name" placeholder="Silahkan Isi..." required>
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" value="{{ $d->email }}" class="form-control" name="email" placeholder="Email..." required>
+                     <label>Pilihan Pembayaran</label>
+                            <div>
+                          @csrf
+                          <input type="file" name="image" accept="image/*" required>
+                         </div>
+                         <div>
+                        <center><i>BANK</i></center>
+                         <center>
+
+                    <img src="foto/fotoPayment/bca.jpeg" alt="Foto"  width="25" height="25" style="margin: 10px;">
+                    <img src="foto/fotoPayment/bni.png" alt="Foto"  width="25" height="25" style="margin: 10px;">
+                    <img src="foto/fotoPayment/bri.png" alt="Foto"  width="25" height="25" style="margin: 10px;" border="2px">
+                    <img src="foto/fotoPayment/bjbb.png" alt="Foto"  width="25" height="25" style="margin: 10px;" border="2px">
+                    <img src="foto/fotoPayment/danamon.jpeg" alt="Foto"  width="25" height="25" style="margin: 10px;" border="2px">
+                    <img src="foto/fotoPayment/bsi.jpeg" alt="Foto"  width="25" height="20" style="margin: 10px;" border="2px">
+                    <img src="foto/fotoPayment/citi.jpeg" alt="Foto"  width="25" height="12" style="margin: 10px;" border="2px">
+                    </center>
                     </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" class="form-control" name="password" placeholder="Password...">
+                    <div>
+                        <center><i>E-Wallet</i></center>
+                         <center>
+                    <img src="foto/fotoPayment/anad.png" alt="Foto"  width="25" height="25" style="margin: 10px;">
+                    <img src="foto/fotoPayment/link.png" alt="Foto"  width="25" height="25" style="margin: 10px;">
+                    <img src="foto/fotoPayment/liv.jpg" alt="Foto"  width="25" height="10" style="margin: 10px;">
+                    <img src="foto/fotoPayment/spayy.webp" alt="Foto"  width="25" height="10" style="margin: 10px;">
+                    </center>
                     </div>
-                    <div class="form-group">
-                        <label>Role</label>
-                        <select class="form-control" name="role_id" required>
-                            <option <?php if($d['role_id']=="admin") echo "selected";?> value="admin">Admin</option>
-                            <option <?php if($d['role_id']=="kasir") echo "selected";?> value="kasir">Kasir</option>
-                            <option <?php if($d['role_id']=="customer") echo "selected";?> value="customer">Customer</option>
-                           
-                        </select>
+                    <div>
+                        <center><i>Debit</i></center>
+                         <center>
+                    <img src="foto/fotoPayment/visA.jpeg" alt="Foto"  width="25" height="18" style="margin: 10px;">
+                    <img src="foto/fotoPayment/gpn.jpeg" alt="Foto"  width="25" height="20" style="margin: 10px;">
+                    <img src="foto/fotoPayment/ae.png" alt="Foto"  width="35" height="25" style="margin: 10px;">
+                    </center>
+                    </div>
                     </div>
                 </div>
                 <div class="modal-footer">

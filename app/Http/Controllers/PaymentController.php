@@ -12,16 +12,17 @@ class PaymentController extends Controller
     {
         $data = [
             'title' => 'Silahkan Pilih Pembayaran',
-            'data_payment' => Payment::all(),
+            'nama_payment' => Payment::all(),
         ];
-        return view('admin.payment.list', $data);
+        return view('admin.dashboardadmin.payment', $data);
     }
     public function store(Request $request)
     {
         Payment::create([
             'nama_payment' => $request->nama_payment,
+            'gambar' => $request->gambar,
         ]);
-        return redirect('/payment')->with('success', 'Data Berhasil Di Ubah');
+        return redirect('/dashboardadmin')->with('success', 'Data Berhasil Di Ubah');
     }
     
     public function update(Request $request,$id)
@@ -31,7 +32,7 @@ class PaymentController extends Controller
         ->update([
             'nama_payment' => $request->nama_kategori,
         ]);
-        return redirect('/payment')->with('success', 'Data Berhasil Di Ubah');
+        return redirect('/dashboardadmin')->with('success', 'Data Berhasil Di Ubah');
     }
     
     
@@ -40,9 +41,9 @@ class PaymentController extends Controller
             $payment = Payment::find($id);
             if ($payment) {
                 $payment->delete();
-                return redirect('/payment')->with('success', 'Data berhasil dihapus');
+                return redirect('/dashboardadmin')->with('success', 'Data berhasil dihapus');
             } else {
-                return redirect('/payment')->with('error', 'User tidak ditemukan');
+                return redirect('/dashboardadmin')->with('error', 'User tidak ditemukan');
             }
         }
         public function bca()

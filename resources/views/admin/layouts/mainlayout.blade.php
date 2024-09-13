@@ -42,14 +42,8 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <div class="brand-logo">
-                <a href="index.html">
-                    <!-- <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="images/logo-compact.png" alt=""></span> -->
-                    <span class="brand-title">
-                        <img src="foto/ok.png" height="50px" width="150px" alt="foto">
-                    </span>
-                </a>
+            <div class="mb-3">
+            <img src="/foto/kasirrpl12.png" style="margin-left: -23px;  margin-top: -60px;" height="200" width="260" alt="foto">
             </div>
         </div>
         <!--**********************************
