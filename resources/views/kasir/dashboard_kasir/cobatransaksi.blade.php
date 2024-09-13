@@ -13,6 +13,7 @@
                     <label for="customer_id">Customer ID</label>
                     {{-- <input type="number" name="customer_id" id="customer_id" class="form-control" required> --}}
                     <select class="form-control" name="" id="">
+                    <option value="" hidden>-- customer --</option>
                         <option value="{{ $item->customer->id }}">{{ $item->customer->nama }}</option>
                     </select>
                 </div>
