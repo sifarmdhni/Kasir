@@ -43,9 +43,6 @@ Route::delete('/produk/destroy/{id}', [ProdukController::class, 'destroy']);
 Route::get('/setdiskon', [DiskonController::class, 'index']);
 Route::post('/setdiskon/update/{id}', [DiskonController::class, 'update']);
 
-//crud data transaksi
-Route::get('/transaksi', [TransaksiController::class, 'index']);
-Route::get('/transaksi/create', [TransaksiController::class, 'create']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
@@ -91,6 +88,16 @@ Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasi
 Route::resource('kasir', KasirController::class);
 Route::get('/authadmin', [AuthAdminController::class, 'index'])->name("admin.auth.index");
 Route::post('/loginadmin', [AuthAdminController::class, 'login'])->name("admin.login");
+Route::get('/register', [AuthAdminController::class, 'index2'])->name("admin.auth.index2");
+Route::post('/loginregister', [AuthAdminController::class, 'register'])->name("admin.register");
+
+//crud data transaksi
+Route::get('/transaksi', [TransaksiController::class, 'index']);
+Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
+Route::post('/transaksi/update/{id}', [TransaksiController::class, 'update']);
+Route::post('/transaksi/destroy/{id}', [TransaksiController::class, 'destroy']);
+
+
 //crud data user
 Route::get('/user', [UserController::class, 'index']);
 Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
@@ -102,7 +109,6 @@ Route::get('/payment', [PaymentController::class, 'index']);
 Route::post('/payment/store', [PaymentController::class, 'store'])->name('payment.store');
 Route::post('/payment/update/{id}', [PaymentController::class, 'update']);
 Route::post('/payment/destroy/{id}', [PaymentController::class, 'destroy']);
-Route::get('/bca', [PaymentController::class, 'bca']);
 
 
 //kasir
