@@ -22,12 +22,21 @@ class TransaksiController extends Controller
         return view('kasir.dashboard_kasir.transaksi', $data);
     }
 
-    public function CreateTransaksi(){
-        $data = [
-            'data_transaksi' => transaksi::with('customer')->get(),
-        ];
-        return view('kasir.dashboard_kasir.cobatransaksi', $data);
+    public function createTransaksi()
+    {
+        // Ambil semua data transaksi dan customer
+        $data_transaksi = Transaksi::all();  // Pastikan model Transaksi sudah ada
+        $data_customer = Customer::all();    // Pastikan model Customer sudah ada
+    
+        // Kirim data ke view
+        return view('kasir.dashboard_kasir.cobatransaksi', [
+            'data_transaksi' => $data_transaksi,
+            'data_customer' => $data_customer,
+        ]);
     }
+    
+    
+    
     public function store(Request $request)
 {
     // Validasi data
@@ -72,12 +81,12 @@ class TransaksiController extends Controller
     // }
 
     public function create()
-    {
-        $data = [
-            'title' => 'create data transaksi',
-        ];
-        return view('kasir.transaksi.list', $data);
-    }
+{
+    $data_transaksi = Transaction::with('customer')->get(); // Data transaksi
+    $data_customer = Customer::all(); // Semua customer
+
+    return view('kasir.dashboard_kasir.cobatransaksi', compact('data_transaksi', 'data_customer'));
+}
 
 
 

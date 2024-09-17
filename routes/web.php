@@ -44,8 +44,8 @@ Route::get('/setdiskon', [DiskonController::class, 'index']);
 Route::post('/setdiskon/update/{id}', [DiskonController::class, 'update']);
 
 //crud data transaksi
-Route::get('/transaksi', [TransaksiController::class, 'index']);
-Route::get('/transaksi/create', [TransaksiController::class, 'create']);
+// Route::get('/transaksi', [TransaksiController::class, 'index']);
+// Route::get('/transaksi/create', [TransaksiController::class, 'create']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
@@ -113,6 +113,7 @@ Route::get('/transaksi', function () {
   return  view('kasir.dashboard_kasir.transaksi');
 });
 Route::get('/cobatransaksi', [TransaksiController::class, 'CreateTransaksi'])->name('kasir.create');
+// Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
 
 
                                   

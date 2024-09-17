@@ -42,10 +42,23 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
+            <div class="brand-logo">
+                <a href="/indexkasir">
+                    <!-- <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
+                    <span class="logo-compact"><img src="images/logo-compact.png" alt=""></span> -->
+                    <div class="mb-3">
+                    <img src="/foto/kasirrpl12.png" style="margin-left: -40px;  margin-top: -80px;" height="200" width="260" alt="foto">
+                    </div>
+
+                </a>
+            </div>
+        </div>
+
+        <!-- <div class="nav-header">
             <div class="mb-3">
             <img src="/foto/kasirrpl12.png" style="margin-left: -23px;  margin-top: -60px;" height="200" width="260" alt="foto">
             </div>
-        </div>
+        </div> -->
         <!--**********************************
             Nav header end
         ***********************************-->
@@ -107,28 +120,24 @@
                 
                     <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Data Master</span>
+                            <i class="icon-grid menu-icon"></i><span class="nav-text">Data Master</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="/kategoriproduk">Data Kategori Produk</a></li>
                             <li><a href="/produk">Data Produk</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="/transaksi" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Transaksi</span>
-                        </a>
-                    </li>
+                  
                    
                     <li>
                         <a href="/customerkasir" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Customer</span>
+                            <i class="fa fa-users menu-icon"></i><span class="nav-text">Data Customer</span>
                         </a>
                     </li>
 
                     <li>
                         <a href="/cobatransaksi" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Transaksi</span>
+                            <i class="icon-graph  menu-icon"></i><span class="nav-text">Transaksi</span>
                         </a>
                     </li>
                     
