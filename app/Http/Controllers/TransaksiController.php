@@ -59,7 +59,7 @@ class TransaksiController extends Controller
         $detailTransaksi->save();
     }
 
-    return redirect()->route('transaksi.create')->with('success', 'Transaksi berhasil disimpan!');
+    return redirect()->route('transaksi.create')->with('success',  'Transaksi berhasil disimpan!');
 }
 
 

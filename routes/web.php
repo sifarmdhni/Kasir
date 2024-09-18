@@ -75,6 +75,7 @@ Route::post('/kasir/update/{id}', [KasirController::class, 'update']);
 Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
 
 //admin
+Route::middleware('auth.admin')->group(function () {
 Route::get('/d_admin', function () {
    return view('admin.dashboardadmin.d_admin');
 });
@@ -86,10 +87,19 @@ Route::get('/laporantransaksi', function () {
 });
 Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasir.poto');
 Route::resource('kasir', KasirController::class);
+//logout
+Route::post('/logout', [AuthAdminController::class, 'logout'])->name('logout');
+// Dashboard setelah login
+});
+
+
+//route login
 Route::get('/authadmin', [AuthAdminController::class, 'index'])->name("admin.auth.index");
-Route::post('/loginadmin', [AuthAdminController::class, 'login'])->name("admin.login");
+Route::post('/authadmin', [AuthAdminController::class, 'login'])->name("admin.login");
+//route register
 Route::get('/register', [AuthAdminController::class, 'index2'])->name("admin.auth.index2");
-Route::post('/loginregister', [AuthAdminController::class, 'register'])->name("admin.register");
+Route::post('/register', [AuthAdminController::class, 'register'])->name("admin.register");
+
 
 //crud data transaksi
 Route::get('/transaksi', [TransaksiController::class, 'index']);
@@ -121,7 +131,7 @@ Route::get('/transaksi', function () {
 Route::get('/cobatransaksi', [TransaksiController::class, 'CreateTransaksi'])->name('kasir.create');
 
 
-
+                                  
 Route::get('/authkasir', [AuthKasirController::class, 'index'])->name('kasir.auth.index');
 Route::post('/loginkasir', [AuthKasirController::class, 'login'])->name('kasir.login');
 Route::get('/logout', [AuthKasirController::class, 'logout'])->name('kasir.logout');

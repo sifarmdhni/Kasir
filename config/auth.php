@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Admin;
 use App\Models\customer;
 
 return [
@@ -46,6 +47,11 @@ return [
             'driver' => 'session',
             'provider' => 'customers',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
     ],
 
     /*
@@ -75,6 +81,11 @@ return [
         'driver' => 'eloquent',
         'model' => customer::class,  // Pastikan model Customer Anda disebut di sini
     ],
+        'admins' => [
+        'driver' => 'eloquent',
+        'model' => Admin::class,  // Pastikan model Customer Anda disebut di sini
+    ],
+
 
         // 'users' => [
         //     'driver' => 'database',

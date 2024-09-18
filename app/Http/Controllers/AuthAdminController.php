@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -13,62 +13,53 @@ class AuthAdminController extends Controller
         return view('admin.auth_admin.authadmin');
     }
     
-    public function index2(){
-        return view('admin.auth_admin.register');
-    }
-    
     public function login(Request $request)
     {
         $validatedData = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-    
-        $user = User::where('email', $validatedData['email'])->first();
-    
-        if (!$user || !Hash::check($validatedData['password'], $user->password)) {
-            return back()->withErrors(['email' => 'Email atau password salah.']);
+
+           // Menggunakan Auth guard 'customer'
+           if (Auth::guard('admin')->attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']])) {
+            // Jika login berhasil, arahkan ke halaman dashboard customer
+            return redirect()->intended('/d_admin');
         }
-    
-        // Mencoba untuk login dengan kredensial yang diberikan
-        if (Auth::attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']])) {
-            // Jika login berhasil, arahkan ke dashboard
-            return redirect()->intended(route('admin.auth.index'));
-        }
-    
-        return redirect()->to('/d_admin');
+
+        return redirect()->to('/authadmin');
     }
+
+    public function logout()
+    {
+        Auth::guard('admin')->logout();  // Logout dari guard 'customer'
+        return redirect('/authadmin');
+    }
+
+    public function index2(){
+        return view('admin.auth_admin.register');
+    }
+    
     
     public function register(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'role_id' => 'required',
-            'password' => 'required',
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
         ]);
-    
-        $user = User::where('email', $validatedData['email'])->first();
-    
-        if ($user) {
-            return back()->withErrors(['email' => 'Email sudah digunakan.']);
-        }
-    
+
         // Buat pengguna baru
-        $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'role_id' => $validatedData['role_id'],
-            'password' => Hash::make($validatedData['password']),
+        Admin::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password), // Hash password sebelum menyimpan
         ]);
-    
-        // Mencoba untuk login dengan kredensial yang diberikan
-        if (Auth::attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']])) {
-            // Jika login berhasil, arahkan ke dashboard
-            return redirect()->intended(route('admin.auth.index2'));
-        }
-    
-        return redirect()->to('/authadmin');
+
+        // Login otomatis setelah registrasi
+        Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+
+        // Redirect ke dashboard
+        return redirect('/d_admin');
     }
     
 }

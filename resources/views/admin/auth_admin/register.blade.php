@@ -52,26 +52,32 @@
                                 </a>
 
                                 <form class="mt-5 mb-5 login-input" method="POST"
-                                    action="{{ route('admin.register') }}">
-                                    @csrf
-                                    <div class="form-group">
-                                        <input type="name" class="form-control" placeholder="Name" name="name"
-                                            required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Email" name="email"
-                                            required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="role_id" class="form-control" placeholder="Role Id" name="role_id"
-                                            required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password"
-                                            name="password" required>
-                                    </div>
-                                    <button type="submit" class="btn login-form__btn submit w-100">Sign In</button>
-                                </form>
+                                action="{{ route('admin.register') }}" method="POST">
+    @csrf
+    <div class="form-group">
+    <input type="text" class="form-control" name="name" placeholder="Name">
+</div>
+<div class="form-group">
+    <input type="email" class="form-control" name="email" placeholder="Email">
+</div>
+<div class="form-group">
+    <input type="password" class="form-control" name="password" placeholder="Password">
+</div>
+<div class="form-group">
+    <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
+</div>
+    <button type="submit" class="btn login-form__btn submit w-100">Sign In</button>
+    </form>
+@if ($errors->any())
+    <div>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
                                 <center><p>Sudah Punya Akun? <a href="/authadmin">Click Sign In</a></p></center>
 
 

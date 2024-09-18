@@ -13,7 +13,7 @@
 
 </head>
 
-<body class="h-100">
+<body class="h-100" style="background-image: url('aasd.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     @if (Session::has('status'))
         <div class="alert alert-danger" role="alert">
             {{ Session::get('message') }}
@@ -47,7 +47,9 @@
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
                                 <a class="text-center" href="#">
-                                    <h4>Silahkan Login</h4>
+                                    <center>
+                                        <img src="foto//eweh.jpeg" alt="Foto"  width="200" height="100" style="margin: 10px;" >
+                                            </center>
                                 </a>
 
                                 <form class="mt-5 mb-5 login-input" method="POST"

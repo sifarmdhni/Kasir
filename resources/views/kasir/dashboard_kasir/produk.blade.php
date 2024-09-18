@@ -8,7 +8,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">{{ $title }}</a></li>
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ $title }}</a></li>
-            </ol>
+            </ol> 
         </div>
     </div>
 
@@ -26,7 +26,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="card-body">
+                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered zero-configuration">
                                 <thead>

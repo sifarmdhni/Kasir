@@ -51,20 +51,28 @@
                                     <h4>Silahkan Login</h4>
                                 </a>
 
-                                <form class="mt-5 mb-5 login-input" method="POST"
-                                    action="{{ route('admin.login') }}">
-                                    @csrf
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Email" name="email"
-                                            required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password"
-                                            name="password" required>
-                                    </div>
-                                    <button type="submit" class="btn login-form__btn submit w-100">Sign In</button>
-                                </form>
-                                <center><p>Belum Punya Akun? <a href="/register"> Click Sign Up</a></p></center>
+                                <form action="{{ route('admin.login') }}" method="POST">
+    @csrf
+        <div class="form-group">
+          <input type="email" class="form-control" name="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" name="password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn login-form__btn submit w-100">Sign In</button>
+        </form>
+@if ($errors->any())
+    <div>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+              <div>
+                <center><p>Belum Punya Akun? <a href="/register"> Click Sign Up</a></p></center>
+              </div>
 
 
                             </div>
