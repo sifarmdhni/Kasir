@@ -129,6 +129,7 @@ Route::get('/transaksi', function () {
   return  view('kasir.dashboard_kasir.transaksi');
 });
 Route::get('/cobatransaksi', [TransaksiController::class, 'CreateTransaksi'])->name('kasir.create');
+// Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
 
 
                                   

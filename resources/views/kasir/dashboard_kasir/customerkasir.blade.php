@@ -21,9 +21,9 @@
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">Data Customer</h4>
-                            <button type="button" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalCreate">
+                            <!-- <button type="button" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalCreate">
                                 <i class="fa fa-plus"></i> Tambah Data
-                            </button>
+                            </button> -->
                         </div>
                     </div>
                     <div class="card-body">
@@ -35,6 +35,7 @@
                                         <th>Nama</th>
                                         <th>No_telpon</th>
                                         <th>Email</th>
+                                     
                                         <th>Diskon</th>
                                         <th>Action</th>
                                     </tr>
@@ -49,6 +50,7 @@
                                         <td>{{ $row->nama }}</td>
                                         <td>{{ $row->no_telpon }}</td>
                                         <td>{{ $row->email }}</td>
+                           
                                         <td>{{ $row->diskon }} %</td>
                                         <td>
                                             <a href="#modalEdit{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-primary">
@@ -94,6 +96,7 @@
                         <label>Email</label>
                         <input type="email" class="form-control" name="email" placeholder="Email...." required>
                     </div>
+                  
                     <div class="form-group">
                         <label>Diskon</label>
                         <div class="input-group mb-3">
@@ -136,6 +139,7 @@
                         <label>Email</label>
                         <input type="text" class="form-control" name="email" value="{{ $d->email }}" placeholder="Email...." required>
                     </div>
+                   
                     
                     <div class="form-group">
                         <label>Diskon</label>
