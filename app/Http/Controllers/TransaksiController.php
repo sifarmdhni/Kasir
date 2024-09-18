@@ -12,7 +12,6 @@ use App\Models\detailtransaksi;
 
 class TransaksiController extends Controller
 {
-     
     public function index()
     {
         $data = [
@@ -24,127 +23,44 @@ class TransaksiController extends Controller
 
     public function createTransaksi()
     {
-        // Ambil semua data transaksi dan customer
-        $data_transaksi = Transaksi::all();  // Pastikan model Transaksi sudah ada
-        $data_customer = Customer::all();    // Pastikan model Customer sudah ada
+        $data_transaksi = Transaksi::all();
+        $data_customer = Customer::select('id', 'nama', 'diskon')->get();
     
-        // Kirim data ke view
         return view('kasir.dashboard_kasir.cobatransaksi', [
             'data_transaksi' => $data_transaksi,
             'data_customer' => $data_customer,
         ]);
     }
     
-    
-    
     public function store(Request $request)
-{
-    // Validasi data
-    $request->validate([
-        'customer_id' => 'required|integer',
-        'diskon' => 'required|numeric',
-        'total_harga' => 'required|numeric',
-        'id_kasir' => 'required|integer',
-        'details.*.id_produk' => 'required|integer',
-        'details.*.harga' => 'required|numeric',
-        'details.*.jumlah' => 'required|integer',
-    ]);
+    {
+        $request->validate([
+            'customer_id' => 'required|integer',
+            'diskon' => 'required|numeric',
+            'total_harga' => 'required|numeric',
+            'id_kasir' => 'required|integer',
+            'details' => 'required|array',
+            'details.*.id_produk' => 'required|integer',
+            'details.*.harga' => 'required|numeric',
+            'details.*.jumlah' => 'required|integer',
+        ]);
 
-    // Buat transaksi baru
-    $transaksi = new transaksi();
-    $transaksi->customer_id = $request->customer_id;
-    $transaksi->diskon = $request->diskon;
-    $transaksi->total_harga = $request->total_harga;
-    $transaksi->id_kasir = $request->id_kasir;
-    $transaksi->save();
+        $transaksi = new Transaksi();
+        $transaksi->customer_id = $request->customer_id;
+        $transaksi->diskon = $request->diskon;
+        $transaksi->total_harga = $request->total_harga;
+        $transaksi->id_kasir = $request->id_kasir;
+        $transaksi->save();
 
-    // Simpan detail transaksi
-    foreach ($request->details as $detail) {
-        $detailTransaksi = new detailtransaksi();
-        $detailTransaksi->id_transaksi = $transaksi->id;
-        $detailTransaksi->id_produk = $detail['id_produk'];
-        $detailTransaksi->harga = $detail['harga'];
-        $detailTransaksi->jumlah = $detail['jumlah'];
-        $detailTransaksi->save();
+        foreach ($request->details as $detail) {
+            $detailTransaksi = new DetailTransaksi();
+            $detailTransaksi->id_transaksi = $transaksi->id;
+            $detailTransaksi->id_produk = $detail['id_produk'];
+            $detailTransaksi->harga = $detail['harga'];
+            $detailTransaksi->jumlah = $detail['jumlah'];
+            $detailTransaksi->save();
+        }
+
+        return redirect()->route('transaksi.create')->with('success', 'Transaksi berhasil disimpan!');
     }
-
-    return redirect()->route('transaksi.create')->with('success',  'Transaksi berhasil disimpan!');
-}
-
-
-    // public function index()
-    // {
-
-    //     $data_produk = Transaksi::all();
-    //     $title = 'Daftar Transaksi';
-    //     return view('kasir.transaksi.list', compact('data_produk', 'title'));
-    // }
-
-    public function create()
-{
-    $data_transaksi = Transaction::with('customer')->get(); // Data transaksi
-    $data_customer = Customer::all(); // Semua customer
-
-    return view('kasir.dashboard_kasir.cobatransaksi', compact('data_transaksi', 'data_customer'));
-}
-
-
-
-
-
-
-
-    // public function index()
-    // {
-    //     $transaksi = Transaksi::with(['customer', 'payment', 'kasir'])->get();
-    //     return view('transaksi.index', compact('transaksi'));
-    // }
-
-    // public function create()
-    // {
-    //     $customer = Customer::all();
-    //     $payment = Payment::all();
-    //     $kasir = Kasir::all();
-    //     $produk = Product::all();
-    //     return view('transaksi.create', compact('customer', 'payment', 'kasir', 'produk'));
-    // }
-
-    // public function store(Request $request)
-    // {
-    //     $validated = $request->validate([
-    //         'payment_id' => 'required|exists:payment,id',
-    //         'customer_id' => 'required|exists:customer,id',
-    //         'customer' => 'required|string|max:255',
-    //         'diskon' => 'nullable|numeric|min:0|max:100',
-    //         'total_harga' => 'required|numeric|min:0',
-    //         'kasir_id' => 'required|exists:kasir,id',
-    //         'items' => 'required|array',
-    //         'items.*.produk_id' => 'required|exists:produk,id',
-    //         'items.*.jumlah' => 'required|integer|min:1',
-    //         'items.*.harga' => 'required|numeric|min:0'
-    //     ]);
-
-    //     $transaksi = Transaksi::create($validated);
-
-    //     foreach ($validated['items'] as $item) {
-    //         $transaksi->itemsCarts()->create($item);
-    //     }
-
-    //     return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil ditambahkan');
-    // }
-
-    // public function show(Transaksi $transaksi)
-    // {
-    //     $transaksi->load(['customer', 'payment', 'kasir', 'itemsCarts.produk']);
-    //     return view('transaksi.show', compact('transaksi'));
-    // }
-
-    // // Edit dan Update tidak disediakan karena biasanya transaksi tidak diedit setelah dibuat
-
-    // public function destroy(Transaksi $transaksi)
-    // {
-    //     $transaksi->itemsCarts()->delete();
-    //     $transaksi->delete();
-    //     return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil dihapus');
-    // }
 }
