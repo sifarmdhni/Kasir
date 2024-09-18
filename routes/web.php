@@ -16,7 +16,9 @@ use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\AuthKasirController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\AuthProdukController;
 use App\Http\Controllers\AuthCustomerController;
+use App\Http\Controllers\AuthTransaksiController;
 use App\Http\Controllers\CustomerKasirController;
 use App\Http\Controllers\KategoriProdukController;
 
@@ -99,6 +101,18 @@ Route::post('/authadmin', [AuthAdminController::class, 'login'])->name("admin.lo
 //route register
 Route::get('/register', [AuthAdminController::class, 'index2'])->name("admin.auth.index2");
 Route::post('/register', [AuthAdminController::class, 'register'])->name("admin.register");
+//laporan produk admin
+Route::get('/laporanproduk', [AuthProdukController::class, 'index']);
+Route::post('/laporanproduk/store', [AuthProdukController::class, 'store']);
+Route::post('/laporanproduk/update/{id}', [AuthProdukController::class, 'update']);
+Route::delete('/laporanproduk/destroy/{id}', [AuthProdukController::class, 'destroy']);
+
+Route::get('/laporantransaksi', [AuthTransaksiController::class, 'index']);
+Route::get('/laporantransaksi', [AuthTransaksiController::class, 'createTransaksi']);
+Route::post('/laporantransaksi/store', [AuthTransaksiController::class, 'store']);
+Route::post('/laporantransaksi/update/{id}', [AuthTransaksiController::class, 'update']);
+Route::delete('/laporantransaksi/destroy/{id}', [AuthTransaksiController::class, 'destroy']);
+
 
 
 //crud data transaksi

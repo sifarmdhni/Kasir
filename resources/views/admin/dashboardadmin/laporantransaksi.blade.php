@@ -18,7 +18,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Data Transaksi</h4>
+                                <h4 class="card-title">History Transaksi</h4>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
@@ -78,7 +78,7 @@
 </div>
 @endforeach
 
-@foreach ($data_user as $c)
+@foreach ($data_transaksi as $c)
 
 <div class="modal fade" id="modalHapus{{ $c->id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
