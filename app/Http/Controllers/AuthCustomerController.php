@@ -14,6 +14,7 @@ class AuthCustomerController extends Controller
         return view("customer.auth_customer.authcustomer");
     }
 
+    //tessssss
     public function login(Request $request)
     {
         $validatedData = $request->validate([

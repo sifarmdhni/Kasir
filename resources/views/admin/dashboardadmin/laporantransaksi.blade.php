@@ -32,10 +32,10 @@
                                             @php
                                             $no = 1;
                                             @endphp
-                                            @foreach ($data_kategori as $row)
+                                            @foreach ($data_transaksi as $row)
                                             <tr>
                                                 <td>{{ $no++ }}</td>
-                                                <td>{{ $row->nama_pembayaran}}</td>
+                                                <td>{{ $row->data_transaksi}}</td>
                                                 <td>
                                                     <a href ="#modalEdit{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i>Edit</a>
                                                     <a href ="#modalHapus{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i>Hapus</a>
@@ -52,7 +52,7 @@
               </div>
            </div>
 
-           @foreach ($data_kategori as $d)
+           @foreach ($data_transaksi as $d)
            <div class="modal fade" id="modalEdit{{$d->id}}"tabindex="1" role="dialog" aria-hidden="true">
             <div class="dialog">
              <div class="modal-content">
@@ -60,12 +60,12 @@
                   <h5 class="modal-title">edit{{$title}}</h5>
                   <button type="button"class="close"data-dismis="modal"><span>&times;</span></button>
                 </div>
-                <from method="POST" action="/kategoriproduk/update{{$d->id}}">
+                <from method="POST" action="/transaksi/update{{$d->id}}">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
                             <label>kategori produk</label>
-                            <input type="text"value="{{$d->nama_kategori}}"class=from-control"name="nama_kategori" placeholder="kategori produk..."required>
+                            <input type="text"value="{{$d->data_transaksi}}"class=from-control"name="nama_kategori" placeholder="kategori produk..."required>
                  </div>
 </div>
               <div class="modal-footer">
@@ -75,6 +75,32 @@
            </form>
          </div>
      </div>
+</div>
+@endforeach
+
+@foreach ($data_user as $c)
+
+<div class="modal fade" id="modalHapus{{ $c->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Hapus</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <form method="POST" action="/transaksi/destroy/{{ $c->id }}">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <h5>Apakah Anda Ingin Menghapus Data Ini?</h5>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>
+                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</button>
+                </div>
+            </form>
+        </div>
+    </div>   
 </div>
 @endforeach
 

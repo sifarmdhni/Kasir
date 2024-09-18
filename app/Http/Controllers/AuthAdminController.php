@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,22 +19,47 @@ class AuthAdminController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-    
-        $user = user::where('email', $validatedData['email'])->first();
-    
-        // if (!$customer || !Hash::check($validatedData['password'], $customer->password)) {
-        //     return back()->withErrors(['email' => 'Email atau password salah.']);
-        // }       
-            // Mencoba untuk login dengan kredensial yang diberikan
-     if (Auth::attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']])) {
-        // Jika login berhasil, arahkan ke dashboard
-        return redirect()->intended(route('admin.auth.index'));
+
+           // Menggunakan Auth guard 'customer'
+           if (Auth::guard('admin')->attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']])) {
+            // Jika login berhasil, arahkan ke halaman dashboard customer
+            return redirect()->intended('/d_admin');
+        }
+
+        return redirect()->to('/authadmin');
+    }
+
+    public function logout()
+    {
+        Auth::guard('admin')->logout();  // Logout dari guard 'customer'
+        return redirect('/authadmin');
+    }
+
+    public function index2(){
+        return view('admin.auth_admin.register');
     }
     
     
-        return redirect()->to('/d_admin');
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        // Buat pengguna baru
+        Admin::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password), // Hash password sebelum menyimpan
+        ]);
+
+        // Login otomatis setelah registrasi
+        Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+
+        // Redirect ke dashboard
+        return redirect('/d_admin');
     }
-
-}    
-
-
+    
+}

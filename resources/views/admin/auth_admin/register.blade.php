@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Login page</title>
+    <title>Register Page</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
@@ -48,19 +48,26 @@
                                     <center>
                                 <img src="foto/eweh.jpeg" alt="Foto"  width="200" height="100" style="margin: 10px;" >
                                     </center>
-                                    <h4>Silahkan Login</h4>
+                                    <h4>Silahkan Registrasi</h4>
                                 </a>
 
-                                <form action="{{ route('admin.login') }}" method="POST">
+                                <form class="mt-5 mb-5 login-input" method="POST"
+                                action="{{ route('admin.register') }}" method="POST">
     @csrf
-        <div class="form-group">
-          <input type="email" class="form-control" name="email" placeholder="Email">
-        </div>
-        <div class="form-group">
-          <input type="password" class="form-control" name="password" placeholder="Password">
-        </div>
-        <button type="submit" class="btn login-form__btn submit w-100">Sign In</button>
-        </form>
+    <div class="form-group">
+    <input type="text" class="form-control" name="name" placeholder="Name">
+</div>
+<div class="form-group">
+    <input type="email" class="form-control" name="email" placeholder="Email">
+</div>
+<div class="form-group">
+    <input type="password" class="form-control" name="password" placeholder="Password">
+</div>
+<div class="form-group">
+    <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
+</div>
+    <button type="submit" class="btn login-form__btn submit w-100">Sign In</button>
+    </form>
 @if ($errors->any())
     <div>
         <ul>
@@ -70,9 +77,8 @@
         </ul>
     </div>
 @endif
-              <div>
-                <center><p>Belum Punya Akun? <a href="/register"> Click Sign Up</a></p></center>
-              </div>
+
+                                <center><p>Sudah Punya Akun? <a href="/authadmin">Click Sign In</a></p></center>
 
 
                             </div>

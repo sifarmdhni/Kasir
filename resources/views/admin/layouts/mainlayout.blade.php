@@ -105,7 +105,7 @@
                     </li>
                     <li>
                         <a href="/user" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">User</span>
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Pengguna</span>
                         </a>
                     </li>
                     <li class="nav-label">UI Components</li>

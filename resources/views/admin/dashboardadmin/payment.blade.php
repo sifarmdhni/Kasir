@@ -39,12 +39,14 @@
                                     @php
                                        $no = 1;
                                     @endphp
-                                    @foreach ($data_payment as $row)
+                                    @foreach ($nama_payment as $row)
                                     
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $row->nama_pembayaran }}</td>
-                                        <td>{{ $row->gambar }}</td>
+                                        <td>
+                                        <img src="{{ asset('storage/' . $row->gambar) }}" alt="Gambar">
+                                        </td>
                                         <td>
                                             <a href ="#modalEdit{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i>Edit</a>
                                             <a href ="#modalHapus{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i>Hapus</a>
@@ -77,13 +79,13 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Nama Pembayaran</label>
-                        <input type="text" class="form-control" name="name" placeholder="Silahkan Isi..." required>
+                        <input type="text" class="form-control" name="nama_pembayaran" placeholder="Silahkan Isi..." required>
                     </div>
                     <div class="form-group">
                      <label>Pilihan Pembayaran</label>
                             <div>
                               @csrf
-                          <input type="file" name="image" accept="image/*" required>
+                          <input type="file" name="gambar" required>
                          </div>
                          <div>
                         <center><i>BANK</i></center>
@@ -129,7 +131,7 @@
 
 
 <!-- Modal Edit User -->
-@foreach ($data_payment as $d)
+@foreach ($nama_payment as $d)
 
 <div class="modal fade" id="modalEdit{{ $d->id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
@@ -138,7 +140,7 @@
                 <h5 class="modal-title">Edit {{ $title }}</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <form method="POST" action="/payment/update">
+            <form method="POST" action="/payment/update/{{ $d->id }}">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -194,7 +196,7 @@
 @endforeach
 
 <!-- Modal Hapus User -->
-@foreach ($data_payment as $c)
+@foreach ($nama_payment as $c)
 
 <div class="modal fade" id="modalHapus{{ $c->id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
@@ -203,7 +205,7 @@
                 <h5 class="modal-title">Hapus</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <form method="POST" action="/user/destroy/{{ $c->id }}">
+            <form method="POST" action="/payment/destroy/{{ $c->id }}">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
