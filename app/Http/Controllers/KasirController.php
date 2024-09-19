@@ -13,11 +13,10 @@ class KasirController extends Controller
 {
     public function index()
     {
-        $data = [
-            'title' => 'Data Kasir',
-            'data_kasir' => Kasir::all(),
-        ];
-        return view('admin.kasir.list', $data);
+        $data = array(
+            'title' => 'Dashboard page',
+        );
+        return view('dashboard', $data);
     }
 
     public function store(Request $request)

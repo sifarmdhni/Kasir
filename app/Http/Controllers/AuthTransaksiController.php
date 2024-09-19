@@ -18,7 +18,7 @@ class AuthTransaksiController extends Controller
         $data = [
             'title' => 'Data transaksi',
             'data_transaksi' => Transaksi::all(),
-        ];
+         ];
         return view('admin.dashboardadmin .laporantransaksi', $data);
     }
 

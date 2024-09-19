@@ -136,6 +136,7 @@ Route::post('/payment/destroy/{id}', [PaymentController::class, 'destroy']);
 
 
 //kasir
+Route::middleware('auth.kasir')->group(function () {
 Route::get('/indexkasir', function () {
   return  view('kasir.dashboard_kasir..dashboard');
 });
@@ -146,11 +147,6 @@ Route::get('/cobatransaksi', [TransaksiController::class, 'CreateTransaksi'])->n
 Route::get('/cobatransaksi/{id}', [TransaksiController::class, 'getCustomerDiscount']);
 // Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
 
-
-                                  
-Route::get('/authkasir', [AuthKasirController::class, 'index'])->name('kasir.auth.index');
-Route::post('/loginkasir', [AuthKasirController::class, 'login'])->name('kasir.login');
-Route::get('/logout', [AuthKasirController::class, 'logout'])->name('kasir.logout');
 
 //crud data kategoriproduk
 Route::get('/kategoriproduk', [KategoriProdukController::class, 'index']);
@@ -167,8 +163,12 @@ Route::get('/customerkasir', [CustomerKasirController::class, 'index']);
 Route::post('/customerkasir/store', [CustomerKasirController::class, 'store']);
 Route::post('/customerkasir/update/{id}', [CustomerKasirController::class, 'update']);
 Route::delete('/customerkasir/destroy/{id}', [CustomerKasirController::class, 'destroy']);
+//logout
+Route::get('/logout', [AuthKasirController::class, 'logout'])->name('kasir.logout');
+});
 
-
+Route::get('/authkasir', [AuthKasirController::class, 'index'])->name('kasir.auth.index');
+Route::post('/loginkasir', [AuthKasirController::class, 'login'])->name('kasir.login');
 
 
 //customer

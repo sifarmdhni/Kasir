@@ -89,9 +89,7 @@
                                     <ul>
                                         <li>
                                             <a href="profile"><i class="icon-user"></i> <span>Profile</span></a>
-                                        </li>
-                                        <hr class="my-2">
-                                        <li><a href="/logout"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        </li>    
                                     </ul>
                                 </div>
                             </div>
@@ -140,7 +138,9 @@
                             <i class="icon-graph  menu-icon"></i><span class="nav-text">Transaksi</span>
                         </a>
                     </li>
-                    
+ 
+                     <li><a href="/logout"><i class="icon-key"></i> <span>Logout</span></a></li>
+
                 </ul>
             </div>
         </div>

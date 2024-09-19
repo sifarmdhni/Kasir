@@ -21,29 +21,20 @@ class AuthKasirController extends Controller
             'password' => 'required',
         ]);
     
-        $kasir = kasir::where('email', $validatedData['email'])->first();
-    
-        if (!$kasir || !Hash::check($validatedData['password'], $kasir->password)) {
-            return back()->withErrors(['email' => 'Email atau password salah.']);
+      // Menggunakan Auth guard 'customer'
+      if (Auth::guard('kasir')->attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']])) {
+        // Jika login berhasil, arahkan ke halaman dashboard customer
+        return redirect()->intended('/indexkasir');
+    }
 
-              
-            // Mencoba untuk login dengan kredensial yang diberikan
-    //  if (Auth::attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']])) {
-    
-        // Jika login berhasil, arahkan ke dashboard
-        return redirect()->intended(route('kasir.auth.index'));
-        }
-    
     
     
     
         return redirect()->to('/indexkasir');
     }
-    public function logout(Request $request)
+    public function logout()
     {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        Auth::guard('kasir')->logout();  // Logout dari guard 'customer'
         return redirect('/authkasir');
     }
 
