@@ -23,3 +23,9 @@ class payment extends Model
         return $this->hasMany(transaksi::class);
     }
 }
+
+// class Transaksi extends Model {
+//     public function payment(){
+//         return $this->belongsTo(Payment::class);
+//     }
+// }

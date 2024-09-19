@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use App\Models\detailtransaksi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -60,6 +61,17 @@ class AuthAdminController extends Controller
 
         // Redirect ke dashboard
         return redirect('/d_admin');
+    }
+    public function laporantransaksi(Request $request)
+    {
+        $detailTransaksi = detailtransaksi::with(['transaksi.kasir', 'transaksi.customer', 'produk'])
+        ->get();
+
+    // Return the data to the view
+    return view('admin.dashboardadmin.laporantransaksi', [
+        'title' => 'Detail Transaksi',
+        'detailTransaksi' => $detailTransaksi
+    ]);
     }
     
 }

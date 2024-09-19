@@ -81,18 +81,16 @@ Route::middleware('auth.admin')->group(function () {
 Route::get('/d_admin', function () {
    return view('admin.dashboardadmin.d_admin');
 });
-Route::get('/laporanproduk', function () {
-  return view('admin.dashboardadmin.laporanproduk');
-});
-Route::get('/laporantransaksi', function () {
-  return view('admin.dashboardadmin.laporantransaksi');
-});
 Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasir.poto');
 Route::resource('kasir', KasirController::class);
 //logout
 Route::post('/logout', [AuthAdminController::class, 'logout'])->name('logout');
 // Dashboard setelah login
 });
+Route::get('/laporantransaksi', [AuthAdminController::class, 'laporantransaksi']);
+Route::post('/laporantransaksi/store', [AuthAdminController::class, 'createTransaksi']);
+Route::post('/laporantransaksi/update/{id}', [AuthAdminController::class, 'update']);
+Route::delete('/laporantransaksi/destroy/{id}', [AuthAdminController::class, 'destroy']);
 
 
 //route login
@@ -102,16 +100,10 @@ Route::post('/authadmin', [AuthAdminController::class, 'login'])->name("admin.lo
 Route::get('/register', [AuthAdminController::class, 'index2'])->name("admin.auth.index2");
 Route::post('/register', [AuthAdminController::class, 'register'])->name("admin.register");
 //laporan produk admin
-Route::get('/laporanproduk', [AuthProdukController::class, 'index']);
-Route::post('/laporanproduk/store', [AuthProdukController::class, 'store']);
-Route::post('/laporanproduk/update/{id}', [AuthProdukController::class, 'update']);
-Route::delete('/laporanproduk/destroy/{id}', [AuthProdukController::class, 'destroy']);
-
-Route::get('/laporantransaksi', [AuthTransaksiController::class, 'index']);
-Route::get('/laporantransaksi', [AuthTransaksiController::class, 'createTransaksi']);
-Route::post('/laporantransaksi/store', [AuthTransaksiController::class, 'store']);
-Route::post('/laporantransaksi/update/{id}', [AuthTransaksiController::class, 'update']);
-Route::delete('/laporantransaksi/destroy/{id}', [AuthTransaksiController::class, 'destroy']);
+Route::get('/laporantransaksi', [AuthAdminController::class, 'laporantransaksi']);
+Route::post('/laporantransaksi/store', [AuthAdminController::class, 'store'])->name('transaksi.store');
+Route::post('/laporantransaksi/update/{id}', [AuthAdminController::class, 'update']);
+Route::post('/laporantransaksi/destroy/{id}', [AuthAdminController::class, 'destroy']);
 
 
 
