@@ -81,18 +81,16 @@ Route::middleware('auth.admin')->group(function () {
 Route::get('/d_admin', function () {
    return view('admin.dashboardadmin.d_admin');
 });
-Route::get('/laporanproduk', function () {
-  return view('admin.dashboardadmin.laporanproduk');
-});
-Route::get('/laporantransaksi', function () {
-  return view('admin.dashboardadmin.laporantransaksi');
-});
 Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasir.poto');
 Route::resource('kasir', KasirController::class);
 //logout
 Route::post('/logout', [AuthAdminController::class, 'logout'])->name('logout');
 // Dashboard setelah login
 });
+Route::get('/laporantransaksi', [AuthAdminController::class, 'laporantransaksi']);
+Route::post('/laporantransaksi/store', [AuthAdminController::class, 'createTransaksi']);
+Route::post('/laporantransaksi/update/{id}', [AuthAdminController::class, 'update']);
+Route::delete('/laporantransaksi/destroy/{id}', [AuthAdminController::class, 'destroy']);
 
 
 //route login
@@ -102,16 +100,10 @@ Route::post('/authadmin', [AuthAdminController::class, 'login'])->name("admin.lo
 Route::get('/register', [AuthAdminController::class, 'index2'])->name("admin.auth.index2");
 Route::post('/register', [AuthAdminController::class, 'register'])->name("admin.register");
 //laporan produk admin
-Route::get('/laporanproduk', [AuthProdukController::class, 'index']);
-Route::post('/laporanproduk/store', [AuthProdukController::class, 'store']);
-Route::post('/laporanproduk/update/{id}', [AuthProdukController::class, 'update']);
-Route::delete('/laporanproduk/destroy/{id}', [AuthProdukController::class, 'destroy']);
-
-Route::get('/laporantransaksi', [AuthTransaksiController::class, 'index']);
-Route::get('/laporantransaksi', [AuthTransaksiController::class, 'createTransaksi']);
-Route::post('/laporantransaksi/store', [AuthTransaksiController::class, 'store']);
-Route::post('/laporantransaksi/update/{id}', [AuthTransaksiController::class, 'update']);
-Route::delete('/laporantransaksi/destroy/{id}', [AuthTransaksiController::class, 'destroy']);
+Route::get('/laporantransaksi', [AuthAdminController::class, 'laporantransaksi']);
+Route::post('/laporantransaksi/store', [AuthAdminController::class, 'store'])->name('transaksi.store');
+Route::post('/laporantransaksi/update/{id}', [AuthAdminController::class, 'update']);
+Route::post('/laporantransaksi/destroy/{id}', [AuthAdminController::class, 'destroy']);
 
 
 
@@ -136,6 +128,7 @@ Route::post('/payment/destroy/{id}', [PaymentController::class, 'destroy']);
 
 
 //kasir
+Route::middleware('auth.kasir')->group(function () {
 Route::get('/indexkasir', function () {
   return  view('kasir.dashboard_kasir..dashboard');
 });
@@ -146,11 +139,6 @@ Route::get('/cobatransaksi', [TransaksiController::class, 'CreateTransaksi'])->n
 Route::get('/cobatransaksi/{id}', [TransaksiController::class, 'getCustomerDiscount']);
 // Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
 
-
-                                  
-Route::get('/authkasir', [AuthKasirController::class, 'index'])->name('kasir.auth.index');
-Route::post('/loginkasir', [AuthKasirController::class, 'login'])->name('kasir.login');
-Route::get('/logout', [AuthKasirController::class, 'logout'])->name('kasir.logout');
 
 //crud data kategoriproduk
 Route::get('/kategoriproduk', [KategoriProdukController::class, 'index']);
@@ -167,8 +155,12 @@ Route::get('/customerkasir', [CustomerKasirController::class, 'index']);
 Route::post('/customerkasir/store', [CustomerKasirController::class, 'store']);
 Route::post('/customerkasir/update/{id}', [CustomerKasirController::class, 'update']);
 Route::delete('/customerkasir/destroy/{id}', [CustomerKasirController::class, 'destroy']);
+//logout
+Route::get('/logout', [AuthKasirController::class, 'logout'])->name('kasir.logout');
+});
 
-
+Route::get('/authkasir', [AuthKasirController::class, 'index'])->name('kasir.auth.index');
+Route::post('/loginkasir', [AuthKasirController::class, 'login'])->name('kasir.login');
 
 
 //customer

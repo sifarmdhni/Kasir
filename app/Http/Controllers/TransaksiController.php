@@ -9,6 +9,7 @@ use App\Models\customer;
 use App\Models\transaksi;
 use Illuminate\Http\Request;
 use App\Models\detailtransaksi;
+use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
 {
@@ -25,10 +26,15 @@ class TransaksiController extends Controller
     {
         $data_transaksi = Transaksi::all();
         $data_customer = Customer::select('id', 'nama', 'diskon')->get();
+        $data_kasir =Auth::guard('kasir')->user();
+        
+
+
     
         return view('kasir.dashboard_kasir.cobatransaksi', [
             'data_transaksi' => $data_transaksi,
             'data_customer' => $data_customer,
+            'data_kasir' => $data_kasir,
         ]);
     }
     

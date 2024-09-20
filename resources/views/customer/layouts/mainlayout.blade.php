@@ -44,15 +44,17 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="index.html">
-                    <b class="logo-abbr"><img src="/assets/images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="/assets/images/logo-compact.png" alt=""></span>
-                    <span class="brand-title">
-                        <img src="/images/logo-text.png" alt="">
-                    </span>
-                </a>
+                
+                    <!-- <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
+                    <span class="logo-compact"><img src="images/logo-compact.png" alt=""></span> -->
+                    <div class="mb-3">
+                    <img src="/foto/kasirrpl12.png" style="margin-left: -25px;  margin-top: -60px;" height="200" width="260" alt="foto">
+                    </div>
+
+                
             </div>
         </div>
+
         <!--**********************************
             Nav header end
         ***********************************-->
@@ -75,20 +77,9 @@
                     <ul class="clearfix">
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative" data-toggle="dropdown">
-                                <span class="activity active"></span>
-                                <img src="public/assets/images/user/1.png" height="40" width="40" alt="">
+                                
                             </div>
-                            <div class="drop-down dropdown-profile   dropdown-menu">
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li>
-                                            <a href="profile"><i class="icon-user"></i> <span>Profile</span></a>
-                                        </li>
-                                        <hr class="my-2">
-                                        <li><a href="/logout"><i class="icon-key"></i> <span>Logout</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            
                         </li>
                     </ul>
                 </div>

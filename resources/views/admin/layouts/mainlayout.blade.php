@@ -78,7 +78,6 @@
                                             <a href="profile"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>
                                         <hr class="my-2">
-                                        <li><a href="/logout"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -105,7 +104,7 @@
                     </li>
                     <li>
                         <a href="/user" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Pengguna</span>
+                            <i class="icon-grid menu-icon"></i><span class="nav-text">User</span>
                         </a>
                     </li>
                     <li class="nav-label">UI Components</li>
@@ -114,16 +113,16 @@
                             <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Laporan</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="/laporantransaksi">Transaksi</a></li>
-                            <li><a href="/laporanproduk">Produk</a></li>
+                            <li><a href="/laporantransaksi">History Transaksi</a></li>
+                            <li><a href="/laporanproduk">History Produk</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="/payment" aria-expanded="false">
-                            <i class="icon-speedometer   menu-icon"></i><span class="nav-text">Payment</span>
+                            <i class="icon-envelope menu-icon"></i><span class="nav-text">Payment</span>
                         </a>
                     </li>
-                   
+                    <li><a href="/logout"><i class="icon-key"></i> <span>Logout</span></a></li>
                 </ul>
             </div>
         </div>

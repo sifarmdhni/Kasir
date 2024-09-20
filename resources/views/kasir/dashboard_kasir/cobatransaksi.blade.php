@@ -41,8 +41,13 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="id_kasir">ID Kasir</label>
-                                    <input type="number" name="id_kasir" id="id_kasir" class="form-control" required>
+                                    <label for="id_kasir">Kasir</label>
+                                    <select class="form-control" name="id_kasir" id="id_kasir" required>
+                                        <option value="" hidden>-- Pilih kasir --</option>
+                                        <!-- {{ $data_kasir->nama_kasir }} -->
+                                            <option value="{{ $data_kasir->id }}">{{ $data_kasir->name_kasir }}</option>
+                                       
+                                    </select>
                                 </div>
 
                                 <!-- Input Detail Transaksi -->

@@ -101,25 +101,38 @@ class CustomerController extends Controller
       // Update profile
       public function updateProfile(Request $request)
       {
-  
-          // Get the currently authenticated customer
-          $id = $request->id;  // Or whatever the ID field is in your form/request
+          // Get the currently authenticated customer by ID
+          $id = $request->id;
           $customer = Customer::find($id);
-          $customer = Customer::where('email', $request->email)->first();
-  
+      
+          // Cek apakah customer ditemukan
+          if (!$customer) {
+              return redirect()->back()->with('error', 'Customer not found.');
+          }
+      
+          // Pastikan customer dengan email yang sama tidak diambil dari query lain
+          $existingCustomer = Customer::where('email', $request->email)
+              ->where('id', '!=', $id) // Mengecek apakah email sudah digunakan oleh customer lain
+              ->first();
+      
+          if ($existingCustomer) {
+              return redirect()->back()->with('error', 'Email sudah digunakan oleh customer lain.');
+          }
+      
           // Update customer data
           $customer->nama = $request->input('nama');
           $customer->email = $request->input('email');
-  
+      
           // Check if the password is being changed
           if ($request->input('password')) {
               $customer->password = Hash::make($request->input('password'));
           }
-  
+      
           // Save the changes
           $customer->save();
-  
+      
           // Redirect with a success message
           return redirect()->back()->with('success', 'Profile updated successfully.');
       }
+      
 }

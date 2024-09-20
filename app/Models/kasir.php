@@ -4,9 +4,10 @@ namespace App\Models;
 
 use App\Models\kasir;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class kasir extends Model
+class kasir extends Authenticatable
 {
     use HasFactory;
 
