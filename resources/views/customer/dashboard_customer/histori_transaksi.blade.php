@@ -1,6 +1,7 @@
 @extends('customer.layouts.mainlayout')
 
 @section('content')
+<body class="h-100" style="background-image: url('aasd.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <div class="content-body">
 
         <div class="row page-titles mx-0">
@@ -191,6 +192,7 @@
         </div>
     </div>
 </div>
+</body>
 
 
 @endsection

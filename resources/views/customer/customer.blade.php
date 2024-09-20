@@ -8,7 +8,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Customer</a></li>
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
-            </ol>
+            </ol> 
         </div>
     </div>
 
