@@ -34,7 +34,7 @@ class AuthKasirController extends Controller
     }
     public function logout()
     {
-        Auth::guard('kasir')->logout();  // Logout dari guard 'customer'
+        Auth::guard('kasir')->logout();  // Logout dari guard ''
         return redirect('/authkasir');
     }
 

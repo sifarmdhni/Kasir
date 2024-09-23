@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 use App\Models\detailtransaksi;
 use Illuminate\Support\Facades\Auth;
@@ -30,12 +31,6 @@ class AuthAdminController extends Controller
         return redirect()->to('/authadmin');
     }
 
-    public function logout()
-    {
-        Auth::guard('admin')->logout();  // Logout dari guard 'customer'
-        return redirect('/authadmin');
-    }
-
     public function index2(){
         return view('admin.auth_admin.register');
     }
@@ -60,11 +55,11 @@ class AuthAdminController extends Controller
         Auth::attempt(['email' => $request->email, 'password' => $request->password]);
 
         // Redirect ke dashboard
-        return redirect('/d_admin');
+        return redirect('/authadmin');
     }
     public function laporantransaksi(Request $request)
     {
-        $detailTransaksi = detailtransaksi::with(['transaksi.kasir', 'transaksi.customer', 'produk'])
+        $detailTransaksi = detailtransaksi::with(['kasir', 'customer', 'produk'])
         ->get();
 
     // Return the data to the view
@@ -73,5 +68,22 @@ class AuthAdminController extends Controller
         'detailTransaksi' => $detailTransaksi
     ]);
     }
+    public function laporanproduk(Request $request)
+    {
+        $produk = Produk::with([])
+        ->get();
+
+    // Return the data to the view
+    return view('admin.dashboardadmin.laporanproduk', [
+        'title' => 'Laporan Produk',
+        'produk' => $produk
+    ]);
+    }  
+    public function logout()
+    {
+        Auth::guard('admin')->logout();  // Logout dari guard 'customer'
+        return redirect('/authadmin');
+    }
+     
     
 }
