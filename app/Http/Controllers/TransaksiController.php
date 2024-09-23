@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\kasir;
-use App\Models\produk;
-use App\Models\payment;
-use App\Models\customer;
-use App\Models\transaksi;
+use App\Models\Kasir;
+use App\Models\Produk;
+use App\Models\Payment;
+use App\Models\Customer;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
-use App\Models\detailtransaksi;
+use App\Models\DetailTransaksi;
 use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
@@ -26,21 +26,23 @@ class TransaksiController extends Controller
     {
         $data_transaksi = Transaksi::all();
         $data_customer = Customer::select('id', 'nama', 'diskon')->get();
-        $data_kasir =Auth::guard('kasir')->user();
-        
+        $data_kasir = Auth::guard('kasir')->user();
+        $data_payment = Payment::select('id', 'nama_pembayaran')->get();
+        $data_produk = Produk::select('id', 'nama_produk', 'harga','stok')->get();
 
-
-    
         return view('kasir.dashboard_kasir.cobatransaksi', [
             'data_transaksi' => $data_transaksi,
+            'data_payment' => $data_payment,
             'data_customer' => $data_customer,
             'data_kasir' => $data_kasir,
+            'data_produk' => $data_produk,
         ]);
     }
-    
+
     public function store(Request $request)
     {
         $request->validate([
+            'id_payment' => 'required|integer',
             'customer_id' => 'required|integer',
             'diskon' => 'required|numeric',
             'total_harga' => 'required|numeric',
@@ -52,6 +54,7 @@ class TransaksiController extends Controller
         ]);
 
         $transaksi = new Transaksi();
+        $transaksi->id_payment = $request->id_payment;
         $transaksi->customer_id = $request->customer_id;
         $transaksi->diskon = $request->diskon;
         $transaksi->total_harga = $request->total_harga;
@@ -68,5 +71,11 @@ class TransaksiController extends Controller
         }
 
         return redirect()->route('transaksi.create')->with('success', 'Transaksi berhasil disimpan!');
+    }
+
+    public function getProductPrice($id)
+    {
+        $product = Produk::findOrFail($id);
+        return response()->json(['harga' => $product->harga]);
     }
 }

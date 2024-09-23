@@ -12,7 +12,7 @@ class PaymentController extends Controller
     {
         $data = [
             'title' => 'Silahkan Pilih Pembayaran',
-            'nama_payment' => Payment::all(),
+            'data_payment' => Payment::all(),
         ];
         return view('admin.dashboardadmin.payment', $data);
     }

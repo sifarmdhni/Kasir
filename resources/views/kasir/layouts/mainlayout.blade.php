@@ -138,8 +138,15 @@
                             <i class="icon-graph  menu-icon"></i><span class="nav-text">Transaksi</span>
                         </a>
                     </li>
- 
-                     <li><a href="/logout"><i class="icon-key"></i> <span>Logout</span></a></li>
+                    <li>
+                        <a href="{{ route('kasir.logout') }}" aria-expanded="false" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="icon-key menu-icon"></i><span class="nav-text">Logout</span>
+                        </a>
+                    </li>
+                    
+                    <form id="logout-form" action="{{ route('kasir.logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
 
                 </ul>
             </div>

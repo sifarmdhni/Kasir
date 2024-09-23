@@ -156,7 +156,7 @@ Route::post('/customerkasir/store', [CustomerKasirController::class, 'store']);
 Route::post('/customerkasir/update/{id}', [CustomerKasirController::class, 'update']);
 Route::delete('/customerkasir/destroy/{id}', [CustomerKasirController::class, 'destroy']);
 //logout
-Route::get('/logout', [AuthKasirController::class, 'logout'])->name('kasir.logout');
+Route::post('/kasir/logout', [AuthKasirController::class, 'logout'])->name('kasir.logout');
 });
 
 Route::get('/authkasir', [AuthKasirController::class, 'index'])->name('kasir.auth.index');
