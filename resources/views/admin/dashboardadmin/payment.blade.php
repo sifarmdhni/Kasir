@@ -39,7 +39,7 @@
                                     @php
                                        $no = 1;
                                     @endphp
-                                    @foreach ($nama_payment as $row)
+                                    @foreach ($data_payment as $row)
                                     
                                     <tr>
                                         <td>{{ $no++ }}</td>
@@ -131,7 +131,7 @@
 
 
 <!-- Modal Edit User -->
-@foreach ($nama_payment as $d)
+@foreach ($data_payment as $d)
 
 <div class="modal fade" id="modalEdit{{ $d->id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
@@ -196,7 +196,7 @@
 @endforeach
 
 <!-- Modal Hapus User -->
-@foreach ($nama_payment as $c)
+@foreach ($data_payment as $c)
 
 <div class="modal fade" id="modalHapus{{ $c->id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">

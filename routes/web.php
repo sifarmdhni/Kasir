@@ -87,8 +87,6 @@ Route::resource('kasir', KasirController::class);
 // Route::post('/logout', [AuthAdminController::class, 'logout'])->name('logout');
 // Dashboard setelah login
 //route register
-Route::get('/register', [AuthAdminController::class, 'index2'])->name("admin.auth.index2");
-Route::post('/register', [AuthAdminController::class, 'register'])->name("admin.register");
 //laporan produk admin
 Route::get('/laporantransaksi', [AuthAdminController::class, 'laporantransaksi']);
 Route::post('/laporantransaksi/store', [AuthAdminController::class, 'store'])->name('transaksi.store');
@@ -130,8 +128,9 @@ Route::post('/laporantransaksi/store', [AuthAdminController::class, 'createTrans
 Route::post('/laporantransaksi/update/{id}', [AuthAdminController::class, 'update']);
 Route::delete('/laporantransaksi/destroy/{id}', [AuthAdminController::class, 'destroy']);
 });
-
-
+//register
+Route::get('/register', [AuthAdminController::class, 'index2'])->name("admin.auth.index2");
+Route::post('/register', [AuthAdminController::class, 'register'])->name("admin.register");
 //route login
 Route::get('/authadmin', [AuthAdminController::class, 'index'])->name("admin.auth.index");
 Route::post('/authadmin', [AuthAdminController::class, 'login'])->name("admin.login");
