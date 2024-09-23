@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- <body class="h-100" style="background-image: url('aasd.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;"> --}}
+<body class="h-100" style="background-image: url('aasd.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <div class="content-body">
 
         <div class="row page-titles mx-0">
@@ -22,7 +22,7 @@
                         <div class="card-body">
                             <center>
                                 <h4 class="card-title">Halo {{ $customer->nama }}</h4>
-                                <h4>Selamat Datang Di Customer</h4>
+                                <h4>Selamat Datang Di Customor</h4>
                                 <h4>Kami Akan Melayani Anda</h4> 
                             </center>
                         </div>
