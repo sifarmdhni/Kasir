@@ -44,12 +44,14 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                
+                <a href="/indexcustomer">
                     <!-- <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
                     <span class="logo-compact"><img src="images/logo-compact.png" alt=""></span> -->
                     <div class="mb-3">
-                    <img src="/foto/kasirrpl12.png" style="margin-left: -25px;  margin-top: -60px;" height="200" width="260" alt="foto">
+                    <img src="/foto/kasirrpl12.png" style="margin-left: -40px;  margin-top: -80px;" height="200" width="260" alt="foto">
                     </div>
+
+                </a>
 
                 
             </div>
@@ -110,13 +112,13 @@
 
                     <li>
                         <a href="/profilecustomer" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Profile</span>
+                            <i class="icon-user"></i><span class="nav-text">Profile</span>
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('customer.logout') }}" aria-expanded="false" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Logout</span>
+                            <i class="icon-key"></i><span class="nav-text">Logout</span>
                         </a>
                     </li>
                     

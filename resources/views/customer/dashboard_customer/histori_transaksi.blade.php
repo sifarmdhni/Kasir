@@ -1,7 +1,7 @@
 @extends('customer.layouts.mainlayout')
 
 @section('content')
-<body class="h-100" style="background-image: url('aasd.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+
     <div class="content-body">
 
         <div class="row page-titles mx-0">
@@ -31,9 +31,9 @@
                                             <th>Nama Kasir</th>
                                             <th>Nama Customer</th>
                                             <th>Nama Produk</th>
-                                            <th>Total Harga</th>
-                                            <th>Jumlah</th>
                                             <th>Harga</th>
+                                            <th>Jumlah</th>
+                                            <th>Total Harga</th>
                                             <th>Diskon</th>
                                         </tr>
                                     </thead>
