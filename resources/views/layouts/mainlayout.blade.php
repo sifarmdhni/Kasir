@@ -83,9 +83,7 @@
                                         <li>
                                             <a href="profile"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>
-                                        <hr class="my-2">
-                                        <li><a href="/logout"><i class="icon-key"></i> <span>Logout</span></a></li>
-                                    </ul>
+                                        </ul>
                                 </div>
                             </div>
                         </li>
@@ -105,51 +103,28 @@
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Dashboard</li>
                     <li>
+                        <a href="/admin/auth_admin/authadmin" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Admin</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/authadmin" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Customer</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/authadmin" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Kasir</span>
+                        </a>
+                    </li>
+                    <!-- <li>
                         <a href="/dashboard" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                         </a>
-                    </li>
-                    
-                    <li class="nav-label">UI Components</li>
-                    <li>
-                        <a href="/setdiskon" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Setting Diskon</span>
-                        </a>
-                    </li>
-                    <li class="mega-menu mega-menu-sm">
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Data Master</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="/kategoriproduk">Data Kategori Produk</a></li>
-                            <li><a href="/produk">Data Produk</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/transaksi" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Transaksi</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/transaksi" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Laporan</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/user" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data User</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/customer" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Customer</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/payment" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Payment</span>
-                        </a>
-                    </li>
+                     </li> -->
+                     <hr class="my-2">
+                 <li><a href="/logout"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                    
                 </ul>
             </div>
         </div>

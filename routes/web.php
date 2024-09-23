@@ -84,18 +84,8 @@ Route::get('/d_admin', function () {
 Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasir.poto');
 Route::resource('kasir', KasirController::class);
 //logout
-Route::post('/logout', [AuthAdminController::class, 'logout'])->name('logout');
+// Route::post('/logout', [AuthAdminController::class, 'logout'])->name('logout');
 // Dashboard setelah login
-});
-Route::get('/laporantransaksi', [AuthAdminController::class, 'laporantransaksi']);
-Route::post('/laporantransaksi/store', [AuthAdminController::class, 'createTransaksi']);
-Route::post('/laporantransaksi/update/{id}', [AuthAdminController::class, 'update']);
-Route::delete('/laporantransaksi/destroy/{id}', [AuthAdminController::class, 'destroy']);
-
-
-//route login
-Route::get('/authadmin', [AuthAdminController::class, 'index'])->name("admin.auth.index");
-Route::post('/authadmin', [AuthAdminController::class, 'login'])->name("admin.login");
 //route register
 Route::get('/register', [AuthAdminController::class, 'index2'])->name("admin.auth.index2");
 Route::post('/register', [AuthAdminController::class, 'register'])->name("admin.register");
@@ -104,6 +94,14 @@ Route::get('/laporantransaksi', [AuthAdminController::class, 'laporantransaksi']
 Route::post('/laporantransaksi/store', [AuthAdminController::class, 'store'])->name('transaksi.store');
 Route::post('/laporantransaksi/update/{id}', [AuthAdminController::class, 'update']);
 Route::post('/laporantransaksi/destroy/{id}', [AuthAdminController::class, 'destroy']);
+
+//laporan produk admin
+Route::get('/laporanproduk', [AuthAdminController::class, 'laporanproduk']);
+Route::post('/laporanproduk/store', [AuthAdminController::class, 'store'])->name('produk.store');
+Route::post('/laporanproduk/update/{id}', [AuthAdminController::class, 'update']);
+Route::post('/laporanproduk/destroy/{id}', [AuthAdminController::class, 'destroy']);
+
+Route::post('/admin/logout', [AuthAdminController::class, 'logout'])->name('admin.logout');
 
 
 
@@ -126,6 +124,17 @@ Route::post('/payment/store', [PaymentController::class, 'store'])->name('paymen
 Route::post('/payment/update/{id}', [PaymentController::class, 'update']);
 Route::post('/payment/destroy/{id}', [PaymentController::class, 'destroy']);
 
+
+Route::get('/laporantransaksi', [AuthAdminController::class, 'laporantransaksi']);
+Route::post('/laporantransaksi/store', [AuthAdminController::class, 'createTransaksi']);
+Route::post('/laporantransaksi/update/{id}', [AuthAdminController::class, 'update']);
+Route::delete('/laporantransaksi/destroy/{id}', [AuthAdminController::class, 'destroy']);
+});
+
+
+//route login
+Route::get('/authadmin', [AuthAdminController::class, 'index'])->name("admin.auth.index");
+Route::post('/authadmin', [AuthAdminController::class, 'login'])->name("admin.login");
 
 //kasir
 Route::middleware('auth.kasir')->group(function () {
