@@ -30,7 +30,7 @@ class TransaksiController extends Controller
         $data_payment = Payment::select('id', 'nama_pembayaran')->get();
         $data_produk = Produk::select('id', 'nama_produk', 'harga','stok')->get();
 
-        return view('kasir.dashboard_kasir.cobatransaksi', [
+        return view('kasir.dashboard_kasir.transaksi', [
             'data_transaksi' => $data_transaksi,
             'data_payment' => $data_payment,
             'data_customer' => $data_customer,

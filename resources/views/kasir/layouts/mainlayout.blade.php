@@ -134,7 +134,7 @@
                     </li>
 
                     <li>
-                        <a href="/cobatransaksi" aria-expanded="false">
+                        <a href="/transaksi" aria-expanded="false">
                             <i class="icon-graph  menu-icon"></i><span class="nav-text">Transaksi</span>
                         </a>
                     </li>
