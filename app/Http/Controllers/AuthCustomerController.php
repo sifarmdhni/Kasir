@@ -36,4 +36,54 @@ class AuthCustomerController extends Controller
         Auth::guard('customer')->logout();  // Logout dari guard 'customer'
         return redirect('/authcustomer');
     }
+
+    public function index2(){
+        return view('customer.auth_customer.register');
+    }
+    
+    
+    // public function register(Request $request)
+    // {
+    //     $request->validate([
+    //         'nama' => 'required|string|max:255',
+    //         'email' => 'required|string|email|max:255|unique:users',
+    //         'password' => 'required|string|min:8|confirmed',
+    //     ]);
+
+    //     // Buat pengguna baru
+    //     customer::create([
+    //         'nama' => $request->nama,
+    //         'email' => $request->email,
+    //         'password' => Hash::make($request->password), // Hash password sebelum menyimpan
+    //     ]);
+
+    //     // Login otomatis setelah registrasi
+    //     Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+
+    //     // Redirect ke dashboard
+    //     return redirect('/authcustomer');
+    // }
+
+        public function register(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:customer',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        // Buat pengguna baru
+        customer::create([
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'password' => Hash::make($request->password), // Hash password sebelum menyimpan
+        ]);
+
+        // Login otomatis setelah registrasi
+        Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+
+        // Redirect ke dashboard
+        return redirect('/authcustomer');
+    }
+
 }
