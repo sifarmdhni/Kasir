@@ -24,30 +24,26 @@
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Produk</th>
-                                            <th>ID Kategori</th>
-                                            <th>Harga</th>
-                                            <th>Stok</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($produk as $produk2)
-
-                                        {{-- @dd($produk2->produk->admin) --}}
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $produk2->name_produk }}</td>
-                                        <td>{{ $produk2->id_kategori }}</td>
-                                        <td>{{ $produk2->harga }}</td>
-                                        <td>{{ $produk2->stok }}</td>
-                                        <td></td>
-                                    </tr>
-                                @endforeach
-                                    </tbody>
+    <thead>
+        <tr>
+            <th>ID Produk</th>
+            <th>Nama Produk</th>
+            <th>Kategori</th>
+            <th>Harga</th>
+            <th>Stok</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($produk as $item)
+        <tr>
+            <td>{{ $item->id }}</td>
+            <td>{{ $item->nama_produk }}</td>
+            <td>{{ $item->kategori->nama_kategori }}</td> <!-- Jika ada relasi kategori -->
+            <td>{{ $item->harga }}</td>
+            <td>{{ $item->stok }}</td>
+        </tr>
+        @endforeach
+    </tbody>
                                 </table>
                             </div>
                         </div>
