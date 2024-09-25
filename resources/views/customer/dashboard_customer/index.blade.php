@@ -22,7 +22,6 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="card-title" style="text-align: right;">Dashboard</h1>
                             <div class="table-responsive">
                             <img src="foto/asal.png" alt="Foto" style="float: right; margin: 50px;" width="400">
                             <h1 style="text-align: left;">Hallo  {{ $customer->nama }}</h1>
