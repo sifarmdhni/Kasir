@@ -19,6 +19,7 @@ class customer extends Authenticatable
         'no_telpon',
         'email',
         'diskon',
+        'password',
     ];
 
     protected $casts = [
@@ -26,6 +27,11 @@ class customer extends Authenticatable
     ];
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
     public function transaksi()
     {

@@ -196,6 +196,9 @@ Route::middleware('auth.customer')->group(function () {
 Route::get('/authcustomer', [AuthCustomerController::class, 'index'])->name("customer.auth.index");
 Route::post('/login', [AuthCustomerController::class, 'login'])->name("customer.login");
 
+// register
+Route::get('/register', [AuthCustomerController::class, 'index2'])->name("customer.auth.index");
+Route::post('/register', [AuthCustomerController::class, 'register'])->name("customer.register");
 
 
 

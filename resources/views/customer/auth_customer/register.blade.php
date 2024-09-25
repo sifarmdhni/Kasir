@@ -5,12 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Login page</title>
+    <title>Register Page</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
     <link href="/assets/css/style.css" rel="stylesheet">
-
 </head>
 
 <body class="h-100" style="background-image: url('aasd.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
@@ -38,7 +37,6 @@
 
 
 
-
     <div class="login-form-bg h-100">
         <div class="container h-100">
             <div class="row justify-content-center h-100">
@@ -48,27 +46,40 @@
                             <div class="card-body pt-5">
                                 <a class="text-center" href="#">
                                     <center>
-                                        <img src="foto//eweh.jpeg" alt="Foto"  width="200" height="100" style="margin: 10px;" >
-                                            </center>
+                                <img src="foto/eweh.jpeg" alt="Foto"  width="200" height="100" style="margin: 10px;" >
+                                    </center>
+                                    <h4>Silahkan Registrasi</h4>
                                 </a>
 
                                 <form class="mt-5 mb-5 login-input" method="POST"
-                                    action="{{ route('customer.login') }}">
-                                    @csrf
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Email" name="email"
-                                            required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password"
-                                            name="password" required>
-                                    </div>
+                                action="{{ route('customer.register') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="nama" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="email" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="password" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
+                                </div>
                                     <button type="submit" class="btn login-form__btn submit w-100">Sign In</button>
-                                </form>
+                                    </form>
+                                @if ($errors->any())
+                                    <div>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
 
-                                <div>
-                                    <center><p>Belum Punya Akun? <a href="/register"> Click Sign Up</a></p></center>
-                                  </div>
+                                <center><p>Sudah Punya Akun? <a href="/authcustomer">Click Sign In</a></p></center>
+
 
                             </div>
                         </div>
@@ -77,8 +88,6 @@
             </div>
         </div>
     </div>
-
-    
 
 
 
@@ -126,7 +135,6 @@
         </script>
     @endif
 
-    
 </body>
 
 </html>
