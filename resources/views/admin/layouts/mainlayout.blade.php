@@ -124,7 +124,7 @@
                     </li>
                     <li>
                         <a href="{{ route('admin.logout') }}" aria-expanded="false" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Logout</span>
+                            <i class="icon-key"></i><span class="nav-text">Logout</span>
                         </a>
                     </li>
                     

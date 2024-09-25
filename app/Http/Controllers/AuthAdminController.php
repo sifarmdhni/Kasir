@@ -57,28 +57,7 @@ class AuthAdminController extends Controller
         // Redirect ke dashboard
         return redirect('/authadmin');
     }
-    public function laporantransaksi(Request $request)
-    {
-        $detailTransaksi = detailtransaksi::with(['kasir', 'customer', 'produk'])
-        ->get();
-
-    // Return the data to the view
-    return view('admin.dashboardadmin.laporantransaksi', [
-        'title' => 'Detail Transaksi',
-        'detailTransaksi' => $detailTransaksi
-    ]);
-    }
-    public function laporanproduk(Request $request)
-    {
-        $produk = Produk::with([])
-        ->get();
-
-    // Return the data to the view
-    return view('admin.dashboardadmin.laporanproduk', [
-        'title' => 'Laporan Produk',
-        'produk' => $produk
-    ]);
-    }  
+     
     public function logout()
     {
         Auth::guard('admin')->logout();  // Logout dari guard 'customer'

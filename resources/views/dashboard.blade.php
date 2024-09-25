@@ -10,58 +10,7 @@
                     <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
                 </ol>
             </div>
-        </div>
-
-            <div class="container-fluid mt-3">
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card gradient-1">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">Produk Terjual</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">2 </h2>
-                                    <p class="text-white mb-0">1 September 2024</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card gradient-2">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">Penghasilan</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">50.000</h2>
-                                    <p class="text-white mb-0">1 September 2024</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card gradient-3">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">Costomer Baru</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">1</h2>
-                                    <p class="text-white mb-0">1 September 2024</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-user"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card gradient-4">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">Customer member</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">25%</h2>
-                                    <p class="text-white mb-0">1 September 2024</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
-                            </div>
-                        </div>
-                    </div>
+</div>
 
 
             <div class="container-fluid">
@@ -69,30 +18,24 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Data pembeli</h4>
+                                <h1 class="card-title" style="text-align: right;">Dashboard</h1>
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered zero-configuration">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Nama</th>
-                                                <th>harga</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Bara</td>
-                                                <td>50.000</td>
-                                                <td>
-                                                    <a href ="#" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i>Edit</a>
-                                                    <a href ="#" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i>Hapus</a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <img src="foto/asal.png" alt="Foto" style="float: right; margin: 50px;" width="400">
+                                <h1 style="text-align: left;">Hallo Mr.</h1>
+                                    <h3>Selamat Datang...</h3>
+                                    <div >
+                                        <h5  style="margin-top: 50px;">Masuk Sebagai Admin</h5>
+                                        <a href="#" class="button">LOGIN</a>
+                                    </div>
+                                    <div >
+                                        <h5>Masuk Sebagai Kasir</h5>
+                                        <a href="#" class="button">LOGIN</a>
+                                    </div>
+                                    <div >
+                                        <h5>Masuk Sebagai Customer</h5>
+                                        <a href="#" class="button">LOGIN</a>
+                                    </div>
+                                    </div>
                             </div>
                         </div>
                     </div>
