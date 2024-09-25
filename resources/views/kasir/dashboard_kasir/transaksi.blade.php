@@ -1,192 +1,201 @@
 @extends('kasir.layouts.mainlayout')
 
 @section('content')
-
 <div class="content-body">
     <div class="row page-titles mx-0">
         <div class="col p-md-0">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Customer</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">transaksi</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">transaksi</a></li>
             </ol>
         </div>
     </div>
-
-    <!-- row -->
 
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="d-flex align-items-center">
-                            <h4 class="card-title">Data Transaksi</h4>
-                            <button type="button" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalCreate">
-                                <i class="fa fa-plus"></i> Tambah Data
-                            </button>
+                        <div class="container mt-4">
+                            <h2>Buat Transaksi Baru</h2>
+                            <form action="{{ route('transaksi.store') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="customer_id">Customer</label>
+                                    <select class="form-control" name="customer_id" id="customer_id" required>
+                                        <option value="" hidden>-- Pilih Customer --</option>
+                                        @foreach ($data_customer as $customer)
+                                            <option value="{{ $customer->id }}" data-diskon="{{ $customer->diskon }}">{{ $customer->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="diskon">Diskon</label>
+                                    <input type="number" name="diskon" id="diskon" class="form-control" required readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="total_harga">Total Harga</label>
+                                    <input type="number" name="total_harga" id="total_harga" class="form-control" required readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="id_kasir">Kasir</label>
+                                    <select class="form-control" name="id_kasir" id="id_kasir" required>
+                                        <option value="" hidden>-- Pilih kasir --</option>
+                                        <option value="{{ $data_kasir->id }}">{{ $data_kasir->name_kasir }}</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="id_payment">Payment</label>
+                                    <select class="form-control" name="id_payment" id="id_payment" required>
+                                        <option value="" hidden>-- Pilih Payment --</option>
+                                        @foreach ($data_payment as $payment)
+                                            <option value="{{ $payment->id }}">{{ $payment->nama_pembayaran }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <!-- Input Detail Transaksi -->
+                                <h3>Detail Transaksi</h3>
+                                <table class="table table-bordered" id="detail-transaksi-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Produk</th>
+                                            <th>Harga</th>
+                                            <th>Jumlah</th>
+                                            <th>Subtotal</th>
+                                            <th>
+                                                <button type="button" class="btn btn-primary" id="add-row-btn">Tambah Detail</button>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <select class="form-control product-select" name="details[0][id_produk]" required>
+                                                    <option value="" hidden>-- Pilih produk --</option>
+                                                    @foreach ($data_produk as $produk)
+                                                        <option value="{{ $produk->id }}" data-harga="{{ $produk->harga }}"  data-stok="{{ $produk->stok }}">{{ $produk->nama_produk }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="number" name="details[0][harga]" class="form-control harga" required readonly>
+                                            </td>
+                                            <td>
+                                                <input type="number" name="details[0][jumlah]" class="form-control jumlah" required>
+                                            </td>
+                                            <td>
+                                                <input type="number" name="details[0][subtotal]" class="form-control subtotal" required readonly>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger remove-row-btn">Hapus</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <button type="submit" class="btn btn-success">Simpan Transaksi</button>
+                            </form>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered zero-configuration">
-                                <thead>
-                                    <tr>
-                                        <th>ID_payment</th>
-                                        <th>ID_Customer</th>
-                                        <th>Customer</th>
-                                        <th>Diskon</th>
-                                        <th>Total Harga</th>
-                                        <th>ID_Kasir</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($data_transaksi as $row)
-                                    <tr>
-                                        <td>{{ $row->id_payment }}</td>
-                                        <td>{{ $row->customer_id }}</td>
-                                        <td>{{ $row->customer }}</td>
-                                        <td>{{ $row->diskon }}%</td>
-                                        <td>{{ $row->total_harga }}</td>
-                                        <td>{{ $row->id_kasir }}</td>
-                                        <td>
-                                            <a href="#modalEdit{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-primary">
-                                                <i class="fa fa-edit"></i> Edit
-                                            </a>
-                                            <a href="#modalHapus{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-danger">
-                                                <i class="fa fa-trash"></i> Hapus
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- #/ container -->
 </div>
 
-<!-- Modal Create User -->
-<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Tambah Transaksi</h5>
-                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-            </div>
-            <form method="POST" action="/transaksi/store">
-                @csrf
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>ID Payment</label>
-                        <input type="text" class="form-control" name="id_payment" placeholder="ID Payment" required>
-                    </div>
-                    <div class="form-group">
-                        <label>ID Customer</label>
-                        <input type="text" class="form-control" name="customer_id" placeholder="ID Customer" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Nama Customer</label>
-                        <input type="text" class="form-control" name="customer_name" placeholder="Nama Customer" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Diskon</label>
-                        <div class="input-group mb-3">
-                            <input type="number" name="diskon" placeholder="Diskon" class="form-control" required>
-                            <div class="input-group-append"><span class="input-group-text">%</span></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Total Harga</label>
-                        <input type="number" class="form-control" name="total_harga" placeholder="Total Harga" required>
-                    </div>
-                    <div class="form-group">
-                        <label>ID Kasir</label>
-                        <input type="text" class="form-control" name="id_kasir" placeholder="ID Kasir" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#customer_id').change(function() {
+            var selectedOption = $(this).find('option:selected');
+            var diskon = selectedOption.data('diskon');
+            $('#diskon').val(diskon);
+            calculateTotal();
+        });
 
-<!-- Modal Edit User -->
-<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Edit Transaksi</h5>
-                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-            </div>
-            <form method="POST" action="/transaksi/update">
-                @csrf
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>ID Payment</label>
-                        <input type="text" class="form-control" name="id_payment"  value="{{ $d->nama_kategori }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label>ID Customer</label>
-                        <input type="text" class="form-control"  name="id_customer"  value="{{ $d->nama_kategori }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Nama Customer</label>
-                        <input type="text" class="form-control" name="customer"  value="{{ $d->nama_kategori }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Diskon</label>
-                        <input type="number" class="form-control"  name="diskon"  value="{{ $d->nama_kategori }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Total Harga</label>
-                        <input type="number" class="form-control"mname="total_harga"  value="{{ $d->nama_kategori }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label>ID Kasir</label>
-                        <input type="text" class="form-control"  name="id_kasir"  value="{{ $d->nama_kategori }}" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Modal Hapus User -->
+        function addRow() {
+            let table = $('#detail-transaksi-table tbody');
+            let rowCount = table.children('tr').length;
+            let newRow = `
+                <tr>
+                    <td>
+                        <select class="form-control product-select" name="details[${rowCount}][id_produk]" required>
+                            <option value="" hidden>-- Pilih produk --</option>
+                            @foreach ($data_produk as $produk)
+                                <option value="{{ $produk->id }}" data-harga="{{ $produk->harga }}"  data-stok="{{ $produk->stok }}">{{ $produk->nama_produk }}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" name="details[${rowCount}][harga]" class="form-control harga" required readonly>
+                    </td>
+                    <td>
+                        <input type="number" name="details[${rowCount}][jumlah]" class="form-control jumlah" required>
+                    </td>
+                    <td>
+                        <input type="number" name="details[${rowCount}][subtotal]" class="form-control subtotal" required readonly>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger remove-row-btn">Hapus</button>
+                    </td>
+                </tr>
+            `;
+            table.append(newRow);
+        }
 
-<div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Hapus </h5>
-                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-            </div>
-            <form method="POST" action="/customer/destroy/">
-                @csrf
-                @method('DELETE')
-                <div class="modal-body">
-                    <div class="form-group">
-                        <h5>Apakah Anda Ingin Menghapus Data Ini?</h5>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>
-                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+        $('#add-row-btn').click(addRow);
+
+        $(document).on('click', '.remove-row-btn', function() {
+            $(this).closest('tr').remove();
+            calculateTotal();
+        });
+
+        $(document).on('change', '.product-select', function() {
+            var selectedOption = $(this).find('option:selected');
+            var harga = selectedOption.data('harga');
+            var row = $(this).closest('tr');
+            row.find('.harga').val(harga);
+            updateSubtotal(row);
+        });
+
+        $(document).on('input', '.jumlah', function() {
+             var row = $(this).closest('tr');
+             var selectedOption = row.find('.product-select option:selected');
+             var stok = parseInt(selectedOption.data('stok')) || 0;
+            var jumlah = parseInt($(this).val()) || 0;
+
+           if (jumlah > stok) {
+            alert('Jumlah melebihi stok yang tersedia.');
+            $(this).val(stok); // Set jumlah ke stok maksimum
+            jumlah = stok;
+            }
+
+            updateSubtotal(row);
+         });
 
 
+        function updateSubtotal(row) {
+            var harga = parseFloat(row.find('.harga').val()) || 0;
+            var jumlah = parseFloat(row.find('.jumlah').val()) || 0;
+            var subtotal = harga * jumlah;
+            row.find('.subtotal').val(subtotal);
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            var total = 0;
+            $('.subtotal').each(function() {
+                total += parseFloat($(this).val()) || 0;
+            });
+            var diskon = parseFloat($('#diskon').val()) || 0;
+            var totalAfterDiscount = total * (1 - diskon / 100);
+            $('#total_harga').val(totalAfterDiscount.toFixed(2));
+        }
+    });
+</script>
 @endsection

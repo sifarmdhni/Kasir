@@ -100,10 +100,10 @@ Route::post('/admin/logout', [AuthAdminController::class, 'logout'])->name('admi
 
 
 //crud data transaksi
-Route::get('/transaksi', [TransaksiController::class, 'index']);
-Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
-Route::post('/transaksi/update/{id}', [TransaksiController::class, 'update']);
-Route::post('/transaksi/destroy/{id}', [TransaksiController::class, 'destroy']);
+// Route::get('/transaksi', [TransaksiController::class, 'index']);
+// Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
+// Route::post('/transaksi/update/{id}', [TransaksiController::class, 'update']);
+// Route::post('/transaksi/destroy/{id}', [TransaksiController::class, 'destroy']);
 
 
 //crud data user
@@ -136,11 +136,11 @@ Route::middleware('auth.kasir')->group(function () {
 Route::get('/indexkasir', function () {
   return  view('kasir.dashboard_kasir..dashboard');
 });
-Route::get('/transaksi', function () {
-  return  view('kasir.dashboard_kasir.transaksi');
-});
-Route::get('/cobatransaksi', [TransaksiController::class, 'CreateTransaksi'])->name('transaksi.create');
-Route::get('/cobatransaksi/{id}', [TransaksiController::class, 'getCustomerDiscount']);
+// Route::get('/transaksi', function () {
+//   return  view('kasir.dashboard_kasir.transaksi');
+// });
+Route::get('/transaksi', [TransaksiController::class, 'CreateTransaksi'])->name('transaksi.create');
+Route::get('/transaksi/{id}', [TransaksiController::class, 'getCustomerDiscount']);
 Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
 
 
