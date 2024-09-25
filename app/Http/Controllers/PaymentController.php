@@ -18,24 +18,19 @@ class PaymentController extends Controller
     }
     public function store(Request $request)
     {
-        \Log::info('Request data:', $request->all());
-        
-        $validated = $request->validate([
-            'nama_pembayaran' => 'required|string|max:255',
-            'gambar' => 'required',
-            
+        $request->validate([
+            'nama_pembayaran' => 'required',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
-        \Log::info('Validated data:', $validated);
-
-     $payment = Payment::create([
+    
+        $imagePath = $request->file('gambar')->store('payments', 'public');
+    
+        Payment::create([
             'nama_pembayaran' => $request->nama_pembayaran,
-            'gambar' => $request->gambar,
+            'gambar' => $imagePath,
         ]);
-
-        \Log::info('Payment created:', $payment->toArray());
-
-        return redirect('/payment')->with('success', 'Data Berhasil Di Ubah');
+    
+        return redirect()->back()->with('success', 'Metode pembayaran berhasil ditambahkan');
     }
     
     public function update(Request $request,$id)

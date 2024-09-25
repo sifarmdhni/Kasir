@@ -103,17 +103,17 @@
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Dashboard</li>
                     <li>
-                        <a href="/admin/auth_admin/authadmin" aria-expanded="false">
+                        <a href="/views/admin/auth_admin/authadmin" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Admin</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/authadmin" aria-expanded="false">
+                        <a href="/views/admin/authadmin" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Customer</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/authadmin" aria-expanded="false">
+                        <a href="/views /admin/authadmin" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Kasir</span>
                         </a>
                     </li>

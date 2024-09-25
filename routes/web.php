@@ -49,6 +49,9 @@ Route::post('/setdiskon/update/{id}', [DiskonController::class, 'update']);
 
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
+// Route::post('/kasir/store', [DashboardController::class, 'store']);
+
+
 
 //crud data setting profile
 Route::get('/profile', [UserController::class, 'profile']);
