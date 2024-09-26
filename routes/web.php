@@ -24,7 +24,7 @@ use App\Http\Controllers\KategoriProdukController;
 use App\Http\Controllers\LaporanTransaksiController;
 
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/', [DashboardController::class, 'index']);
 // Route::post('/kasir/store', [DashboardController::class, 'store']);
 
 
