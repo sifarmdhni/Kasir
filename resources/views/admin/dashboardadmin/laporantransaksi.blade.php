@@ -19,7 +19,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
-                            <h4 class="card-title">Histori Transaksi Admin</h4>
+                            <h4 class="card-title">Laporan Transaksi</h4>
                             
                             </div>
                             <div class="table-responsive">
