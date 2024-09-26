@@ -113,8 +113,8 @@
                             <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Laporan</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="/laporantransaksi">History Transaksi</a></li>
-                            <li><a href="/laporanproduk">History Produk</a></li>
+                            <li><a href="/laporantransaksi"> Transaksi</a></li>
+                            <li><a href="/laporanproduk">Produk</a></li>
                         </ul>
                     </li>
                     <li>
