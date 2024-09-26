@@ -28,7 +28,7 @@ class TransaksiController extends Controller
         $data_customer = Customer::select('id', 'nama', 'diskon')->get();
         $data_kasir = Auth::guard('kasir')->user();
         $data_payment = Payment::select('id', 'nama_pembayaran')->get();
-        $data_produk = Produk::select('id', 'nama_produk', 'harga','stok')->get();
+        $data_produk = Produk::select('id', 'nama_produk', 'harga', 'stok')->get();
 
         return view('kasir.dashboard_kasir.transaksi', [
             'data_transaksi' => $data_transaksi,
@@ -46,7 +46,6 @@ class TransaksiController extends Controller
             'customer_id' => 'required|integer',
             'diskon' => 'required|numeric',
             'total_harga' => 'required|numeric',
-            'id_kasir' => 'required|integer',
             'details' => 'required|array',
             'details.*.id_produk' => 'required|integer',
             'details.*.harga' => 'required|numeric',
@@ -58,7 +57,7 @@ class TransaksiController extends Controller
         $transaksi->customer_id = $request->customer_id;
         $transaksi->diskon = $request->diskon;
         $transaksi->total_harga = $request->total_harga;
-        $transaksi->id_kasir = $request->id_kasir;
+        $transaksi->id_kasir = Auth::guard('kasir')->id();
         $transaksi->save();
 
         foreach ($request->details as $detail) {

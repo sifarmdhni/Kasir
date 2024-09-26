@@ -107,7 +107,7 @@
                             <i class="icon-grid menu-icon"></i><span class="nav-text">User</span>
                         </a>
                     </li>
-                    <li class="nav-label">UI Components</li>
+                    
                     <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Laporan</span>

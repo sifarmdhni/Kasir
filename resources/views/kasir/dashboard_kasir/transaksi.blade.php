@@ -36,18 +36,10 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="total_harga">Total Harga</label>
-                                    <input type="number" name="total_harga" id="total_harga" class="form-control" required readonly>
-                                </div>
-
-                                <div class="form-group">
                                     <label for="id_kasir">Kasir</label>
-                                    <select class="form-control" name="id_kasir" id="id_kasir" required>
-                                        <option value="" hidden>-- Pilih kasir --</option>
-                                        <option value="{{ $data_kasir->id }}">{{ $data_kasir->name_kasir }}</option>
-                                    </select>
+                                    <input type="text" class="form-control" value="{{ $data_kasir->name_kasir }}" readonly>
                                 </div>
-
+                                
                                 <div class="form-group">
                                     <label for="id_payment">Payment</label>
                                     <select class="form-control" name="id_payment" id="id_payment" required>
@@ -97,6 +89,11 @@
                                         </tr>
                                     </tbody>
                                 </table>
+
+                                <div class="form-group">
+                                    <label for="total_harga">Total Harga</label>
+                                    <input type="number" name="total_harga" id="total_harga" class="form-control" required readonly>
+                                </div>
 
                                 <button type="submit" class="btn btn-success">Simpan Transaksi</button>
                             </form>

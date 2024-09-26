@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KasirController;
-use App\Http\Controllers\DiskonController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PaymentController;
 
@@ -25,61 +24,9 @@ use App\Http\Controllers\KategoriProdukController;
 use App\Http\Controllers\LaporanTransaksiController;
 
 
-
-
-//crud login
-//Route::get( '/', [AuthController::class, 'login'])->name('kasir.get');
-Route::post('/login', [AuthController::class, 'authenticating'])->name('kasir.store');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-
-
-
-
-
-//crud data produk
-Route::get('/produk', [ProdukController::class, 'index']);
-Route::post('/produk/store', [ProdukController::class, 'store']);
-Route::post('/produk/update/{id}', [ProdukController::class, 'update']);
-Route::delete('/produk/destroy/{id}', [ProdukController::class, 'destroy']);
-
-
-//crud data setting diskon
-Route::get('/setdiskon', [DiskonController::class, 'index']);
-Route::post('/setdiskon/update/{id}', [DiskonController::class, 'update']);
-
-
 Route::get('/dashboard', [DashboardController::class, 'index']);
 // Route::post('/kasir/store', [DashboardController::class, 'store']);
 
-
-
-//crud data setting profile
-Route::get('/profile', [UserController::class, 'profile']);
-Route::post('/profile/updateprofile/{id}', [UserController::class, 'updateprofile']);
-
-//crud data kasir
-Route::get('/kasir', [KasirController::class, 'index']);
-Route::post('/kasir/store', [KasirController::class, 'store']);
-Route::post('/kasir/update/{id}', [KasirController::class, 'update']);
-Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
-
-
-
-
-// Route::resource('customers', CustomerController::class);
-// Route::resource('kategori-produks', KategoriProdukController::class);
-// Route::resource('product', ProdukController::class);
-// Route::resource('payments', PaymentController::class);
-// Route::resource('kasirs', KasirController::class);
-// Route::resource('transaksis', TransaksiController::class);
-// Route::get('/product-add', [ProdukController::class, 'create']);
-// Route::get('/product-add', [ProdukController::class, 'create']);
-
-//crud data kasir
-Route::get('/kasir', [KasirController::class, 'index']);
-Route::post('/kasir/store', [KasirController::class, 'store'])->name("user.store");
-Route::post('/kasir/update/{id}', [KasirController::class, 'update']);
-Route::delete('/kasir/destroy/{id}', [KasirController::class, 'destroy']);
 
 //admin
 Route::middleware('auth.admin')->group(function () {
@@ -100,27 +47,16 @@ Route::post('/laporanproduk/destroy/{id}', [LaporanProdukController::class, 'des
 
 Route::post('/admin/logout', [AuthAdminController::class, 'logout'])->name('admin.logout');
 
-
-
-//crud data transaksi
-// Route::get('/transaksi', [TransaksiController::class, 'index']);
-// Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
-// Route::post('/transaksi/update/{id}', [TransaksiController::class, 'update']);
-// Route::post('/transaksi/destroy/{id}', [TransaksiController::class, 'destroy']);
-
-
 //crud data user
 Route::get('/user', [UserController::class, 'index']);
 Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
 Route::post('/user/update/{id}', [UserController::class, 'update']);
 Route::post('/user/destroy/{id}', [UserController::class, 'destroy']);
 
-
 Route::get('/payment', [PaymentController::class, 'index']);
 Route::post('/payment/store', [PaymentController::class, 'store'])->name('payment.store');
 Route::post('/payment/update/{id}', [PaymentController::class, 'update']);
 Route::post('/payment/destroy/{id}', [PaymentController::class, 'destroy']);
-
 
 Route::get('/laporantransaksi', [LaporanTransaksiController::class, 'laporantransaksi']);
 Route::post('/laporantransaksi/store', [LaporanTransaksiController::class, 'createTransaksi']);
@@ -134,6 +70,8 @@ Route::post('/register', [AuthAdminController::class, 'register'])->name("admin.
 Route::get('/authadmin', [AuthAdminController::class, 'index'])->name("admin.auth.index");
 Route::post('/authadmin', [AuthAdminController::class, 'login'])->name("admin.login");
 
+
+
 //kasir
 Route::middleware('auth.kasir')->group(function () {
 Route::get('/indexkasir', function () {
@@ -145,7 +83,6 @@ Route::get('/indexkasir', function () {
 Route::get('/transaksi', [TransaksiController::class, 'CreateTransaksi'])->name('transaksi.create');
 Route::get('/transaksi/{id}', [TransaksiController::class, 'getCustomerDiscount']);
 Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
-
 
 //crud data kategoriproduk
 Route::get('/kategoriproduk', [KategoriProdukController::class, 'index']);
@@ -171,16 +108,6 @@ Route::post('/loginkasir', [AuthKasirController::class, 'login'])->name('kasir.l
 
 
 //customer
-// Route::get('/historicustomer', function () {
-//   return view('customer.dashboard_customer.histori_transaksi');
-// });
-// Route::get('/profilecustomer', function () {
-//   return view('customer.dashboard_customer.profile');
-// });
-// Route::get('/cobatransaksi', function () {
-//   return view('kasir.dashboard_kasir.cobatransaksi');
-// });
-
 Route::middleware('auth.customer')->group(function () {
   Route::get('/profilecustomer', [CustomerController::class, 'indexProfileCustomer'])->name('customer.profile.edit');
   Route::post('/updateprofile', [CustomerController::class, 'updateProfile'])->name('customer.profile.update');
@@ -199,13 +126,3 @@ Route::middleware('auth.customer')->group(function () {
 Route::get('/authcustomer', [AuthCustomerController::class, 'index'])->name("customer.auth.index");
 Route::post('/login', [AuthCustomerController::class, 'login'])->name("customer.login");
 
-// register
-Route::get('/register', [AuthCustomerController::class, 'index2'])->name("customer.auth.index");
-Route::post('/register', [AuthCustomerController::class, 'register'])->name("customer.register");
-
-
-
-// //admin
-
-
-// //kasir
