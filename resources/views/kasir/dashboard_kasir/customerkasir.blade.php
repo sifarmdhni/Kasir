@@ -22,7 +22,7 @@
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">Data Customer</h4>
                          <button type="button" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalCreate">
-                                <i class="fa fa-plus"></i> Tambah Data
+                                <i class="fa fa-plus"></i> CUSTOMER BARU
                             </button> 
                         </div>
                     </div>
