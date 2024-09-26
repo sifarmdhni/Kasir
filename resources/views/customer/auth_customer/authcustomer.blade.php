@@ -66,10 +66,6 @@
                                     <button type="submit" class="btn login-form__btn submit w-100">Sign In</button>
                                 </form>
 
-                                <div>
-                                    <center><p>Belum Punya Akun? <a href="/register"> Click Sign Up</a></p></center>
-                                  </div>
-
                             </div>
                         </div>
                     </div>

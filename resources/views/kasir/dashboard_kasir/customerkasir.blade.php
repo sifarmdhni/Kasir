@@ -21,9 +21,9 @@
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">Data Customer</h4>
-                            <!-- <button type="button" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalCreate">
+                         <button type="button" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalCreate">
                                 <i class="fa fa-plus"></i> Tambah Data
-                            </button> -->
+                            </button> 
                         </div>
                     </div>
                     <div class="card-body">
@@ -95,6 +95,10 @@
                     <div class="form-group">
                         <label>Email</label>
                         <input type="email" class="form-control" name="email" placeholder="Email...." required>
+                    </div>
+                    <div class="form-group">
+                        <label>password</label>
+                        <input type="password" class="form-control" name="password" placeholder="password...." required>
                     </div>
                   
                     <div class="form-group">
