@@ -40,7 +40,7 @@
     </div> -->
         
     <img src="foto/kasic.png" alt="Foto" style="margin-left: 40px; margin-top: 40px;" width="200">
-    <img src="foto/asal.png" alt="Foto" style="float: right; margin: 50px;" width="400">
+    <img src="foto/10.png" alt="Foto" style="float: right; margin: 50px;" width="400">
     
    
    
@@ -70,9 +70,14 @@
                        <h1 class="text-white" style="margin-left: 20px; margin-top: 50px; margin-bottom: 50px;">Hallo Mr.</h1>
                        <h3 class="text-white" style="margin-left: 20px; margin-top: 20px; margin-buttom: 50px;">Selamat Datang...</h3>
                        <h5 class="text-white" style="margin-left: 20px; margin-top: 20px;">Selamat datang! Kami sangat senang untuk berbagi waktu berkualitas dengan
-                         Anda dan membuat kenangan hari ini!</h5>
+                         Anda dan membuat kenangan hari ini!. Selamat bergabung di aplikasi kasir kami, disini kami menyediakan
+                          beberapa produk berkualitas, silahkan untuk lebih lanjut login.</h5>
                          <div class="col-12">
-                       <a href="https://example.com" class="btn btn-primary">Go to Example</a>
+                       <a href="https://example.com" class="btn btn-primary">Admin</a>
+                       <a href="https://example.com" class="btn btn-primary">Customer</a>
+                       <a href="https://example.com" class="btn btn-primary">Kasier</a>
+
+
 
 </div>
 
