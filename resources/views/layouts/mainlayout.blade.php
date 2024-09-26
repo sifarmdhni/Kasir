@@ -44,10 +44,8 @@
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="index.html">
-                    <!-- <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="images/logo-compact.png" alt=""></span> -->
                     <span class="brand-title">
-                        <img src="foto/ok.png" height="50px" width="150px" alt="foto">
+                    <img src="/foto/kasirrpl12.png" style="margin-left: -23px;  margin-top: -60px;" height="150" width="210" alt="foto">
                     </span>
                 </a>
             </div>
@@ -61,11 +59,10 @@
         ***********************************-->
         <div class="header  justify-top">    
             <div class="header-content clearfix">
-                
                 <div class="nav-control">
-                    <div class="hamburger">
+                    <!-- <div class="hamburger">
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="header-left">
                     
@@ -81,6 +78,7 @@
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
+                                            
                                             <a href="profile"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>
                                         </ul>
@@ -98,7 +96,7 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
-        <div class="nk-sidebar">           
+        <!-- <div class="nk-sidebar">           
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Dashboard</li>
@@ -121,13 +119,13 @@
                         <a href="/dashboard" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                         </a>
-                     </li> -->
+                     </li> 
                      <hr class="my-2">
                  <li><a href="/logout"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     
                 </ul>
             </div>
-        </div>
+        </div> -->
         <!--**********************************
             Sidebar end
         ***********************************-->

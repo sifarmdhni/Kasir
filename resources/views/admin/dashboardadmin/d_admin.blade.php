@@ -20,12 +20,12 @@
                             <div class="card-body">
                                 <h1 class="card-title" style="text-align: right;">Dashboard</h1>
                                 <div class="table-responsive">
-                                <img src="foto/asal.png" alt="Foto" style="float: right; margin: 50px;" width="400">
+                                <img src="foto/DESA.png" alt="Foto" style="float: right; margin: 50px;" width="400">
                                 <h1 style="text-align: left;">Hallo Mr.</h1>
                                     <h3>Selamat Datang...</h3>
                                     <div >
-                                        <h5  style="margin-top: 50px;">WWW.DOTCOM</h5>
-                                        <a href="#" class="button">NAON WE</a>
+                                        <h6  style="margin-top: 50px;">Selamat datang! Kami sangat senang untuk berbagi waktu berkualitas dengan Anda dan membuat kenangan hari ini!</h6>
+                                        <!-- <a href="#" class="button">NAON WE</a> -->
                                     </div>
                                     </div>
                             </div>
