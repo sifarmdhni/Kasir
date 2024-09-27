@@ -174,7 +174,7 @@
     <div class="contact" >
         <h1>Who's behind this?</h1>
         <h6>We're a team of creators building on the web full-time. You might have seen our work:</h6>
-        <img src="" alt="">
+        <center><img src="/foto/qa.png" alt=""></center>
     </div>
     <section id="contact"  class="contact-section">
         <h2>Contact</h2>
