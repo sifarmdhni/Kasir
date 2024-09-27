@@ -145,7 +145,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p class="text-center">Copyright &copy; Designed & Developed By <a href="#">Kasir</a> 2018</p>
+                <p class="text-center">Copyright &copy; Designed & Developed By <a href="#">Kasir</a> 2024</p>
             </div>
         </div>
         <!--**********************************
