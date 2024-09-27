@@ -48,7 +48,6 @@
                                     <center>
                                 <img src="foto/eweh.jpeg" alt="Foto"  width="200" height="100" style="margin: 10px;" >
                                     </center>
-                                    <h4>Silahkan Login</h4>
                                 </a>
 
                                 <form action="{{ route('admin.login') }}" method="POST">
@@ -71,7 +70,7 @@
     </div>
 @endif
               <div>
-                <center><p>Belum Punya Akun? <a href="/register"> Click Sign Up</a></p></center>
+                <center><p >Belum Punya Akun? <a href="/register"> Click Sign Up</a></p></center>
               </div>
 
 

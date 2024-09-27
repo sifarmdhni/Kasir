@@ -25,6 +25,10 @@ use App\Http\Controllers\LaporanTransaksiController;
 
 
 Route::get('/', [DashboardController::class, 'index']);
+Route::get('/loginadmin', [DashboardController::class, 'index2']);
+Route::get('/logincustomer', [DashboardController::class, 'index3']);
+Route::get('/loginkasir', [DashboardController::class, 'index4']);
+
 // Route::post('/kasir/store', [DashboardController::class, 'store']);
 
 
