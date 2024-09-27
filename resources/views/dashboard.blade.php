@@ -121,7 +121,13 @@
 .contact-item a:hover {
     text-decoration: underline;
 }
-
+.fixed-image {
+    position: absolute; /* Menggunakan posisi absolut */
+    top: 550px;         /* Jarak dari atas */
+    right: 20px;       /* Jarak dari kanan */
+    width: 50px;  
+    z-index: 1000;     /* Lebar gambar */
+}
        
 
 
@@ -142,7 +148,7 @@
             </svg>
         </div>
     </div>
-    <a href="">    <img src="foto/kasic.png" alt="Foto" style="margin-left: 40px; margin-top: 40px;" width="200">
+    <a href=""><img src="foto/kasic.png" alt="Foto" style="margin-left: 40px; margin-top: 40px;" width="200">
     </a>
       <h6><a href="#about" class="about-contact1">ABOUT</a></h6>
       <h6><a href="#contact" class="about-contact2">CONTACT</a></h6>
@@ -150,6 +156,7 @@
     <div class="col-12">
         <!-- <a href="/loginadmin" class="btn btn-primary top-right">Admin</a> -->
         <a href="/logincustomer" class="top-right">Login Customer</a>
+
         <!-- <a href="/loginkasir" class="btn btn-primary top-right3">Kasier</a> -->
     </div>
     <div class="container-fluid">
@@ -164,6 +171,8 @@
                     </div>
                 </div>
               </div>
+              <img src="foto/was.png" alt="Foto" class="fixed-image">
+
 
     <div id="about" class="content">
         <h1 class="h2">Welcome What's this all about?</h1>
@@ -181,8 +190,9 @@
         <div class="contact-options">
             <div class="contact-item">
                 <h3>Email</h3>
-                <p>gianadiramdan@gmail.com</p>
+                <p><a href="mailto:gianadiramdan@gmail.com">gianadiramdan@gmail.com</a></p>
             </div>
+            
             <div class="contact-item">
                 <h3>Whatapps</h3>
                 <p>
@@ -199,6 +209,11 @@
             </div>
         </div>
     </section>
+    <div class="footer">
+            <div class="copyright">
+                <p class="text-center">Copyright &copy; Designed & Developed By <a href="#">Kasir</a> 2018</p>
+            </div>
+        </div>
 
 </section>
     <script src="/assets/plugins/common/common.min.js"></script>
