@@ -78,9 +78,9 @@ Route::post('/authadmin', [AuthAdminController::class, 'login'])->name("admin.lo
 
 //kasir
 Route::middleware('auth.kasir')->group(function () {
-Route::get('/indexkasir', function () {
-  return  view('kasir.dashboard_kasir..dashboard');
-});
+
+  Route::get('/indexkasir', [TransaksiController::class, 'dashboard'])->name('dashboard.index');
+  
 // Route::get('/transaksi', function () {
 //   return  view('kasir.dashboard_kasir.transaksi');
 // });
