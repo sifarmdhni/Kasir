@@ -59,9 +59,9 @@
             color: white; 
         }
         .content {
-            margin-top: 150px;
+            margin-top: 1500px;
             margin: 200px; /* Margin untuk konten */
-            padding: 50px; /* Padding untuk konten */
+            padding: 100px; /* Padding untuk konten */
             background-color: #CD853F; /*rgba(255, 255, 255, 0.1); Latar belakang transparan */
             border-radius: 10px; /* Sudut membulat */
         }
@@ -73,19 +73,55 @@
             padding-left: 30px; /* Padding bawah untuk jarak dengan paragraf */
             font-size: 47px; /* Ukuran font h2 */
         }
-        .bawah {
-            font-family: 'Roboto', sans-serif;
-            margin: 10px; /* Menghilangkan margin untuk menyatukan dengan konten */
-            padding-bottom: 10px;
-            padding-top: 10px;
-            padding-left: 80px; /* Padding bawah untuk jarak dengan paragraf */
-            font-size: 50px; /* Ukuran font h2 */
-        }
         .contact {
             margin-top: 10px;
             margin: 20px; /* Margin untuk konten */
             padding: 50px; /* Padding untuk konten */
         }
+
+    .contact-section {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-section h2 {
+    text-align: center;
+    color: #black;
+}
+
+.contact-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-item {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact-item h3 {
+    margin: 0;
+    color: #grey;
+}
+
+.contact-item p {
+    margin: 5px 0;
+}
+
+.contact-item a {
+    text-decoration: none;
+    color: #grey;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
        
 
 
@@ -129,18 +165,40 @@
                 </div>
               </div>
 
-              <div id="about" class="content">
+    <div id="about" class="content">
         <h1 class="h2">Welcome What's this all about?</h1>
         <p>This is the first project for all of us when we were working at PT Grage Multimedia Teknologi (GMT).</p>
         <p>This is a cashier application which makes it easier to manage a shop that you own.</p>
         <p>This application was created together with the Smkn 1 Talaga street vendor team.</p>
+    </div>
+    <div class="contact" >
+        <h1>Who's behind this?</h1>
+        <h6>We're a team of creators building on the web full-time. You might have seen our work:</h6>
         <img src="" alt="">
     </div>
-
-    <div id="contact" class="contact">
-        <h1 class="bawah">Who's behind this?</h1>
-        <h6>We're a team of creators building on the web full-time. You might have seen our work:</h6>
-    </div>
+    <section id="contact"  class="contact-section">
+        <h2>Contact</h2>
+        <div class="contact-options">
+            <div class="contact-item">
+                <h3>Email</h3>
+                <p>gianadiramdan@gmail.com</p>
+            </div>
+            <div class="contact-item">
+                <h3>Whatapps</h3>
+                <p>
+                    <a href="https://wa.me/6281297535513">Hubungi Kami di WhatsApp</a>
+                </p>
+            </div>
+            <div class="contact-item">
+                <h3>Media Sosial</h3>
+                <p>
+                    <a href="#">Facebook</a> |
+                    <a href="#">Twitter</a> |
+                    <a href="https://www.instagram.com/username">Instagram</a>
+                </p>
+            </div>
+        </div>
+    </section>
 
 </section>
     <script src="/assets/plugins/common/common.min.js"></script>
