@@ -19,8 +19,14 @@ class CustomerController extends Controller
 
     public function hitoriTransaksiCustomer()
     {
+        $customer = Auth::guard('customer')->user();
+
         // Fetch all the detail_transaksi with the related transaksi, kasir, and produk data
+        // for the current customer
         $detailTransaksi = detailtransaksi::with(['transaksi.kasir', 'transaksi.customer', 'produk'])
+            ->whereHas('transaksi', function($query) use ($customer) {
+                $query->where('customer_id', $customer->id);
+            })
             ->get();
 
         // Return the data to the view
@@ -29,6 +35,7 @@ class CustomerController extends Controller
             'detailTransaksi' => $detailTransaksi
         ]);
     }
+
 
     public function getDataCustomer(){
         
