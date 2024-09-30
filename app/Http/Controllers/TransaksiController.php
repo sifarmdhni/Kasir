@@ -114,4 +114,11 @@ class TransaksiController extends Controller
         $product = Produk::findOrFail($id);
         return response()->json(['harga' => $product->harga]);
     }
+
+    public function cetakTransaksi($id)
+{
+    $transaksi = Transaksi::with(['kasir', 'customer', 'detailTransaksi.produk'])->findOrFail($id);
+    
+    return view('cetak-transaksi', compact('transaksi'));
+}
 }
