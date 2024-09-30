@@ -84,6 +84,10 @@ Route::middleware('auth.kasir')->group(function () {
 // Route::get('/transaksi', function () {
 //   return  view('kasir.dashboard_kasir.transaksi');
 // });
+
+Route::get('/profile', [KasirController::class, 'profile'])->name('kasir.profile');
+Route::put('/profile', [KasirController::class, 'updateProfile'])->name('kasir.update-profile');
+
 Route::get('/transaksi', [TransaksiController::class, 'CreateTransaksi'])->name('transaksi.create');
 Route::get('/transaksi/{id}', [TransaksiController::class, 'getCustomerDiscount']);
 Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
