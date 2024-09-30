@@ -51,7 +51,6 @@
                         @endif
                     </td>
                     <td>
-                        <a href="#modalEdit{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i>Edit</a>
                         <a href="#modalHapus{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i>Hapus</a>
                     </td>
                 </tr>
@@ -95,7 +94,7 @@
     </div>
 </div>
 
-@foreach ($data_payment as $d)
+<!-- @foreach ($data_payment as $d)
 <div class="modal fade" id="modalEdit{{ $d->id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -125,7 +124,6 @@
                                 @endif
                             </div>
                         @endif
-                        <!-- ... (rest of the form content) ... -->
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -136,7 +134,7 @@
         </div>
     </div>
 </div>
-@endforeach
+@endforeach -->
 
 <!-- Modal Hapus User -->
 @foreach ($data_payment as $c)
