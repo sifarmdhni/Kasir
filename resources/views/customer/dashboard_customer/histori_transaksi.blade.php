@@ -46,7 +46,7 @@
                                         <td>{{ $detail->transaksi->total_harga }}</td>
                                         <td>{{ $detail->transaksi->diskon }}</td>
                                         <td>
-                                            <a href="{{ route('cetak.transaksi', $detail->transaksi->id) }}" class="btn btn-primary btn-sm" target="_blank">Cetak</a>
+                                            <button onclick="printTransaction({{ $detail->transaksi->id }})" class="btn btn-primary btn-sm">Cetak</button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -59,4 +59,11 @@
         </div>
     </div>
 </div>
+
+<script>
+function printTransaction(transactionId) {
+    var printWindow = window.open("{{ route('cetak.transaksi', '') }}/" + transactionId, "_blank", "width=800,height=600");
+    printWindow.focus();
+}
+</script>
 @endsection
