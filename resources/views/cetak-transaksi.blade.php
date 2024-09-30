@@ -25,6 +25,7 @@
     </style>
 </head>
 <body>
+    <img src="" alt="">
     <h1>Transaksi</h1>
     <p><strong>Nomor Transaksi:</strong> {{ $transaksi->id }}</p>
     <p><strong>Tanggal:</strong> {{ $transaksi->created_at->format('d/m/Y H:i') }}</p>
