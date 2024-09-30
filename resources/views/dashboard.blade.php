@@ -128,6 +128,20 @@
     width: 50px;  
     z-index: 1000;     /* Lebar gambar */
 }
+
+.whatsapp-logo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px; /* Atur ukuran sesuai kebutuhan */
+    height: auto;
+    z-index: 1000; /* Agar tetap di atas konten lain */
+}
+
+.whatsapp-logo img {
+    width: 100%;
+    height: auto;
+}
        
 
 
@@ -171,7 +185,9 @@
                     </div>
                 </div>
               </div>
-              <img src="foto/was.png" alt="Foto" class="fixed-image">
+              <a href="https://wa.me/1234567890" class="whatsapp-logo" target="_blank">
+        <img src="/foto/was.png" alt="WhatsApp Logo">
+    </a>
 
 
     <div id="about" class="content">
@@ -194,7 +210,7 @@
             </div>
             
             <div class="contact-item">
-                <h3>Whatapps</h3>
+                <h3>Telepon</h3>
                 <p>
                     <a href="https://wa.me/6281297535513">Hubungi Kami di WhatsApp</a>
                 </p>
