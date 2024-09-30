@@ -95,7 +95,6 @@
     </div>
 </div>
 
-<!-- Modal Edit User -->
 @foreach ($data_payment as $d)
 <div class="modal fade" id="modalEdit{{ $d->id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
@@ -118,8 +117,12 @@
                         </div>
                         @if($d->gambar)
                             <div>
-                                <img src="{{ asset('storage/' . $d->gambar) }}" alt="Current Image" style="max-width: 100px; max-height: 100px;">
-                                <p>Current image</p>
+                                @if(file_exists(public_path('storage/' . $d->gambar)))
+                                    <img src="{{ asset('storage/' . $d->gambar) }}" alt="Current Image" style="max-width: 100px; max-height: 100px;">
+                                    <p>Current image</p>
+                                @else
+                                    <p>Image file not found.</p>
+                                @endif
                             </div>
                         @endif
                         <!-- ... (rest of the form content) ... -->
@@ -134,6 +137,7 @@
     </div>
 </div>
 @endforeach
+
 <!-- Modal Hapus User -->
 @foreach ($data_payment as $c)
 
