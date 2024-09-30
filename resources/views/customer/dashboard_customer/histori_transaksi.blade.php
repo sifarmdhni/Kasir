@@ -3,12 +3,10 @@
 @section('content')
 <div class="content-body">
     <div class="row page-titles mx-0">
-        <div class="col p-md-0">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Histori</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
-            </ol>
-        </div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Histori</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+        </ol>
     </div>
     
     <div class="container-fluid">
@@ -26,25 +24,18 @@
                                         <th>No</th>
                                         <th>Nama Kasir</th>
                                         <th>Nama Customer</th>
-                                        <th>Nama Produk</th>
-                                        <th>Harga</th>
-                                        <th>Jumlah</th>
+                                        <th>Produk</th>
                                         <th>Total Harga</th>
                                         <th>Diskon</th>
                                         <th>Cetak</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($detailTransaksi as $detail)
+                                    @foreach($transaksiGrouped as $transaksi)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $detail->transaksi->kasir->name_kasir }}</td>
-                                        <td>{{ $detail->transaksi->customer->nama }}</td>
-                                        <td>{{ $detail->produk->nama_produk }}</td>
-                                        <td>{{ $detail->harga }}</td>
-                                        <td>{{ $detail->jumlah }}</td>
-                                        <td>{{ $detail->transaksi->total_harga }}</td>
-                                        <td>{{ $detail->transaksi->diskon }}</td>
+                                        <td>{{ $transaksi->kasir->name_kasir }}</td>
+                                        <td>{{ $transaksi->customer->nama }}</td>
                                         <td>
                                             <button onclick="printTransaction({{ $detail->transaksi->id }})" class="btn btn-primary btn-sm">Cetak</button>
                                         </td>
