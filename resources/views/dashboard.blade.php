@@ -11,6 +11,7 @@
             margin-top: 50px; /* Jarak dari atas */
             margin: 50px;
             width: 400px;
+            border-color: white;
             animation: float 3s ease-in-out infinite;
         }
 
@@ -28,6 +29,13 @@
             border-radius: 60px; /* Jarak dari kanan */
             background-color: #007BFF; 
             padding: 10px 20px;
+        }
+        .silahkan {
+            position: absolute;
+            size: 40px;
+            color: GREY;
+            top: 370px; /* Jarak dari atas */
+            margin-left: 40px;
         }
         .top-right2 {
             position: absolute;
@@ -76,7 +84,8 @@
         .contact {
             margin-top: 10px;
             margin: 20px; /* Margin untuk konten */
-            padding: 50px; /* Padding untuk konten */
+            padding: 50px;
+            border: grey; /* Padding untuk konten */
         }
 
     .contact-section {
@@ -121,13 +130,7 @@
 .contact-item a:hover {
     text-decoration: underline;
 }
-.fixed-image {
-    position: absolute; /* Menggunakan posisi absolut */
-    top: 550px;         /* Jarak dari atas */
-    right: 20px;       /* Jarak dari kanan */
-    width: 50px;  
-    z-index: 1000;     /* Lebar gambar */
-}
+
 
 .whatsapp-logo {
     position: fixed;
@@ -153,7 +156,7 @@
     <link href="/assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body class="h-100" style="background-image: url('abc.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<body class="h-100" style="background-image: url('az.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <div id="preloader">
         <div class="loader">
             <svg class="circular" viewBox="25 25 50 50">
@@ -170,6 +173,7 @@
     <div class="col-12">
         <!-- <a href="/loginadmin" class="btn btn-primary top-right">Admin</a> -->
         <a href="/logincustomer" class="top-right">Login Customer</a>
+        <p class="silahkan">* Silahkan login customer</p>
 
         <!-- <a href="/loginkasir" class="btn btn-primary top-right3">Kasier</a> -->
     </div>
@@ -196,11 +200,13 @@
         <p>This is a cashier application which makes it easier to manage a shop that you own.</p>
         <p>This application was created together with the Smkn 1 Talaga street vendor team.</p>
     </div>
+    <tr>
     <div class="contact" >
         <h1>Who's behind this?</h1>
         <h6>We're a team of creators building on the web full-time. You might have seen our work:</h6>
         <center><img src="/foto/qa.png" alt=""></center>
     </div>
+    </tr>
     <section id="contact"  class="contact-section">
         <h2>Contact</h2>
         <div class="contact-options">
