@@ -63,7 +63,7 @@
         .about-contact2 {
             position: absolute;
             top: 60px; /* Jarak dari atas */
-            right: 210px; /* Jarak dari kanan */
+            right: 230px; /* Jarak dari kanan */
             color: white; 
         }
         .content {
@@ -85,7 +85,8 @@
             margin-top: 10px;
             margin: 20px; /* Margin untuk konten */
             padding: 50px;
-            border: grey; /* Padding untuk konten */
+            border: 1px solid #ddd;
+            border-radius: 5px;/* Padding untuk konten */
         }
 
     .contact-section {
@@ -136,7 +137,7 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 60px; /* Atur ukuran sesuai kebutuhan */
+    width: 40px; /* Atur ukuran sesuai kebutuhan */
     height: auto;
     z-index: 1000; /* Agar tetap di atas konten lain */
 }
@@ -145,18 +146,47 @@
     width: 100%;
     height: auto;
 }
-       
+.footer {
+    background-color: grey;
+    color: grey;
+    padding: 30px ;
+    text-align: center;
+    right: 20px;
+}
 
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
 
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.footer-links a {
+    color: grey;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
     </style>
     <title>Aplikasi Kasir</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/kasir5.png">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
     <link href="/assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body class="h-100" style="background-image: url('az.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<body class="h-100" style="background-image: url('aw.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <div id="preloader">
         <div class="loader">
             <svg class="circular" viewBox="25 25 50 50">
@@ -165,17 +195,21 @@
             </svg>
         </div>
     </div>
-    <a href=""><img src="foto/kasic.png" alt="Foto" style="margin-left: 40px; margin-top: 40px;" width="200">
+    <div>
+    <a href="">
+        <img src="foto/kasic.png" alt="Foto" style="margin-left: 40px; margin-top: 40px;" width="200">
     </a>
-      <h6><a href="#about" class="about-contact1">ABOUT</a></h6>
-      <h6><a href="#contact" class="about-contact2">CONTACT</a></h6>
+      <h6>
+        <a href="#about" class="about-contact2">ABOUT</a>
+      </h6>
+      <h6>
+        <a href="#contact" class="about-contact1">CONTACT</a>
+      </h6>
        <img src="foto/10.png" alt="Foto" class="floating">
+ </div>
     <div class="col-12">
-        <!-- <a href="/loginadmin" class="btn btn-primary top-right">Admin</a> -->
-        <a href="/logincustomer" class="top-right">Login Customer</a>
-        <p class="silahkan">* Silahkan login customer</p>
-
-        <!-- <a href="/loginkasir" class="btn btn-primary top-right3">Kasier</a> -->
+        <a href="/logincustomer" class="top-right">Sign In</a>
+        <p class="silahkan">* Sign In for customer</p>
     </div>
     <div class="container-fluid">
                 <div class="row">
@@ -189,9 +223,10 @@
                     </div>
                 </div>
               </div>
-              <a href="https://wa.me/1234567890" class="whatsapp-logo" target="_blank">
-        <img src="/foto/was.png" alt="WhatsApp Logo">
-    </a>
+
+                <a href="https://wa.me/6281297535513" class="whatsapp-logo" target="_blank">
+                    <img src="/foto/was.png" alt="WhatsApp Logo">
+                </a>
 
 
     <div id="about" class="content">
@@ -226,16 +261,21 @@
                 <p>
                     <a href="#">Facebook</a> |
                     <a href="#">Twitter</a> |
-                    <a href="https://www.instagram.com/username">Instagram</a>
+                    <a href="https://www.instagram.com/giandrlll">Instagram</a>
                 </p>
             </div>
         </div>
     </section>
     <div class="footer">
-            <div class="copyright">
-                <p class="text-center">Copyright &copy; Designed & Developed By <a href="#">Kasir</a> 2018</p>
-            </div>
-        </div>
+     <div class="footer-content">
+       <p>Copyright &copy; Designed & Developed By <a href="#">Kasir</a> 2018</p>
+       <ul class="footer-links">
+            <li><a href="#about">Tentang Kami</a></li>
+            <li><a href="#">Kebijakan Privasi</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+     </div>
+    </div>
 
 </section>
     <script src="/assets/plugins/common/common.min.js"></script>
