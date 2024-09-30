@@ -172,8 +172,8 @@
        <img src="foto/10.png" alt="Foto" class="floating">
     <div class="col-12">
         <!-- <a href="/loginadmin" class="btn btn-primary top-right">Admin</a> -->
-        <a href="/logincustomer" class="top-right">Login Customer</a>
-        <p class="silahkan">* Silahkan login customer</p>
+        <a href="/logincustomer" class="top-right">Sign In</a>
+        <p class="silahkan">* Sign In for customer</p>
 
         <!-- <a href="/loginkasir" class="btn btn-primary top-right3">Kasier</a> -->
     </div>
