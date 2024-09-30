@@ -35,6 +35,7 @@
                                             <th>Jumlah</th>
                                             <th>Total Harga</th>
                                             <th>Diskon</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -50,6 +51,7 @@
                                         <td>{{ $detail->jumlah }}</td>
                                         <td>{{ $detail->transaksi->total_harga }}</td>
                                         <td>{{ $detail->transaksi->diskon }}</td>
+                                        <td>{{ $detail->transaksi->action }}</td>
                                     </tr>
                                 @endforeach
                                     </tbody>
@@ -102,6 +104,10 @@
                     <div class="form-group">
                         <label>Diskon</label>
                         <input type="number" class="form-control" name="diskon" placeholder="Diskon...." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Action</label>
+                        <input type="number" class="form-control" name="diskon" placeholder="Action...." required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>

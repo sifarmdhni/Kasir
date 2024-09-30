@@ -135,4 +135,26 @@ class CustomerController extends Controller
           return redirect()->back()->with('success', 'Profile updated successfully.');
       }
       
+      public function show()
+    {
+        $customer = [
+            'name' => 'Budi Santoso',
+            'age' => 30,
+            'city' => 'Jakarta',
+        ];
+
+        return view('customer.show', compact('customer'));
+    }
+
+    public function print()
+{
+    $customer = [
+        'name' => 'Budi Santoso',
+        'age' => 30,
+        'city' => 'Jakarta',
+    ];
+
+    $pdf = PDF::loadView('customer.print', compact('customer'));
+    return $pdf->download('customer_info.pdf');
+}
 }
