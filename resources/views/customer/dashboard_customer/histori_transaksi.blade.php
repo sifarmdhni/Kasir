@@ -18,23 +18,27 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">Histori Transaksi Customer</h4>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered zero-configuration">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Kasir</th>
-                                        <th>Nama Customer</th>
-                                        <th>Nama Produk</th>
-                                        <th>Harga</th>
-                                        <th>Jumlah</th>
-                                        <th>Total Harga</th>
-                                        <th>Diskon</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($detailTransaksi as $detail)
+                            
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered zero-configuration">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Kasir</th>
+                                            <th>Nama Customer</th>
+                                            <th>Nama Produk</th>
+                                            <th>Harga</th>
+                                            <th>Jumlah</th>
+                                            <th>Total Harga</th>
+                                            <th>Diskon</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($detailTransaksi as $detail)
+
+                                        {{-- @dd($detail->transaksi->customer) --}}
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $detail->transaksi->kasir->name_kasir }}</td>
@@ -44,6 +48,7 @@
                                         <td>{{ $detail->jumlah }}</td>
                                         <td>{{ $detail->transaksi->total_harga }}</td>
                                         <td>{{ $detail->transaksi->diskon }}</td>
+                                        <td>{{ $detail->transaksi->action }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
