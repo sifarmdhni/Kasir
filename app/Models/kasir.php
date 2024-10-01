@@ -13,14 +13,17 @@ class kasir extends Authenticatable
 
     protected $table = "kasir";
     
-    protected $fillable = [
-        'name_kasir',
-        'no_telepon',
-        'email',
-        'password',
-        'foto_kasir',
-        'jenis_kelamin',
-    ];
+   
+        protected $fillable = [
+            'name_kasir',
+            'no_telepon',
+            'email',
+            'jenis_kelamin',
+            'password',
+            'foto',
+        ];
+    
+    
 
     protected $hidden = [
         'password',

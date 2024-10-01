@@ -78,26 +78,31 @@
                     
                 </div>
                 <div class="header-right">
-                    <ul class="clearfix">
-                        <li class="icons dropdown">
-                            <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
-                                <span class="activity active"></span>
-                                <img src="/foto/poto-kasir.png" height="40" width="40" alt="">
+                <ul class="clearfix">
+                    <li class="icons dropdown">
+                        <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                            <span class="activity active"></span>
+                            @if(Auth::guard('kasir')->check())
+                                <img src="{{ asset('storage/kasir_photos/'.Auth::guard('kasir')->user()->foto) }}" height="40" width="40" alt="Photo Kasir">
+                            @else
+                                <img src="{{ asset('assets/images/user/default.png') }}" height="40" width="40" alt="Default Photo">
+                            @endif
+                        </div>
+                        <div class="drop-down dropdown-profile dropdown-menu">
+                            <div class="dropdown-content-body">
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('kasir.profile') }}"><i class="icon-user"></i> <span>Profile</span></a>
+                                    </li>
+                                    
+                                </ul>
                             </div>
-                            <div class="drop-down dropdown-profile   dropdown-menu">
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li>
-                                            <a href="profile"><i class="icon-user"></i> <span>Profile</span></a>
-                                        </li>    
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
+    </div>
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
