@@ -103,11 +103,10 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/user" aria-expanded="false">
-                            <i class="icon-grid menu-icon"></i><span class="nav-text">User</span>
+                        <a href="/datakasir" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Kasir</span>
                         </a>
                     </li>
-                    
                     <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Laporan</span>
@@ -119,7 +118,7 @@
                     </li>
                     <li>
                         <a href="/payment" aria-expanded="false">
-                            <i class="icon-envelope menu-icon"></i><span class="nav-text">Payment</span>
+                            <i class="icon-graph  menu-icon"></i><span class="nav-text">Payment</span>
                         </a>
                     </li>
                     <li>

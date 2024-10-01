@@ -107,92 +107,123 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('#customer_id').change(function() {
-            var selectedOption = $(this).find('option:selected');
-            var diskon = selectedOption.data('diskon');
-            $('#diskon').val(diskon);
-            calculateTotal();
-        });
+  $(document).ready(function() {
+    $('#customer_id').change(function() {
+        var selectedOption = $(this).find('option:selected');
+        var diskon = selectedOption.data('diskon');
+        $('#diskon').val(diskon);
+        calculateTotal();
+    });
 
-        function addRow() {
-            let table = $('#detail-transaksi-table tbody');
-            let rowCount = table.children('tr').length;
-            let newRow = `
-                <tr>
-                    <td>
-                        <select class="form-control product-select" name="details[${rowCount}][id_produk]" required>
-                            <option value="" hidden>-- Pilih produk --</option>
-                            @foreach ($data_produk as $produk)
-                                <option value="{{ $produk->id }}" data-harga="{{ $produk->harga }}"  data-stok="{{ $produk->stok }}">{{ $produk->nama_produk }}</option>
-                            @endforeach
-                        </select>
-                    </td>
-                    <td>
-                        <input type="number" name="details[${rowCount}][harga]" class="form-control harga" required readonly>
-                    </td>
-                    <td>
-                        <input type="number" name="details[${rowCount}][jumlah]" class="form-control jumlah" required>
-                    </td>
-                    <td>
-                        <input type="number" name="details[${rowCount}][subtotal]" class="form-control subtotal" required readonly>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-danger remove-row-btn">Hapus</button>
-                    </td>
-                </tr>
-            `;
-            table.append(newRow);
-        }
+    function addRow() {
+        let table = $('#detail-transaksi-table tbody');
+        let rowCount = table.children('tr').length;
+        let newRow = `
+            <tr>
+                <td>
+                    <select class="form-control product-select" name="details[${rowCount}][id_produk]" required>
+                        <option value="" hidden>-- Pilih produk --</option>
+                        @foreach ($data_produk as $produk)
+                            <option value="{{ $produk->id }}" data-harga="{{ $produk->harga }}" data-stok="{{ $produk->stok }}">{{ $produk->nama_produk }}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td>
+                    <input type="number" name="details[${rowCount}][harga]" class="form-control harga" required readonly>
+                </td>
+                <td>
+                    <input type="number" name="details[${rowCount}][jumlah]" class="form-control jumlah" required>
+                </td>
+                <td>
+                    <input type="number" name="details[${rowCount}][subtotal]" class="form-control subtotal" required readonly>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger remove-row-btn">Hapus</button>
+                </td>
+            </tr>
+        `;
+        table.append(newRow);
+    }
 
-        $('#add-row-btn').click(addRow);
+    $('#add-row-btn').click(addRow);
 
-        $(document).on('click', '.remove-row-btn', function() {
-            $(this).closest('tr').remove();
-            calculateTotal();
-        });
+    $(document).on('click', '.remove-row-btn', function() {
+        $(this).closest('tr').remove();
+        calculateTotal();
+    });
 
-        $(document).on('change', '.product-select', function() {
-            var selectedOption = $(this).find('option:selected');
-            var harga = selectedOption.data('harga');
-            var row = $(this).closest('tr');
-            row.find('.harga').val(harga);
+    $(document).on('change', '.product-select', function() {
+        var selectedOption = $(this).find('option:selected');
+        var harga = selectedOption.data('harga');
+        var stok = selectedOption.data('stok');
+        var row = $(this).closest('tr');
+        row.find('.harga').val(harga);
+        row.find('.jumlah').attr('max', stok);  // Set max attribute to current stock
+        
+        if (stok <= 0) {
+            alert('Stok produk ini kosong. Silakan pilih produk lain.');
+            $(this).val('');  // Reset selection
+            row.find('.harga').val('');
+            row.find('.jumlah').val('');
+            row.find('.subtotal').val('');
+        } else {
             updateSubtotal(row);
-        });
-
-        $(document).on('input', '.jumlah', function() {
-             var row = $(this).closest('tr');
-             var selectedOption = row.find('.product-select option:selected');
-             var stok = parseInt(selectedOption.data('stok')) || 0;
-            var jumlah = parseInt($(this).val()) || 0;
-
-           if (jumlah > stok) {
-            alert('Jumlah melebihi stok yang tersedia.');
-            $(this).val(stok); // Set jumlah ke stok maksimum
-            jumlah = stok;
-            }
-
-            updateSubtotal(row);
-         });
-
-
-        function updateSubtotal(row) {
-            var harga = parseFloat(row.find('.harga').val()) || 0;
-            var jumlah = parseFloat(row.find('.jumlah').val()) || 0;
-            var subtotal = harga * jumlah;
-            row.find('.subtotal').val(subtotal);
-            calculateTotal();
-        }
-
-        function calculateTotal() {
-            var total = 0;
-            $('.subtotal').each(function() {
-                total += parseFloat($(this).val()) || 0;
-            });
-            var diskon = parseFloat($('#diskon').val()) || 0;
-            var totalAfterDiscount = total * (1 - diskon / 100);
-            $('#total_harga').val(totalAfterDiscount.toFixed(2));
         }
     });
+
+    $(document).on('input', '.jumlah', function() {
+        var row = $(this).closest('tr');
+        var selectedOption = row.find('.product-select option:selected');
+        var stok = parseInt(selectedOption.data('stok')) || 0;
+        var jumlah = parseInt($(this).val()) || 0;
+
+        if (jumlah > stok) {
+            alert('Jumlah melebihi stok yang tersedia.');
+            $(this).val(stok);  // Set jumlah ke stok maksimum
+            jumlah = stok;
+        }
+
+        if (jumlah <= 0) {
+            alert('Jumlah harus lebih dari 0.');
+            $(this).val(1);  // Set jumlah minimum ke 1
+            jumlah = 1;
+        }
+
+        updateSubtotal(row);
+    });
+
+    function updateSubtotal(row) {
+        var harga = parseFloat(row.find('.harga').val()) || 0;
+        var jumlah = parseFloat(row.find('.jumlah').val()) || 0;
+        var subtotal = harga * jumlah;
+        row.find('.subtotal').val(subtotal);
+        calculateTotal();
+    }
+
+    function calculateTotal() {
+        var total = 0;
+        $('.subtotal').each(function() {
+            total += parseFloat($(this).val()) || 0;
+        });
+        var diskon = parseFloat($('#diskon').val()) || 0;
+        var totalAfterDiscount = total * (1 - diskon / 100);
+        $('#total_harga').val(totalAfterDiscount.toFixed(2));
+    }
+
+    // Prevent form submission if any product has zero quantity
+    $('form').submit(function(e) {
+        var isValid = true;
+        $('.jumlah').each(function() {
+            if (parseInt($(this).val()) <= 0) {
+                alert('Semua produk harus memiliki jumlah lebih dari 0.');
+                isValid = false;
+                return false;  // Break the loop
+            }
+        });
+        if (!isValid) {
+            e.preventDefault();  // Prevent form submission
+        }
+    });
+});
 </script>
 @endsection

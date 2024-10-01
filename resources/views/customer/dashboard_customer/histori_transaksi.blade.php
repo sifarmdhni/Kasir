@@ -3,10 +3,12 @@
 @section('content')
 <div class="content-body">
     <div class="row page-titles mx-0">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Histori</a></li>
-            <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
-        </ol>
+        <div class="col p-md-0">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">History</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">History</a></li>
+            </ol>
+        </div>
     </div>
     
     <div class="container-fluid">
@@ -37,15 +39,16 @@
                                         <td>{{ $transaksi->kasir->name_kasir }}</td>
                                         <td>{{ $transaksi->customer->nama }}</td>
                                         <td>
+                                            <ul>
                                             @foreach($transaksi->details as $detail)
-                                                {{ $detail->produk->nama_produk }} ( {{ $detail->jumlah }})<br>
+                                                <li>{{ $detail->produk->nama_produk }} ({{ $detail->jumlah }})</li>
                                             @endforeach
+                                            </ul>
                                         </td>
-                                        </td>
-                                        <td>{{ $transaksi->total_harga }}</td>
-                                        <td>{{ $transaksi->diskon }}</td>
+                                        <td>{{ number_format($transaksi->total_harga, 0, ',', '.') }}</td>
+                                        <td>{{ $transaksi->diskon }}%</td>
                                         <td>
-                                            <a href="{{ route('cetak.transaksi', $transaksi->id) }}" class="btn btn-primary btn-sm" target="_blank">Cetak</a>
+                                            <button onclick="printTransaction({{ $transaksi->id }})" class="btn btn-primary btn-sm">Cetak</button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -58,4 +61,11 @@
         </div>
     </div>
 </div>
+
+<script>
+function printTransaction(transactionId) {
+    var printWindow = window.open("{{ route('cetak.transaksi', '') }}/" + transactionId, "_blank", "width=800,height=600");
+    printWindow.focus();
+}
+</script>
 @endsection

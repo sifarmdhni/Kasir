@@ -1,6 +1,16 @@
 @extends('kasir.layouts.mainlayout')
 
 @section('content')
+<style>
+   .img-bordered {
+    border: 2px solid grey; /* Ganti warna sesuai kebutuhan */
+    border-radius: 50%; /* Membuat gambar menjadi bulat */
+    width: 200px; /* Atur lebar gambar */
+    height: 200px; /* Atur tinggi gambar */
+    object-fit: cover; /* Memastikan gambar terpotong dengan baik dalam lingkaran */
+}
+
+</style>
 
 <div class="content-body">
     <div class="row page-titles mx-0">
@@ -91,7 +101,7 @@
                                     </span>
                                 @enderror
                                 @if($kasir->foto)
-                                <img src="{{ asset('storage/kasir_photos/'.$kasir->foto) }}" alt="Kasir Photo" class="mt-2" style="max-width: 200px;">
+                                <img src="{{ asset('storage/kasir_photos/'.$kasir->foto) }}" alt="Kasir Photo" class="mt-2 img-bordered" style="max-width: 200px;">
                                 @else
                                     <p class="mt-2">No photo uploaded</p>
                                 @endif

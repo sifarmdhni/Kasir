@@ -32,7 +32,6 @@
                     <th>No</th>
                     <th>Nama Pembayaran</th>
                     <th>Gambar</th>
-                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,9 +48,6 @@
                         @else
                             No image available
                         @endif
-                    </td>
-                    <td>
-                        <a href="#modalHapus{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i>Hapus</a>
                     </td>
                 </tr>
                 @endforeach
@@ -137,7 +133,7 @@
 @endforeach -->
 
 <!-- Modal Hapus User -->
-@foreach ($data_payment as $c)
+<!-- @foreach ($data_payment as $c)
 
 <div class="modal fade" id="modalHapus{{ $c->id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
@@ -161,6 +157,6 @@
         </div>
     </div>   
 </div>
-@endforeach
+@endforeach -->
 
 @endsection

@@ -14,12 +14,14 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\AuthKasirController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataKasirController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\AuthProdukController;
 use App\Http\Controllers\AuthCustomerController;
 use App\Http\Controllers\AuthTransaksiController;
 use App\Http\Controllers\CustomerKasirController;
 use App\Http\Controllers\LaporanProdukController;
+use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\KategoriProdukController;
 use App\Http\Controllers\LaporanTransaksiController;
 
@@ -34,15 +36,18 @@ Route::get('/loginkasir', [DashboardController::class, 'index4']);
 
 //admin
 Route::middleware('auth.admin')->group(function () {
-Route::get('/d_admin', function () {
-   return view('admin.dashboardadmin.d_admin');
-});
+Route::get('/d_admin', [DashboardAdminController::class, 'dashboard'])->name('dashboard.d_admin');
+
 Route::get('/kasir/poto/{id}', [KasirController::class, 'showPoto'])->name('kasir.poto');
 Route::resource('kasir', KasirController::class);
 //logout
 // Route::post('/logout', [AuthAdminController::class, 'logout'])->name('logout');
 // Dashboard setelah login
 //route register
+Route::get('/datakasir', [DataKasirController::class, 'index']);
+Route::post('/datakasir/store', [DataKasirController::class, 'store'])->name('datakasir.store');
+Route::put('/datakasir/update/{id}', [DataKasirController::class, 'update']);
+Route::delete('/datakasir/destroy/{id}', [DataKasirController::class, 'destroy']);
 //laporan produk admin
 Route::get('/laporanproduk', [LaporanProdukController::class, 'laporanproduk']);
 Route::post('/laporanproduk/store', [LaporanProdukController::class, 'store'])->name('produk.store');
