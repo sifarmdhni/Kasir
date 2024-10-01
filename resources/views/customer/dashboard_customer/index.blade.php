@@ -23,11 +23,15 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                            <img src="foto/asal.png" alt="Foto" style="float: right; margin: 50px;" width="400">
                             <h1 style="text-align: left;">Hallo  {{ $customer->nama }}</h1>
                             <h4>Selamat Datang Di Customer</h4>
                             <h4>Kami Akan Melayani Anda</h4> 
-                                <div >
+                            
+                                <img src="foto/asal.png" alt="Foto" style="float: right; margin: 50px;" width="400">
+
+                            
+                            <div >
+                                
                                     <h5  style="margin-top: 50px;"></h5>
                                     <a href="#" class="button"></a>
                                 </div>

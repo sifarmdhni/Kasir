@@ -17,10 +17,10 @@
                 <div class="card">
                     <div class="card-body">
                         <h1 class="card-title text-right">Dashboard</h1>
-                        <img src="foto/DESA.png" alt="Foto" class="float-right mb-4" width="400">
                         <h1 class="text-left">Hallo Mr.</h1>
                         <h3>Selamat Datang...</h3>
                         <h6 class="mt-4">Selamat datang! Kami sangat senang untuk berbagi waktu berkualitas dengan Anda dan membuat kenangan hari ini!</h6>
+                        <img src="foto/DESA.png" alt="Foto" class="float-right mb-4" width="400">
                     </div>
                 </div>
             </div>

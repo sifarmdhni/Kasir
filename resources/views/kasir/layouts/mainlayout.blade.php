@@ -41,18 +41,33 @@
         <!--**********************************
             Nav header start
         ***********************************-->
+
+
         <div class="nav-header">
             <div class="brand-logo">
+                <a href="indexkasir">
+                    <b class="logo-abbr"><img src="/assets/images/0.png" alt=""> </b>
+                    <span class="logo-compact"><img src="/assets/images/0.png" alt=""></span>
+                    <span class="brand-title">
+                        <img src="/assets/images/kasirrpl12.png" style="margin-left: -40px;  margin-top: -80px;" height="200" width="260" alt="foto">
+                    </span>
+                </a>
+            </div>
+        </div>
+
+
+        {{-- <div class="nav-header">
+            <div class="brand-logo">
                 <a href="/indexkasir">
-                    <!-- <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="images/logo-compact.png" alt=""></span> -->
+                     <b style="margin-left: -40px;  margin-top: 80px;" height="50" width="50"><img src="images/kasir5.png" alt=""> </b>
+                    <span class="logo-compact"><img src="images/logo-compact.png" alt=""></span>
                     <div class="mb-3">
                     <img src="/foto/kasirrpl12.png" style="margin-left: -40px;  margin-top: -80px;" height="200" width="260" alt="foto">
                     </div>
 
                 </a>
             </div>
-        </div>
+        </div> --}}
 
         <!-- <div class="nav-header">
             <div class="mb-3">
