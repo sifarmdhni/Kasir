@@ -51,18 +51,31 @@
             margin-bottom: 1rem;
         }
         .whatsapp-logo {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            z-index: 1000;
-            transition: transform 0.2s ease;
-        }
-        .whatsapp-logo img {
-            width: 100%;
-            height: auto;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    z-index: 1000;
+    transition: transform 0.2s ease, opacity 0.2s ease; /* Transisi untuk transformasi dan opacity */
+}
 
-        }
+.whatsapp-logo:hover {
+    transform: scale(1.1); /* Membesarkan elemen saat kursor berada di atas */
+    opacity: 0.9; /* Mengurangi opacity saat kursor berada di atas */
+}
+
+.whatsapp-logo.clicked {
+    transform: scale(1.2); /* Membesarkan elemen saat diklik */
+    opacity: 0.8; /* Mengurangi opacity saat diklik */
+}
+
+.whatsapp-logo img {
+    width: 100%;
+    height: auto;
+}
+
+
+
         .footer {
             background-color: #333;
             color: white;
@@ -94,6 +107,11 @@
         padding: 0.5rem; /* Mengurangi padding pada layar kecil */
     }
 }
+.text-whitee {
+    color: white; /* Pastikan teks berwarna putih */
+    margin-top: 30px; /* Atur margin atas untuk menggeser ke bawah */
+}
+
 
     </style>
 </head>
@@ -125,7 +143,7 @@
             <div class="col-lg-6">
                 <h1 class="text-white">Hello Mr/Mrs.</h1>
                 <h3 class="text-white">Welcome...</h3>
-                <p class="text-white">Welcome! We are very happy to share quality time with you and make memories today! Welcome to our cashier application, here we provide some quality products, please log in for further information.</p>
+                <p class="text-whitee">Welcome! We are very happy to share quality time with you and make memories today! Welcome to our cashier application, here we provide some quality products, please log in for further information.</p>
             </div>
             <div class="col-lg-6">
                 <img src="foto/10.png" alt="Floating Image" class="floating img-fluid">
