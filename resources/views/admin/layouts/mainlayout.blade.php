@@ -28,61 +28,26 @@
             </svg>
         </div>
     </div>
-    <!--*******************
-        Preloader end
-    ********************-->
-
-    
-    <!--**********************************
-        Main wrapper start
-    ***********************************-->
+   
     <div id="main-wrapper">
-
-        <!--**********************************
-            Nav header start
-        ***********************************-->
-        <div class="nav-header">
-            <div class="mb-3">
-            <img src="/foto/kasirrpl12.png" style="margin-left: -23px;  margin-top: -60px;" height="200" width="260" alt="foto">
+    <div class="nav-header">
+            <div class="brand-logo">
+                <a href="/d_admin">
+                    <!-- <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
+                    <span class="logo-compact"><img src="images/logo-compact.png" alt=""></span> -->
+                    <div class="mb-3">
+                    <img src="/foto/kasirrpl12.png" style="margin-left: -40px;  margin-top: -80px;" height="200" width="260" alt="foto">
+                    </div>
+                </a>
             </div>
         </div>
-        <!--**********************************
-            Nav header end
-        ***********************************-->
-
-        <!--**********************************
-            Header start
-        ***********************************-->
+       
         <div class="header  justify-top">    
             <div class="header-content clearfix">
-                
                 <div class="nav-control">
                     <div class="hamburger">
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
                     </div>
-                </div>
-                <div class="header-left">
-                    
-                </div>
-                <div class="header-right">
-                    <ul class="clearfix">
-                        <li class="icons dropdown">
-                            <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
-                                <span class="activity active"></span>
-                                <img src="/foto/logo.jpeg" height="50" width="50" alt="foto">
-                            </div>
-                            <div class="drop-down dropdown-profile   dropdown-menu">
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li>
-                                            <a href="profile"><i class="icon-user"></i> <span>Profile</span></a>
-                                        </li>
-                                        <hr class="my-2">
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -104,7 +69,7 @@
                     </li>
                     <li>
                         <a href="/datakasir" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Kasir</span>
+                            <i class="fa fa-users menu-icon"></i><span class="nav-text">Data Kasir</span>
                         </a>
                     </li>
                     <li class="mega-menu mega-menu-sm">

@@ -140,6 +140,9 @@
     width: 40px; /* Atur ukuran sesuai kebutuhan */
     height: auto;
     z-index: 1000; /* Agar tetap di atas konten lain */
+    transition: transform 0.2s ease; /* Tambahkan transisi */
+    transform: translateY(-10px); /* Angkat logo saat diklik */
+
 }
 
 .whatsapp-logo img {
