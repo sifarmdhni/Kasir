@@ -33,8 +33,8 @@
     background-color: rgba(245, 171, 98, 0.8);
     border-radius: 10px;
     padding: 2rem;
-    margin: 2rem; /* Menambahkan margin di semua sisi */
-    box-sizing: border-box; /* Agar padding dan border termasuk dalam ukuran total */
+    margin: 2rem; 
+    box-sizing: border-box; 
 }
 
         .contact-section {
@@ -56,17 +56,17 @@
     right: 20px;
     width: 40px;
     z-index: 1000;
-    transition: transform 0.2s ease, opacity 0.2s ease; /* Transisi untuk transformasi dan opacity */
+    transition: transform 0.2s ease, opacity 0.2s ease; 
 }
 
 .whatsapp-logo:hover {
-    transform: scale(1.1); /* Membesarkan elemen saat kursor berada di atas */
-    opacity: 0.9; /* Mengurangi opacity saat kursor berada di atas */
+    transform: scale(1.1); 
+    opacity: 0.9; 
 }
 
 .whatsapp-logo.clicked {
-    transform: scale(1.2); /* Membesarkan elemen saat diklik */
-    opacity: 0.8; /* Mengurangi opacity saat diklik */
+    transform: scale(1.2); 
+    opacity: 0.8; 
 }
 
 .whatsapp-logo img {
@@ -83,33 +83,33 @@
             margin-top: 2rem;
         }
         .kita {
-     /* Latar belakang putih dengan transparansi */
-    color: #fff; /* Mengubah warna teks menjadi putih */
+     
+    color: #fff; 
     border-radius: 10px;
-    padding: 1rem; /* Padding untuk ruang di dalam elemen */
-    margin: 1rem; /* Margin untuk ruang di luar elemen */
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Memberikan efek bayangan */
-    transition: transform 0.2s; /* Transisi halus saat hover */
+    padding: 1rem; 
+    margin: 1rem; 
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.2s; 
 }
 
 .kita:hover {
-    transform: scale(1.02); /* Sedikit membesar saat hover */
+    transform: scale(1.02); 
 }
 
 .img-fluid {
-    max-width: 100%; /* Agar gambar responsif */
-    height: auto; /* Mempertahankan rasio aspek gambar */
+    max-width: 100%;
+    height: auto; 
 }
 
 /* Media query untuk responsivitas */
 @media (max-width: 768px) {
     .kita {
-        padding: 0.5rem; /* Mengurangi padding pada layar kecil */
+        padding: 0.5rem; 
     }
 }
 .text-whitee {
-    color: white; /* Pastikan teks berwarna putih */
-    margin-top: 30px; /* Atur margin atas untuk menggeser ke bawah */
+    color: white; 
+    margin-top: 30px; 
 }
 
 

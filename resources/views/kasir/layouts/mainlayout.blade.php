@@ -11,16 +11,10 @@
     <!-- Custom Stylesheet -->
     <link href="/assets/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet">
-   
-
 </head>
 
 <body>
     
-
-    <!--*******************
-        Preloader start
-    ********************-->
     <div id="preloader">
         <div class="loader">
             <svg class="circular" viewBox="25 25 50 50">
@@ -28,20 +22,8 @@
             </svg>
         </div>
     </div>
-    <!--*******************
-        Preloader end
-    ********************-->
-
-    
-    <!--**********************************
-        Main wrapper start
-    ***********************************-->
+   
     <div id="main-wrapper">
-
-        <!--**********************************
-            Nav header start
-        ***********************************-->
-
 
         <div class="nav-header">
             <div class="brand-logo">
@@ -54,33 +36,6 @@
                 </a>
             </div>
         </div>
-
-
-        {{-- <div class="nav-header">
-            <div class="brand-logo">
-                <a href="/indexkasir">
-                     <b style="margin-left: -40px;  margin-top: 80px;" height="50" width="50"><img src="images/kasir5.png" alt=""> </b>
-                    <span class="logo-compact"><img src="images/logo-compact.png" alt=""></span>
-                    <div class="mb-3">
-                    <img src="/foto/kasirrpl12.png" style="margin-left: -40px;  margin-top: -80px;" height="200" width="260" alt="foto">
-                    </div>
-
-                </a>
-            </div>
-        </div> --}}
-
-        <!-- <div class="nav-header">
-            <div class="mb-3">
-            <img src="/foto/kasirrpl12.png" style="margin-left: -23px;  margin-top: -60px;" height="200" width="260" alt="foto">
-            </div>
-        </div> -->
-        <!--**********************************
-            Nav header end
-        ***********************************-->
-
-        <!--**********************************
-            Header start
-        ***********************************-->
         <div class="header  justify-top">    
             <div class="header-content clearfix">
                 
@@ -118,13 +73,7 @@
             </div>
         </div>
     </div>
-        <!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
-
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
+       
         <div class="nk-sidebar">           
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
@@ -171,9 +120,7 @@
                 </ul>
             </div>
         </div>
-        <!--**********************************
-            Sidebar end
-        ***********************************-->
+       
 
         @yield('content')
         
@@ -189,13 +136,7 @@
             Footer end
         ***********************************-->
     </div>
-    <!--**********************************
-        Main wrapper end
-    ***********************************-->
-
-    <!--**********************************
-        Scripts
-    ***********************************-->
+   
     <script src="/assets/plugins/common/common.min.js"></script>
     <script src="/assets/js/custom.min.js"></script>
     <script src="/assets/js/settings.js"></script>
