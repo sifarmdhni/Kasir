@@ -1,16 +1,15 @@
 @extends('customer.layouts.mainlayout')
 
 @section('content')
-< <div class="content-body">
-
-<div class="row page-titles mx-0">
-    <div class="col p-md-0">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">History</a></li>
-            <li class="breadcrumb-item active"><a href="javascript:void(0)">History</a></li>
-        </ol>
+<div class="content-body">
+    <div class="row page-titles mx-0">
+        <div class="col p-md-0">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">History</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">History</a></li>
+            </ol>
+        </div>
     </div>
-</div>
     
     <div class="container-fluid">
         <div class="row">
@@ -40,7 +39,16 @@
                                         <td>{{ $transaksi->kasir->name_kasir }}</td>
                                         <td>{{ $transaksi->customer->nama }}</td>
                                         <td>
-                                            <button onclick="printTransaction({{ $detail->transaksi->id }})" class="btn btn-primary btn-sm">Cetak</button>
+                                            <ul>
+                                            @foreach($transaksi->details as $detail)
+                                                <li>{{ $detail->produk->nama_produk }} ({{ $detail->jumlah }})</li>
+                                            @endforeach
+                                            </ul>
+                                        </td>
+                                        <td>{{ number_format($transaksi->total_harga, 0, ',', '.') }}</td>
+                                        <td>{{ $transaksi->diskon }}%</td>
+                                        <td>
+                                            <button onclick="printTransaction({{ $transaksi->id }})" class="btn btn-primary btn-sm">Cetak</button>
                                         </td>
                                     </tr>
                                     @endforeach
