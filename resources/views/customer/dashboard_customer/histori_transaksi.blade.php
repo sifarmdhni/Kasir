@@ -1,13 +1,16 @@
 @extends('customer.layouts.mainlayout')
 
 @section('content')
-<div class="content-body">
-    <div class="row page-titles mx-0">
+< <div class="content-body">
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Histori</a></li>
-            <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">History</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">History</a></li>
         </ol>
     </div>
+</div>
     
     <div class="container-fluid">
         <div class="row">
