@@ -28,7 +28,7 @@
     <img src="" alt="">
     <h1>Transaksi</h1>
     <p><strong>Nomor Transaksi:</strong> {{ $transaksi->id }}</p>
-    <p><strong>Tanggal:</strong> {{ $transaksi->created_at->format('d/m/Y H:i') }}</p>
+    <p><strong>Tanggal:</strong> {{ $transaksi->created_at->setTimezone('Asia/Jakarta')->format('d/m/Y H:i') }}</p>
     <p><strong>Kasir:</strong> {{ $transaksi->kasir->name_kasir }}</p>
     <p><strong>Customer:</strong> {{ $transaksi->customer->nama }}</p>
     

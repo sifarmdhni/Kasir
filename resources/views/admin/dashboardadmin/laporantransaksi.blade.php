@@ -42,7 +42,7 @@
             <td>{{ $trans->total_harga }}</td>
             <td>
                 @foreach($trans->detailTransaksi as $detail)
-                    Produk: {{ $detail->produk->nama_produk }} (Jumlah: {{ $detail->jumlah }})<br>
+                    {{ $detail->produk->nama_produk }} ({{ $detail->jumlah }})<br>
                 @endforeach
             </td>
         </tr>

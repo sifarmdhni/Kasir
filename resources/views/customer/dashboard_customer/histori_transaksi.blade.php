@@ -38,8 +38,9 @@
                                         <td>{{ $transaksi->customer->nama }}</td>
                                         <td>
                                             @foreach($transaksi->details as $detail)
-                                                {{ $detail->produk->nama_produk }} ({{ $detail->jumlah }}),
+                                                {{ $detail->produk->nama_produk }} ( {{ $detail->jumlah }})<br>
                                             @endforeach
+                                        </td>
                                         </td>
                                         <td>{{ $transaksi->total_harga }}</td>
                                         <td>{{ $transaksi->diskon }}</td>
