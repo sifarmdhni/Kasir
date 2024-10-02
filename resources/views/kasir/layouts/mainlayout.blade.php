@@ -129,7 +129,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="#">Kasir</a> 2024</p>
+            <p class="text-center">Copyright &copy; PT Aplikasi Kasir By <a href="#">SMKN 1 TALAGA</a> 2024</p>
             </div>
         </div>
         <!--**********************************

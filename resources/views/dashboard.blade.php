@@ -471,7 +471,7 @@ h2 {
                         <a href="https://www.instagram.com/xiirpltwoo"  style="color: #6495ED;">Instagram</a>
                     </p>
             </div>
-         <p class="text-center">Copyright &copy; Designed & Developed By <a href="#">Kasir</a> 2024</p>
+         <p class="text-center">Copyright &copy; PT Aplikasi Kasir By <a href="#">SMKN 1 TALAGA</a> 2024</p>
         </div>
     </footer>
 

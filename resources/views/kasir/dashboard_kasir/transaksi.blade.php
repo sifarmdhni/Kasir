@@ -50,45 +50,47 @@
                                     </select>
                                 </div>
 
-                                <!-- Input Detail Transaksi -->
-                                <h3>Detail Transaksi</h3>
-                                <table class="table table-bordered" id="detail-transaksi-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Produk</th>
-                                            <th>Harga</th>
-                                            <th>Jumlah</th>
-                                            <th>Subtotal</th>
-                                            <th>
-                                                <button type="button" class="btn btn-primary" id="add-row-btn">Tambah Detail</button>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <select class="form-control product-select" name="details[0][id_produk]" required>
-                                                    <option value="" hidden>-- Pilih produk --</option>
-                                                    @foreach ($data_produk as $produk)
-                                                        <option value="{{ $produk->id }}" data-harga="{{ $produk->harga }}"  data-stok="{{ $produk->stok }}">{{ $produk->nama_produk }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input type="number" name="details[0][harga]" class="form-control harga" required readonly>
-                                            </td>
-                                            <td>
-                                                <input type="number" name="details[0][jumlah]" class="form-control jumlah" required>
-                                            </td>
-                                            <td>
-                                                <input type="number" name="details[0][subtotal]" class="form-control subtotal" required readonly>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger remove-row-btn">Hapus</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                               <!-- Input Detail Transaksi -->
+<h3>Detail Transaksi</h3>
+<div class="table-responsive">
+    <table class="table table-bordered" id="detail-transaksi-table">
+        <thead>
+            <tr>
+                <th>Produk</th>
+                <th>Harga</th>
+                <th>Jumlah</th>
+                <th>Subtotal</th>
+                <th>
+                    <button type="button" class="btn btn-primary" id="add-row-btn">Tambah Detail</button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <select class="form-control product-select" name="details[0][id_produk]" required>
+                        <option value="" hidden>-- Pilih produk --</option>
+                        @foreach ($data_produk as $produk)
+                            <option value="{{ $produk->id }}" data-harga="{{ $produk->harga }}" data-stok="{{ $produk->stok }}">{{ $produk->nama_produk }}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td>
+                    <input type="number" name="details[0][harga]" class="form-control harga" required readonly>
+                </td>
+                <td>
+                    <input type="number" name="details[0][jumlah]" class="form-control jumlah" required>
+                </td>
+                <td>
+                    <input type="number" name="details[0][subtotal]" class="form-control subtotal" required readonly>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger remove-row-btn">Hapus</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
                                 <div class="form-group">
                                     <label for="total_harga">Total Harga</label>
