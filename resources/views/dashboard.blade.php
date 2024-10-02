@@ -78,7 +78,7 @@
 
 
         .footer {
-            background-color: #33333300;
+            background-color: grey;
             color: white;
             padding: 2rem 0;
             margin-top: 2rem;
@@ -214,10 +214,83 @@ h2 {
         border: 1px solid #e0e0e0;
         border-radius: 8px;
         padding: 15px;
-        width: 185px;
+        width: 165px;
         text-align: center;
-        transition: transform 0.3s ease;
+        transition: transform 0.5s ease;
     }
+    .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0 20px;
+    }
+
+    .footer .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .footer2, .footer3, .footer4 {
+        flex: 1;
+        min-width: 200px;
+        margin-bottom: 20px;
+        padding: 0 15px;
+    }
+
+    .footer img {
+        margin-bottom: 15px;
+    }
+
+    .footer h4 {
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .footer h6 {
+        margin-bottom: 5px;
+    }
+
+    .footer a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer a:hover {
+        color: #ddd;
+    }
+
+    .footer p {
+        margin-bottom: 10px;
+    }
+
+    .social-links a {
+        margin-right: 10px;
+    }
+
+    .text-center {
+        width: 100%;
+        text-align: center;
+        padding-top: 20px;
+        margin-top: 20px;
+        border-top: 1px solid #555;
+    }
+
+    @media (max-width: 768px) {
+        .footer .container {
+            flex-direction: column;
+        }
+
+        .footer2, .footer3, .footer4 {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+    }
+
+
 
     .product-card:hover {
         transform: translateY(-5px);
@@ -251,6 +324,41 @@ h2 {
     }
     .abouth1 {
         font-weight: bold; /* Atau bisa menggunakan '700' */
+    }
+
+.footerlogo {
+    display: block; /* Pastikan logo ditampilkan sebagai blok */
+}
+.footer3 {
+    display: flex;
+    flex-direction: column; /* Mengatur elemen menjadi kolom */
+    align-items: flex-start; /* Mengatur item di kiri */
+    padding: 15px; /* Tambahkan padding sesuai kebutuhan */
+    background-color: #0; /* Contoh warna latar belakang */
+    color: white; /* Warna teks */
+    border-radius: 8px; /* Radius border jika diinginkan */
+    transition: transform 0.3s ease;
+    margin: 10px; /* Tambahkan margin untuk spasi */
+}
+
+.footer4 {
+    display: flex;
+    flex-direction: column; /* Mengatur elemen menjadi kolom */
+    align-items: flex-start; /* Mengatur item di kiri */
+    padding: 15px; /* Tambahkan padding sesuai kebutuhan */
+    background-color: #0; /* Contoh warna latar belakang */
+    color: white; /* Warna teks */
+    border-radius: 8px; /* Radius border jika diinginkan */
+    transition: transform 0.3s ease;
+    margin: 10px; /* Tambahkan margin untuk spasi */
+}
+
+.tentangkami {
+        background-color: 0;
+        padding: 20px;
+        border-radius: 0px;
+        max-width: 1500px;
+        margin: 0 auto;
     }
 
 
@@ -316,47 +424,19 @@ h2 {
         @endforeach
 </div>
 </div>
-
+   <div class="tentangkami">
     <div id="about" class="content">
         <h1 class="abouth1">Kemari! Tentang apa ini?</h1>
         <p>-Ini adalah proyek pertama bagi kami semua ketika kami bekerja di PT Grage Multimedia Teknologi (GMT).</p>
         <p>-Ini adalah aplikasi kasir yang memudahkan untuk mengelola toko yang Anda miliki.</p>
         <p>-Aplikasi ini dibuat bersama dengan tim PKL Smkn 1 Talaga.</p>
     </div>
- 
+    </div>
     <div class="kita">
         <h1 class="abouth1">Siapa di balik ini?</h1>
         <p>Kami adalah tim kreator yang membangun di web secara penuh waktu. Anda mungkin telah melihat karya kami:</p>
         <img src="/foto/qa.png" alt="Team" class="img-fluid">
     </div>
-
-    <section id="contact" class="contact-section">
-        <h2 class="text-center mb-4">Kontak</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="contact-item">
-                    <h3>Email</h3>
-                    <p><a href="mailto:gianadiramdan@gmail.com">gianadiramdan@gmail.com</a></p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="contact-item">
-                    <h3>Telepon</h3>
-                    <p><a href="https://wa.me/6281297535513">Hubungi Kami di WhatsApp</a></p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="contact-item">
-                    <h3>Media Sosial</h3>
-                    <p>
-                        <a href="#">Facebook</a> |
-                        <a href="#">Twitter</a> |
-                        <a href="https://www.instagram.com/xiirpltwoo">Instagram</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <a href="https://wa.me/6281297535513" class="whatsapp-logo" target="_blank">
         <img src="/foto/was.png" alt="WhatsApp Logo">
@@ -364,11 +444,34 @@ h2 {
 
     <footer class="footer">
         <div class="container">
-            <p class="text-center">Copyright &copy; Designed & Developed By <a href="#">Kasir</a> 2024</p>
-            <ul class="list-inline text-center">
-                <li class="list-inline-item"><a href="#about">Tentang Kami</a></li>
-                <li class="list-inline-item"><a href="#contact">Kontak</a></li>
-            </ul>
+        <div class="footer2">
+                <img src="foto/kasic.png" alt="Logo" width="150">
+                <h4>PT Aplikasi Kasir</h4>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.995388605032!2d108.45887257403326!3d-6.770413866206069!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f1f698feaec99%3A0x909eee85e942ce8a!2sKampoeng%20IT%20(%20JAGAT%20)!5e0!3m2!1sen!2sid!4v1725246783538!5m2!1sen!2sid" size="50px;" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <p>6FH6+RHP, Sidawangi, Sumber, Cirebon, West Java 45611</p>
+                <p></p>
+        </div>
+        <div class="footer3">
+                <h4 style=" font-weight: bold;">MENU</h4>
+                <h6><a href="#about" style="color: white;">About</a></h6>
+                <h6><a href="#contact" style="color: white;">Contac</a></h6>
+                <h6><a href="#produk" style="color: white;">Produk</a></h6>
+            </div>
+            <div class="footer4">
+                <h4 style=" font-weight: bold;" id="contact">Contac Us</h4>
+                <h6 style="color: white;">Email</a></h6>
+                <p><a href="mailto:gianadiramdan@gmail.com" style="color: #6495ED;">gianadiramdan@gmail.com</a></p>
+                <h6 style="color: white;">Telepon</a></h6>
+                <p><a href="https://wa.me/6281297535513"  style="color: #6495ED;">Hubungi Kami di WhatsApp</a></p>
+
+                <h6 style="color: white;">Media Sosial</a></h6>
+                <p  style="color: #6495ED;">
+                        <a href="#"  style="color: #6495ED;">Facebook</a> |
+                        <a href="#"  style="color: #6495ED;">Twitter</a> |
+                        <a href="https://www.instagram.com/xiirpltwoo"  style="color: #6495ED;">Instagram</a>
+                    </p>
+            </div>
+         <p class="text-center">Copyright &copy; Designed & Developed By <a href="#">Kasir</a> 2024</p>
         </div>
     </footer>
 

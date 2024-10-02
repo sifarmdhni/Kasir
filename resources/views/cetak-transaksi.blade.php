@@ -57,7 +57,7 @@
 </head>
 <body>
     <img src="/kasirhitamm.png" alt="foto" class="iconstruk">
-    <h5 class="p">PT Reza Jaya Paku Beton Tbk.</h5>
+    <h5 class="p">PT Aplikasi Kasir.</h5>
     <P class="p">6FH6+RHP, Sidawangi, Sumber, Cirebon, West Java 45611</P>
     <p class="p">================================================================================</p>
     <h1 class="h2t">Transaksi</h1>
