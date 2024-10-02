@@ -38,7 +38,7 @@
 }
 
         .contact-section {
-            background-color: #fff;
+            background-color: #ffffff01;
             border-radius: 5px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 2rem;
@@ -77,7 +77,7 @@
 
 
         .footer {
-            background-color: #333;
+            background-color: #33333300;
             color: white;
             padding: 2rem 0;
             margin-top: 2rem;
@@ -111,6 +111,18 @@
     color: white; 
     margin-top: 30px; 
 }
+.text-whit6e {
+    color: white; /* Mengatur warna teks menjadi putih */
+    font-weight: bold; /* Mengatur teks menjadi tebal */
+}
+h3 {
+    color: white; /* Mengatur warna teks menjadi putih */
+}
+h2 {
+    color: white; /* Mengatur warna teks menjadi putih */
+}
+
+
 
 
     </style>
@@ -141,9 +153,9 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-6">
-                <h1 class="text-white">Hello Mr/Mrs.</h1>
-                <h3 class="text-white">Welcome...</h3>
-                <p class="text-whitee">Welcome! We are very happy to share quality time with you and make memories today! Welcome to our cashier application, here we provide some quality products, please log in for further information.</p>
+                <h1 class="text-whit6e">Hallo.</h1>
+                <h3 class="text-whit6e">Terima Kasih telah bergabung...</h3>
+                <p class="text-whitee"> Kami sangat senang Anda bergabung dengan kami hari ini. Nikmati pengalaman Anda dan jangan ragu untuk menjelajahi semua yang kami tawarkan!.</p>
             </div>
             <div class="col-lg-6">
                 <img src="foto/10.png" alt="Floating Image" class="floating img-fluid">
@@ -152,20 +164,20 @@
     </div>
 
     <div id="about" class="content">
-        <h2>Welcome! What's this all about?</h2>
-        <p>This is the first project for all of us when we were working at PT Grage Multimedia Teknologi (GMT).</p>
-        <p>This is a cashier application which makes it easier to manage a shop that you own.</p>
-        <p>This application was created together with the Smkn 1 Talaga street vendor team.</p>
+        <h2>Kemari! Tentang apa ini?</h2>
+        <p>Ini adalah proyek pertama bagi kami semua ketika kami bekerja di PT Grage Multimedia Teknologi (GMT).</p>
+        <p>Ini adalah aplikasi kasir yang memudahkan untuk mengelola toko yang Anda miliki.</p>
+        <p>Aplikasi ini dibuat bersama dengan tim PKL Smkn 1 Talaga.</p>
     </div>
 
     <div class="kita"">
-        <h2>Who's behind this?</h2>
-        <p>We're a team of creators building on the web full-time. You might have seen our work:</p>
+        <h2>Siapa di balik ini?</h2>
+        <p>Kami adalah tim kreator yang membangun di web secara penuh waktu. Anda mungkin telah melihat karya kami:</p>
         <img src="/foto/qa.png" alt="Team" class="img-fluid">
     </div>
 
     <section id="contact" class="contact-section">
-        <h2 class="text-center mb-4">Contact</h2>
+        <h2 class="text-center mb-4">Kontak</h2>
         <div class="row">
             <div class="col-md-4">
                 <div class="contact-item">
