@@ -76,7 +76,6 @@ class TransaksiController extends Controller
         $request->validate([
             'id_payment' => 'required|integer',
             'customer_id' => 'required|integer',
-            'diskon' => 'required|numeric',
             'total_harga' => 'required|numeric',
             'details' => 'required|array',
             'details.*.id_produk' => 'required|integer',
@@ -84,11 +83,19 @@ class TransaksiController extends Controller
             'details.*.jumlah' => 'required|integer',
         ]);
     
+        $subtotal = 0;
+        foreach ($request->details as $detail) {
+            $subtotal += $detail['harga'] * $detail['jumlah'];
+        }
+    
+        $diskon = $subtotal > 100000 ? 10 : 0; // 10% discount for transactions over 100,000
+        $total_harga = $subtotal * (1 - $diskon / 100);
+    
         $transaksi = new Transaksi();
         $transaksi->id_payment = $request->id_payment;
         $transaksi->customer_id = $request->customer_id;
-        $transaksi->diskon = $request->diskon;
-        $transaksi->total_harga = $request->total_harga;
+        $transaksi->diskon = $diskon;
+        $transaksi->total_harga = $total_harga;
         $transaksi->id_kasir = Auth::guard('kasir')->id();
         $transaksi->save();
     
@@ -108,6 +115,7 @@ class TransaksiController extends Controller
     
         return redirect()->route('transaksi.create')->with('success', 'Transaksi berhasil disimpan!');
     }
+
 
     public function getProductPrice($id)
     {

@@ -205,9 +205,27 @@
         $('.subtotal').each(function() {
             total += parseFloat($(this).val()) || 0;
         });
-        var diskon = parseFloat($('#diskon').val()) || 0;
+        
+        var diskon = 0;
+        if (total > 100000) {
+            diskon = 10; // 10% discount for transactions over 100,000
+        }
+        
+        $('#diskon').val(diskon);
         var totalAfterDiscount = total * (1 - diskon / 100);
         $('#total_harga').val(totalAfterDiscount.toFixed(2));
+        
+        // Update the discount display
+        updateDiskonDisplay(diskon);
+    }
+
+    function updateDiskonDisplay(diskon) {
+        $('#diskon').val(diskon);
+        if (diskon > 0) {
+            $('#diskon').removeClass('text-muted').addClass('text-success font-weight-bold');
+        } else {
+            $('#diskon').removeClass('text-success font-weight-bold').addClass('text-muted');
+        }
     }
 
     // Prevent form submission if any product has zero quantity
