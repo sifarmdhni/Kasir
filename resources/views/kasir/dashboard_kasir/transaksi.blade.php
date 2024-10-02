@@ -157,6 +157,25 @@
         var harga = selectedOption.data('harga');
         var stok = selectedOption.data('stok');
         var row = $(this).closest('tr');
+
+        // Check for duplicates
+        var isDuplicate = false;
+        $('.product-select').each(function() {
+            if ($(this).val() === selectedOption.val() && $(this).closest('tr')[0] !== row[0]) {
+                isDuplicate = true;
+                return false; // Break the loop
+            }
+        });
+
+        if (isDuplicate) {
+            alert('Produk ini sudah ditambahkan. Silakan pilih produk lain.');
+            $(this).val('');  // Reset selection
+            row.find('.harga').val('');
+            row.find('.jumlah').val('');
+            row.find('.subtotal').val('');
+            return; // Exit the function
+        }
+
         row.find('.harga').val(harga);
         row.find('.jumlah').attr('max', stok);  // Set max attribute to current stock
         
