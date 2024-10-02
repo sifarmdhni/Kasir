@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produk;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    
+  
     public function index()
     {
-        $data = array(
-            'title'=> 'Dashboard Page'
-        );
-        return view('dashboard', $data);
-        //return view('dashboard', $data);
-        
+        $data_produk = Produk::all(); // Fetch all products
+        return view('dashboard', compact('data_produk'));
     }
+
     public function index2(){
         return view('admin.auth_admin.authadmin');
     }
