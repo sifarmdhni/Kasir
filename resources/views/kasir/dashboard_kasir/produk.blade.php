@@ -12,8 +12,6 @@
         </div>
     </div>
 
-    <!-- row -->
-        
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -26,32 +24,32 @@
                             </button>
                         </div>
                     </div>
-                     <div class="card-body">
+                    <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered zero-configuration">
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Foto</th>
                                         <th>Nama Produk</th>
                                         <th>Kategori</th>
                                         <th>Stok</th>
                                         <th>Harga</th>
-                                        
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                     @php
-                                     $no = 1;
-                                     @endphp
-                                     @foreach ($data_produk as $row)
-                                     <tr>
+                                    @php
+                                    $no = 1;
+                                    @endphp
+                                    @foreach ($data_produk as $row)
+                                    <tr>
                                         <td>{{ $no++ }}</td>
+                                        <td><img src="{{ asset('foto/fotoproduk/' . $row->foto) }}" alt="{{ $row->nama_produk }}" width="50"></td>
                                         <td>{{ $row->nama_produk }}</td>
                                         <td>{{ $row->nama_kategori }}</td>
                                         <td>{{ $row->stok }} pcs</td>
                                         <td>Rp. {{ number_format($row->harga) }}</td>
-                                        
                                         <td>
                                             <a href="#modalEdit{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-primary">
                                                 <i class="fa fa-edit"></i> Edit
@@ -60,7 +58,7 @@
                                                 <i class="fa fa-trash"></i> Hapus
                                             </a>
                                         </td>
-                                     </tr>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -70,7 +68,6 @@
             </div>
         </div>
     </div>
-    <!-- #/ container -->
 </div>
 
 <!-- Modal Create User -->
@@ -81,7 +78,7 @@
                 <h5 class="modal-title">Create {{ $title }}</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <form method="POST" action="/produk/store">
+            <form method="POST" action="/produk/store" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -89,16 +86,14 @@
                         <input type="text" class="form-control" name="nama_produk" placeholder="Nama Produk...." required>
                     </div>
                     <div class="form-group">
-                   <label>Nama Kategori</label>
-                    <select class="form-control" name="id_kategori" required>
-                    <option value="" hidden>.. Pilih jenis barang ..</option>
-                        @foreach ($data_kategori as $b)
-                    <option value="{{ $b->id }}">{{ $b->nama_kategori }}</option>
-                       @endforeach       
-                    </select>
-                    
-                </div>
-
+                        <label>Nama Kategori</label>
+                        <select class="form-control" name="id_kategori" required>
+                            <option value="" hidden>.. Pilih jenis barang ..</option>
+                            @foreach ($data_kategori as $b)
+                            <option value="{{ $b->id }}">{{ $b->nama_kategori }}</option>
+                            @endforeach       
+                        </select>
+                    </div>
                     <div class="input-group mb-3">
                         <input type="number" name="stok" placeholder="Stok ..." class="form-control" required>
                         <div class="input-group-append"><span class="input-group-text">Pcs</span></div>
@@ -107,8 +102,11 @@
                         <div class="input-group-prepend"><span class="input-group-text">Rp</span></div>
                         <input type="number" name="harga" class="form-control" placeholder="Harga" required>
                     </div>
+                    <div class="form-group">
+                        <label>Foto Produk</label>
+                        <input type="file" class="form-control" name="foto" required>
+                    </div>
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i> Close</button>
                     <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
@@ -127,7 +125,7 @@
                 <h5 class="modal-title">Edit {{ $title }}</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <form method="POST" action="/produk/update/{{$d->id}}">
+            <form method="POST" action="/produk/update/{{$d->id}}" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -137,9 +135,11 @@
                     <div class="form-group">
                         <label>Nama Kategori</label>
                         <select class="form-control" name="id_kategori" required>
-                        <option value="" hidden>...Pilih jenis barang...</option>
-                            @foreach ($data_kategori as $d)
-                            <option value="{{ $d->id }}">{{ $d->nama_kategori }}</option> 
+                            <option value="" hidden>...Pilih jenis barang...</option>
+                            @foreach ($data_kategori as $kategori)
+                            <option value="{{ $kategori->id }}" {{ $d->id_kategori == $kategori->id ? 'selected' : '' }}>
+                                {{ $kategori->nama_kategori }}
+                            </option> 
                             @endforeach       
                         </select>
                     </div>
@@ -150,6 +150,11 @@
                     <div class="input-group mb-3">
                         <div class="input-group-prepend"><span class="input-group-text">Rp</span></div>
                         <input type="number" name="harga" value="{{ $d->harga }}" class="form-control" placeholder="Harga" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Foto Produk</label>
+                        <input type="file" class="form-control" name="foto">
+                        <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengubah foto.</small>
                     </div>
                 </div>
                 <div class="modal-footer">

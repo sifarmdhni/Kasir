@@ -15,7 +15,8 @@ class produk extends Model
         'nama_produk',
         'id_kategori',
         'harga',
-        'stok', 
+        'stok',
+        'foto',
     ];
 
     const CREATED_AT = 'created_at';

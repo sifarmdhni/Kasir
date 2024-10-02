@@ -27,6 +27,7 @@
         }
         .nav-link {
             color: white !important;
+            font-weight: bold;
         }
         
         .content {
@@ -82,18 +83,19 @@
             padding: 2rem 0;
             margin-top: 2rem;
         }
-        .kita {
+
+ .kita {
      
     color: #fff; 
     border-radius: 10px;
-    padding: 1rem; 
-    margin: 1rem; 
+    padding: 4rem; 
+    margin: 4rem; 
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); 
     transition: transform 0.2s; 
 }
 
 .kita:hover {
-    transform: scale(1.02); 
+    transform: scale(1.09); 
 }
 
 .img-fluid {
@@ -122,6 +124,140 @@ h2 {
     color: white; /* Mengatur warna teks menjadi putih */
 }
 
+.navbar-nav {
+    display: inline-flex;
+    margin-right: 100px;
+    margin-top: 30px; /* Mengatur item navbar dalam satu baris */
+}
+
+.nav-item {
+    margin-right: 9px;
+    top: 10px; /* Jarak antar item navbar */
+}
+.navbar-brand {
+    display: inline-block; /* Memungkinkan untuk mengatur lebar dan tinggi */
+    overflow-x: auto; /* Membuat elemen dapat digulir secara horizontal */
+    white-space: nowrap; /* Mencegah konten membungkus ke baris berikutnya */
+    max-width: 100%;
+    margin-left: 30px;
+    margin-top: 30px; /* Batasi lebar maksimum */
+}
+
+.navbar-brand img {
+    max-width: none; /* Menghindari pemotongan gambar */
+    height: auto; /* Menjaga aspek rasio gambar */
+}
+.content {
+    padding: 20px;
+}
+
+.product-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Menentukan ukuran kolom */
+    gap: 20px; /* Jarak antar produk */
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.product-card img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.product-card h4 {
+    margin: 10px 0 5px;
+}
+
+.product-card p {
+    margin: 5px 0;
+}
+
+.product-card:hover {
+    transform: scale(1.05); /* Efek zoom saat hover */
+}
+.h3p{
+    text-align: center;
+    font-weight: bold;
+}
+.product-section {
+        background-color: white;
+        padding: 20px;
+        border-radius: 0px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 1500px;
+        margin: 0 auto;
+    }
+
+    .h3p {
+        color: black;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .product-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .product-card {
+        background-color: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 15px;
+        width: 185px;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .product-card img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+
+    .product-card h4 {
+        margin: 10px 0;
+    }
+
+    .product-card p {
+        margin: 5px 0;
+    }
+
+    @media (max-width: 768px) {
+        .product-card {
+            width: calc(50% - 20px);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .product-card {
+            width: 100%;
+        }
+    }
+    .abouth1 {
+        font-weight: bold; /* Atau bisa menggunakan '700' */
+    }
+
+
+
+
+
+
 
 
 
@@ -144,6 +280,9 @@ h2 {
                     <a class="nav-link" href="#contact">CONTACT</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="#produk">PRODUCT</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link btn btn-primary" href="/logincustomer">Sign In</a>
                 </li>
             </ul>
@@ -163,15 +302,30 @@ h2 {
         </div>
     </div>
 
-    <div id="about" class="content">
-        <h2>Kemari! Tentang apa ini?</h2>
-        <p>Ini adalah proyek pertama bagi kami semua ketika kami bekerja di PT Grage Multimedia Teknologi (GMT).</p>
-        <p>Ini adalah aplikasi kasir yang memudahkan untuk mengelola toko yang Anda miliki.</p>
-        <p>Aplikasi ini dibuat bersama dengan tim PKL Smkn 1 Talaga.</p>
-    </div>
+       
+<div class="product-section" id="produk">
+    <h3 class="h3p">Daftar Produk</h3>
+    <div class="product-gallery">
+        @foreach($data_produk as $produk)
+            <div class="product-card">
+                <img src="{{ asset('foto/fotoproduk/' . $produk->foto) }}" alt="{{ $produk->nama_produk }}">
+                <h4>{{ $produk->nama_produk }}</h4>
+                <p>Rp {{ number_format($produk->harga, 0, ',', '.') }}</p>
+                <p>Stok: {{ $produk->stok }}</p>
+            </div>
+        @endforeach
+</div>
+</div>
 
-    <div class="kita"">
-        <h2>Siapa di balik ini?</h2>
+    <div id="about" class="content">
+        <h1 class="abouth1">Kemari! Tentang apa ini?</h1>
+        <p>-Ini adalah proyek pertama bagi kami semua ketika kami bekerja di PT Grage Multimedia Teknologi (GMT).</p>
+        <p>-Ini adalah aplikasi kasir yang memudahkan untuk mengelola toko yang Anda miliki.</p>
+        <p>-Aplikasi ini dibuat bersama dengan tim PKL Smkn 1 Talaga.</p>
+    </div>
+ 
+    <div class="kita">
+        <h1 class="abouth1">Siapa di balik ini?</h1>
         <p>Kami adalah tim kreator yang membangun di web secara penuh waktu. Anda mungkin telah melihat karya kami:</p>
         <img src="/foto/qa.png" alt="Team" class="img-fluid">
     </div>
