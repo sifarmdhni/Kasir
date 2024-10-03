@@ -73,4 +73,15 @@ public function update(Request $request, $id)
 
     return redirect('/produk')->with('success', 'Data Berhasil Di Ubah');
 }
+
+public function destroy($id)
+{
+    $produk = Produk::find($id);
+    if ($produk) {
+        $produk->delete();
+        return redirect('/produk')->with('success', 'Data berhasil dihapus');
+    } else {
+        return redirect('/produk')->with('error', 'User tidak ditemukan');
+    }
+}
 }

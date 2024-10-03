@@ -18,12 +18,26 @@
                     <div class="card">
                         <form method="POST" action="{{ route('customer.profile.update') }}">
                             @csrf
+                        
+                            <input type="hidden" name="id" value="{{ $profile_customer->id }}">
+
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
                                     <h4 class="card-title">Edit Profile</h4>
                                 </div>
                                 <hr />
-                                {{-- @dd($profile_customer) --}}
+                        
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
+                            
                                 <div class="form-group">
                                     <label>Nama Lengkap</label>
                                     <input type="text" class="form-control" name="nama"
@@ -33,6 +47,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
+                                
                                         <div class="form-group">
                                             <label>Email</label>
                                             <input type="email" class="form-control" name="email"
@@ -41,6 +56,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
+                    
                                         <div class="form-group">
                                             <label>Password</label>
                                             <input type="password" class="form-control" name="password"
@@ -61,5 +77,5 @@
             </div>
         </div>
     </div>
-</body>
+
 @endsection
