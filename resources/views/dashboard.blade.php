@@ -446,10 +446,9 @@ h2 {
         <div class="container">
         <div class="footer2">
                 <img src="foto/kasic.png" alt="Logo" width="150">
-                <h4>PT Aplikasi Kasir</h4>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.995388605032!2d108.45887257403326!3d-6.770413866206069!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f1f698feaec99%3A0x909eee85e942ce8a!2sKampoeng%20IT%20(%20JAGAT%20)!5e0!3m2!1sen!2sid!4v1725246783538!5m2!1sen!2sid" size="50px;" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                   <h4>PT Aplikasi Kasir</h4>
                 <p>6FH6+RHP, Sidawangi, Sumber, Cirebon, West Java 45611</p>
-                <p></p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.995388605032!2d108.45887257403326!3d-6.770413866206069!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f1f698feaec99%3A0x909eee85e942ce8a!2sKampoeng%20IT%20(%20JAGAT%20)!5e0!3m2!1sen!2sid!4v1725246783538!5m2!1sen!2sid" size="50px;" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
         <div class="footer3">
                 <h4 style=" font-weight: bold;">MENU</h4>
@@ -471,7 +470,7 @@ h2 {
                         <a href="https://www.instagram.com/xiirpltwoo"  style="color: #6495ED;">Instagram</a>
                     </p>
             </div>
-         <p class="text-center">Copyright &copy; PT Aplikasi Kasir By <a href="#">SMKN 1 TALAGA</a> 2024</p>
+         <p class="text-center">Copyright &copy; PT Aplikasi Kasir B y <a href="#">SMKN 1 TALAGA</a> 2024</p>
         </div>
     </footer>
 
