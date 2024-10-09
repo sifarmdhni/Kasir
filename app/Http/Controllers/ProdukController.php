@@ -26,7 +26,7 @@ class ProdukController extends Controller
         'nama_produk' => 'required',
         'id_kategori' => 'required',
         'harga' => 'required|numeric',
-        'stok' => 'required|integer',
+       
         'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
 
@@ -48,7 +48,7 @@ public function update(Request $request, $id)
         'nama_produk' => 'required',
         'id_kategori' => 'required',
         'harga' => 'required|numeric',
-        'stok' => 'required|integer',
+       
         'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
 

@@ -36,7 +36,7 @@
                     <b class="logo-abbr"><img src="/assets/images/0.png" alt=""> </b>
                     <span class="logo-compact"><img src="/assets/images/0.png" alt=""></span>
                     <span class="brand-title">
-                        <img src="/assets/images/kasirrpl12.png" style="margin-left: -40px;  margin-top: -80px;" height="200" width="260" alt="foto">
+                        <img src="/assets/images/download.png" style="margin-left: -26px;  margin-top: -80px;" height="200" width="200" alt="foto">
                     </span>
                 </a>
             </div>

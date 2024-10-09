@@ -48,7 +48,7 @@
                             <div class="card-body pt-5">
                                 <a class="text-center" href="#">
                                     <center>
-                                        <img src="foto//eweh.jpeg" alt="Foto"  width="200" height="100" style="margin: 10px;" >
+                                        <img src="foto//eweh.png" alt="Foto"  width="200" height="70" style="margin: 15px;" >
                                             </center>
                                 </a>
 

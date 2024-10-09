@@ -32,15 +32,43 @@ class DashboardAdminController extends Controller
     private function getDashboardData()
 {
     $today = Carbon::today();
-    $incomeData = [];
+    $weeklyIncomeData = [];
+    $monthlyIncomeData = [];
+    $yearlyIncomeData = [];
 
-    // Calculate daily income for the last 7 days
-    for ($i = 6; $i >= 0; $i--) {
-        $date = $today->copy()->subDays($i);
-        $dailyIncome = Transaksi::whereDate('created_at', $date)->sum('total_harga');
-        $incomeData[] = [
-            'date' => $date->format('d F Y'),
-            'income' => $dailyIncome,
+    // Calculate weekly income for the last 4 weeks
+    for ($i = 3; $i >= 0; $i--) {
+        $startOfWeek = $today->copy()->subWeeks($i)->startOfWeek();
+        $endOfWeek = $today->copy()->subWeeks($i)->endOfWeek();
+        $weeklyIncome = Transaksi::whereBetween('created_at', [$startOfWeek, $endOfWeek])->sum('total_harga');
+
+        $weeklyIncomeData[] = [
+            'week' => $startOfWeek->format('d M Y') . ' - ' . $endOfWeek->format('d M Y'),
+            'income' => $weeklyIncome,
+        ];
+    }
+
+    // Calculate monthly income for the last 12 months
+    for ($i = 11; $i >= 0; $i--) {
+        $startOfMonth = $today->copy()->subMonths($i)->startOfMonth();
+        $endOfMonth = $today->copy()->subMonths($i)->endOfMonth();
+        $monthlyIncome = Transaksi::whereBetween('created_at', [$startOfMonth, $endOfMonth])->sum('total_harga');
+
+        $monthlyIncomeData[] = [
+            'month' => $startOfMonth->format('F Y'),
+            'income' => $monthlyIncome,
+        ];
+    }
+
+    // Calculate yearly income for the last 5 years
+    for ($i = 4; $i >= 0; $i--) {
+        $startOfYear = $today->copy()->subYears($i)->startOfYear();
+        $endOfYear = $today->copy()->subYears($i)->endOfYear();
+        $yearlyIncome = Transaksi::whereBetween('created_at', [$startOfYear, $endOfYear])->sum('total_harga');
+
+        $yearlyIncomeData[] = [
+            'year' => $startOfYear->format('Y'),
+            'income' => $yearlyIncome,
         ];
     }
 
@@ -49,9 +77,12 @@ class DashboardAdminController extends Controller
         'daily_income' => Transaksi::whereDate('created_at', $today)->sum('total_harga'),
         'new_customers' => Customer::whereDate('created_at', $today)->count(),
         'total_stock' => Produk::sum('stok'),
-        'income_data' => $incomeData,
+        'weekly_income_data' => $weeklyIncomeData,   // Weekly income data
+        'monthly_income_data' => $monthlyIncomeData, // Monthly income data
+        'yearly_income_data' => $yearlyIncomeData,   // Yearly income data
     ];
 }
+
 
 
     public function store(Request $request)

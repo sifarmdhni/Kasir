@@ -94,10 +94,10 @@
                             @endforeach       
                         </select>
                     </div>
-                    <div class="input-group mb-3">
+                    {{-- <div class="input-group mb-3">
                         <input type="number" name="stok" placeholder="Stok ..." class="form-control" required>
                         <div class="input-group-append"><span class="input-group-text">Pcs</span></div>
-                    </div>
+                    </div> --}}
                     <div class="input-group mb-3">
                         <div class="input-group-prepend"><span class="input-group-text">Rp</span></div>
                         <input type="number" name="harga" class="form-control" placeholder="Harga" required>
@@ -143,10 +143,10 @@
                             @endforeach       
                         </select>
                     </div>
-                    <div class="input-group mb-3">
+                    {{-- <div class="input-group mb-3">
                         <input type="number" name="stok" value="{{ $d->stok }}" placeholder="Stok ..." class="form-control" required>
                         <div class="input-group-append"><span class="input-group-text">Pcs</span></div>
-                    </div>
+                    </div> --}}
                     <div class="input-group mb-3">
                         <div class="input-group-prepend"><span class="input-group-text">Rp</span></div>
                         <input type="number" name="harga" value="{{ $d->harga }}" class="form-control" placeholder="Harga" required>

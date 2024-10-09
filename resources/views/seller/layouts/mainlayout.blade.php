@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Customer</title>
+    <title>Supllier</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/kasir5.png">
     <!-- Custom Stylesheet -->
@@ -96,32 +96,10 @@
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Dashboard</li>
                     <li>
-                        <a href="/indexcustomer" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard Customer</span>
+                        <a href="/seller" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard Supllier</span>
                         </a>
-                    </li>
-
-                    <li>
-                        <a href="/historicustomer" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Histori Transaksi</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="/profilecustomer" aria-expanded="false">
-                            <i class="icon-user"></i><span class="nav-text">Profile</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{{ route('customer.logout') }}" aria-expanded="false" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <i class="icon-key"></i><span class="nav-text">Logout</span>
-                        </a>
-                    </li>
-                    
-                    <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
+                    </li
 
                 </ul>
             </div>

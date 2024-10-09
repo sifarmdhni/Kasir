@@ -7,9 +7,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\SellerController;
+
+
 use App\Http\Controllers\PaymentController;
-
-
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\AuthKasirController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\AuthCustomerController;
 use App\Http\Controllers\AuthTransaksiController;
 use App\Http\Controllers\CustomerKasirController;
 use App\Http\Controllers\LaporanProdukController;
+use App\Http\Controllers\TransaksiBeliController;
 use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\KategoriProdukController;
 use App\Http\Controllers\LaporanTransaksiController;
@@ -90,6 +92,13 @@ Route::middleware('auth.kasir')->group(function () {
 //   return  view('kasir.dashboard_kasir.transaksi');
 // });
 
+
+Route::get('/transaksi-beli', [TransaksiBeliController::class, 'index'])->name('transaksi-beli.index');
+Route::post('/transaksi-beli', [TransaksiBeliController::class, 'store'])->name('transaksi-beli.store');
+Route::delete('/transaksi-beli/{id}', [TransaksiBeliController::class, 'destroy'])->name('transaksi-beli.destroy');
+Route::get('/get-product-price/{id}', [TransaksiBeliController::class, 'getProductPrice']);
+
+
 Route::get('/profile', [KasirController::class, 'profile'])->name('kasir.profile');
 Route::put('/profile', [KasirController::class, 'updateProfile'])->name('kasir.update-profile');
 
@@ -141,3 +150,6 @@ Route::post('/login', [AuthCustomerController::class, 'login'])->name("customer.
 
 
 Route::get('/cetak-transaksi/{id}', [TransaksiController::class, 'cetakTransaksi'])->name('cetak.transaksi');
+
+
+Route::resource('seller', SellerController::class);
